@@ -8,6 +8,8 @@
 #           - Also handy if you have a large number of dependant pods
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 Pods/
+Podfile.lock
+Marvel.xcworkspace/
 
 ### Swift ###
 # Xcode
@@ -51,14 +53,6 @@ playground.xcworkspace
 # Package.pins
 # Package.resolved
 .build/
-
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
 
 # Carthage
 #
