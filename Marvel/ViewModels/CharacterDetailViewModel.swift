@@ -27,7 +27,7 @@ class CharacterDetailViewModel {
     func getTableViewHeightForRow(section: Int) -> CGFloat {
         switch section {
             case 0:
-                return 200
+                return UIScreen.main.bounds.width * 0.6
             case 1:
                 guard let desc = character.desc, desc != "" else {
                     return 0

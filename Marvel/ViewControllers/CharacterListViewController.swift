@@ -13,6 +13,7 @@ class CharacterListViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loaderMain: UIActivityIndicatorView!
     @IBOutlet weak var tableViewFooter: UIView!
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     let characterListViewModel = CharacterListViewModel()
     
@@ -31,10 +32,10 @@ class CharacterListViewController: BaseViewController {
     }
     
     func reloadTable() {
-        self.tableView.reloadData()
-        self.tableView.isHidden = false
-        self.loaderMain.isHidden = true
-        self.tableViewFooter.frame.size.height = characterListViewModel.heightFooter()
+        tableViewFooter.frame.size.height = characterListViewModel.heightFooter()
+        tableView.reloadData()
+        tableView.isHidden = false
+        loaderMain.isHidden = true        
     }
     
 }

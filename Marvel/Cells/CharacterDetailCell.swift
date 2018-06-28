@@ -39,8 +39,7 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     private func setupBanner() {
-        banner.kf.indicatorType = .activity
-        banner.kf.setImage(with: character.getAvatarUrl(size: .landscapeXlarge))
+        banner.kf.setImage(with: character.getAvatarUrl(size: .landscapeIncredible), placeholder: UIImage.placeholderBanner())
     }
     
     private func setupTitle() {

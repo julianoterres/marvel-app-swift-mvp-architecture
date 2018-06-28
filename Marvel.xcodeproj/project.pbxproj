@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		26D304AF17D7AFB01CF78619 /* Pods_Marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE1562447584EFA1B4A1437 /* Pods_Marvel.framework */; };
 		CB218F980CE3C43FB6BDABB5 /* Pods_MarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8EBAD5F8F5ED9666819DF1 /* Pods_MarvelUITests.framework */; };
+		E316738C20E523F100442A55 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E316738B20E523F100442A55 /* UIImageExtension.swift */; };
 		E340B91520E195390061AFD6 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340B91420E195390061AFD6 /* CharacterListViewController.swift */; };
 		E36937BF20E18567009B9EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937BE20E18567009B9EFC /* AppDelegate.swift */; };
 		E36937C420E18567009B9EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36937C220E18567009B9EFC /* Main.storyboard */; };
@@ -85,6 +86,7 @@
 		56740CECEAE8961329C1B825 /* Pods_MarvelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB844D8E000EED23E0727D5 /* Pods-MarvelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelTests/Pods-MarvelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C66A1CF597DBBB291711E409 /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
+		E316738B20E523F100442A55 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E340B91420E195390061AFD6 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		E36937BB20E18567009B9EFC /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36937BE20E18567009B9EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				E3F2B17820E281A5004A3E59 /* UIColorExtension.swift */,
+				E316738B20E523F100442A55 /* UIImageExtension.swift */,
 				E3F2B19820E2987E004A3E59 /* UINavigationControllerExtension.swift */,
 				E3D807D920E422D100CC9040 /* UIViewControllerExtension.swift */,
 			);
@@ -633,6 +636,7 @@
 				E3F2B19520E28AB8004A3E59 /* CharacterListCell.swift in Sources */,
 				E3D807DC20E4384500CC9040 /* CharacterDetailViewModel.swift in Sources */,
 				E3F2B1DF20E3F92B004A3E59 /* Series.swift in Sources */,
+				E316738C20E523F100442A55 /* UIImageExtension.swift in Sources */,
 				E3F2B1C920E3CB73004A3E59 /* EnumDefinition.swift in Sources */,
 				E3F2B1C620E3CB2B004A3E59 /* Network.swift in Sources */,
 				E3F2B1C320E2BD3B004A3E59 /* BaseViewController.swift in Sources */,

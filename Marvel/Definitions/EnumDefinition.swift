@@ -15,6 +15,7 @@ enum EnumNetworkMethod: String {
 
 enum ImagesSizes: String {
     case landscapeXlarge = "landscape_xlarge"
+    case landscapeIncredible = "landscape_incredible"
     case portraitMedium = "portrait_medium"
 }
 
