@@ -8,6 +8,7 @@ target 'Marvel' do
   # Pods for Marvel
   pod 'Alamofire', '~> 4.7'
   pod 'Kingfisher', '~> 4.8'
+  pod 'ObjectMapper', '~> 3.3'
 
   target 'MarvelTests' do
     inherit! :search_paths

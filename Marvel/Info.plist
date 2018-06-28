@@ -41,7 +41,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>API URL Base</key>
+	<string>https://gateway.marvel.com/v1/public/</string>
+	<key>API Key</key>
+	<string>d89c919dbb61f12a1764b86bd8e8b73d</string>
+	<key>API Hash</key>
+	<string>da037efefed402e4a5f43a0a3a57c18e</string>
+	<key>API Ts</key>
+	<string>abcdefghijlmanopq</string>
 </dict>
 </plist>

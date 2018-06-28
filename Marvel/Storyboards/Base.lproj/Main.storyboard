@@ -27,9 +27,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="05v-aL-Or1">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="jvq-f1-nSd">
+                                <rect key="frame" x="177" y="291" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HomeTableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="05v-aL-Or1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" name="Mine Shaft"/>
+                                <view key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" id="Jq0-hC-VQO">
+                                    <rect key="frame" x="0.0" y="85" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="2cv-aw-04d">
+                                            <rect key="frame" x="177.5" y="12" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="Mine Shaft"/>
+                                    <constraints>
+                                        <constraint firstItem="2cv-aw-04d" firstAttribute="centerY" secondItem="Jq0-hC-VQO" secondAttribute="centerY" id="E2F-2G-YIp"/>
+                                        <constraint firstItem="2cv-aw-04d" firstAttribute="centerX" secondItem="Jq0-hC-VQO" secondAttribute="centerX" id="wBz-iT-VU0"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="character" rowHeight="57" id="3MT-PE-Uph" customClass="CharacterListCell" customModule="Marvel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="57"/>
@@ -88,6 +105,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Mine Shaft"/>
+                                        <connections>
+                                            <outlet property="avatar" destination="XsZ-3A-yEI" id="jki-TS-7JQ"/>
+                                            <outlet property="name" destination="uZp-6Q-x0V" id="dSz-Hd-tt8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -96,10 +117,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Mine Shaft"/>
                         <constraints>
                             <constraint firstItem="05v-aL-Or1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ddv-xd-6ry"/>
+                            <constraint firstItem="jvq-f1-nSd" firstAttribute="centerY" secondItem="05v-aL-Or1" secondAttribute="centerY" id="LA1-Ud-zVE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="05v-aL-Or1" secondAttribute="bottom" id="QvS-MI-93j"/>
+                            <constraint firstItem="jvq-f1-nSd" firstAttribute="centerX" secondItem="05v-aL-Or1" secondAttribute="centerX" id="ffr-yv-Ujk"/>
                             <constraint firstItem="05v-aL-Or1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wLk-ya-QHk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="05v-aL-Or1" secondAttribute="trailing" id="zH7-iv-CAc"/>
                         </constraints>
@@ -109,7 +132,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="29E-qY-dnH"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="loaderMain" destination="jvq-f1-nSd" id="YdE-PY-0ZX"/>
                         <outlet property="tableView" destination="05v-aL-Or1" id="c6t-KJ-q2S"/>
+                        <outlet property="tableViewFooter" destination="Jq0-hC-VQO" id="9sO-NJ-uEx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -128,28 +153,31 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" name="Mine Shaft"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="image" rowHeight="153" id="pz2-8o-qhI" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="153"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="image" rowHeight="200" id="pz2-8o-qhI" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pz2-8o-qhI" id="w6f-aj-Rm6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="153"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-Hd-3qR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-Hd-3qR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="WHI-Hd-3qR" firstAttribute="leading" secondItem="w6f-aj-Rm6" secondAttribute="leading" id="9to-AW-Y9h"/>
                                                 <constraint firstItem="WHI-Hd-3qR" firstAttribute="top" secondItem="w6f-aj-Rm6" secondAttribute="top" id="Wuy-IQ-sOL"/>
-                                                <constraint firstAttribute="bottom" secondItem="WHI-Hd-3qR" secondAttribute="bottom" constant="10" id="gjW-ws-95c"/>
+                                                <constraint firstAttribute="bottom" secondItem="WHI-Hd-3qR" secondAttribute="bottom" constant="15" id="gjW-ws-95c"/>
                                                 <constraint firstAttribute="trailing" secondItem="WHI-Hd-3qR" secondAttribute="trailing" id="wTI-XR-HkN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Mine Shaft"/>
+                                        <connections>
+                                            <outlet property="banner" destination="WHI-Hd-3qR" id="OmF-fs-jRO"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="title" rowHeight="82" id="m3b-ki-vOg" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="181" width="375" height="82"/>
+                                        <rect key="frame" x="0.0" y="228" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m3b-ki-vOg" id="bJB-3H-yZv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
@@ -183,9 +211,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Mine Shaft"/>
+                                        <connections>
+                                            <outlet property="consSeparatorTop" destination="sO1-Qg-rec" id="twP-40-G2K"/>
+                                            <outlet property="consTitleTop" destination="U59-yh-tRa" id="mOr-M4-6sd"/>
+                                            <outlet property="separator" destination="6k7-H7-P0j" id="TBw-Q4-00g"/>
+                                            <outlet property="title" destination="KhR-Rh-K0S" id="Ckb-1Z-FuU"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="text" rowHeight="170" id="pWd-s9-YAw" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="263" width="375" height="170"/>
+                                        <rect key="frame" x="0.0" y="310" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWd-s9-YAw" id="Tia-wM-aGI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -207,6 +241,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Mine Shaft"/>
+                                        <connections>
+                                            <outlet property="item" destination="RkP-nA-Rsn" id="PdT-2U-UDF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -269,14 +306,14 @@
         <namedColor name="Mine Shaft">
             <color red="0.18799999356269836" green="0.18799999356269836" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Mine Shaft">
+            <color red="0.18799999356269836" green="0.18799999356269836" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Shiraz">
             <color red="0.70999997854232788" green="0.059000000357627869" blue="0.086000002920627594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White Opacity 20%">
             <color red="1" green="1" blue="1" alpha="0.20000000300000001" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="White Opacity 20%">
-            <color red="1" green="1" blue="1" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

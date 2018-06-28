@@ -11,6 +11,15 @@ import UIKit
 class CharacterDetailViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var characterDetailViewModel = CharacterDetailViewModel()
+    var character = Character()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = character.name ?? "Without name"
+        characterDetailViewModel.character = character
+    }
 
 }
 
@@ -23,42 +32,19 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        var totalRows = 1
-        
-        if section == 3 {
-            totalRows = 20
-        }
-        
-        return totalRows
+        return characterDetailViewModel.getTableViewNumberRows(section: section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        var height = UITableViewAutomaticDimension
-        
-        if indexPath.section == 0 {
-            height = 153
-        }
-        
-        return height
+        return characterDetailViewModel.getTableViewHeightForRow(section: indexPath.section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var identifier = ""
-        
-        switch indexPath.section {
-            case 0:
-                identifier = "image"
-            case 2:
-                identifier = "title"
-            default:
-                identifier = "text"
-        }
-        
+        let identifier = characterDetailViewModel.getTableViewIdentifier(section: indexPath.section)
         let cell: CharacterDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CharacterDetailCell
-        
+        cell.character = character
+        cell.indexPath = indexPath
+        cell.setup()
         return cell
     }
     
