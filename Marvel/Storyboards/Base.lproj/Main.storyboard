@@ -220,7 +220,7 @@
                                             <outlet property="title" destination="KhR-Rh-K0S" id="Ckb-1Z-FuU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="text" rowHeight="170" id="pWd-s9-YAw" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="text" rowHeight="170" id="pWd-s9-YAw" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="297" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWd-s9-YAw" id="Tia-wM-aGI">
