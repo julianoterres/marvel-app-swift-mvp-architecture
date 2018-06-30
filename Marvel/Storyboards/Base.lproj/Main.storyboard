@@ -55,7 +55,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="XsZ-3A-yEI" customClass="UIImageViewCustom" customModule="Marvel" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="XsZ-3A-yEI" customClass="UIImageViewCustom" customModule="Marvel" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="8.5" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Ak4-4O-yqe"/>
@@ -112,8 +112,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="nwO-9S-CIf"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="QdM-E2-BMI"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="z0M-QD-4f7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oWF-7g-NhD"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -133,7 +133,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loaderMain" destination="jvq-f1-nSd" id="YdE-PY-0ZX"/>
-                        <outlet property="tableView" destination="05v-aL-Or1" id="c6t-KJ-q2S"/>
+                        <outlet property="tableView" destination="05v-aL-Or1" id="X74-LE-acZ"/>
+                        <outlet property="tableViewBottomConstraint" destination="QvS-MI-93j" id="Yy9-15-S2n"/>
                         <outlet property="tableViewFooter" destination="Jq0-hC-VQO" id="9sO-NJ-uEx"/>
                     </connections>
                 </viewController>
@@ -153,15 +154,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" name="Mine Shaft"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="image" rowHeight="200" id="pz2-8o-qhI" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="image" rowHeight="187" id="pz2-8o-qhI" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="187"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pz2-8o-qhI" id="w6f-aj-Rm6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-Hd-3qR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderBanner" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-Hd-3qR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="172"/>
+                                                    <color key="backgroundColor" name="Scorpion"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -177,7 +179,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="title" rowHeight="82" id="m3b-ki-vOg" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="228" width="375" height="82"/>
+                                        <rect key="frame" x="0.0" y="215" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m3b-ki-vOg" id="bJB-3H-yZv">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
@@ -218,8 +220,8 @@
                                             <outlet property="title" destination="KhR-Rh-K0S" id="Ckb-1Z-FuU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="text" rowHeight="170" id="pWd-s9-YAw" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="310" width="375" height="170"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="text" rowHeight="170" id="pWd-s9-YAw" customClass="CharacterDetailCell" customModule="Marvel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="297" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWd-s9-YAw" id="Tia-wM-aGI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -273,7 +275,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dH8-kD-hfX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wi4-bb-Xs4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CharacterListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Wi4-bb-Xs4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="iZn-Lu-nTf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -301,13 +303,13 @@
     </scenes>
     <resources>
         <image name="arrowRightRed" width="8" height="12"/>
-        <image name="avatar" width="40" height="40"/>
-        <image name="banner" width="360" height="137"/>
+        <image name="placeholderAvatar" width="40" height="40"/>
+        <image name="placeholderBanner" width="360" height="199"/>
         <namedColor name="Mine Shaft">
             <color red="0.18799999356269836" green="0.18799999356269836" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Mine Shaft">
-            <color red="0.18799999356269836" green="0.18799999356269836" blue="0.18799999356269836" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Scorpion">
+            <color red="0.34900000691413879" green="0.34900000691413879" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Shiraz">
             <color red="0.70999997854232788" green="0.059000000357627869" blue="0.086000002920627594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

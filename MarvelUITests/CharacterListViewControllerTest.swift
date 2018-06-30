@@ -6,20 +6,20 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-import XCTest
-
-class CharacterListViewControllerTest: XCTestCase {
-        
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        XCUIApplication().launch()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testExample() {}
-    
-}
+//import XCTest
+//
+//class CharacterListViewControllerTest: XCTestCase {
+//        
+//    override func setUp() {
+//        super.setUp()
+//        continueAfterFailure = false
+//        XCUIApplication().launch()
+//    }
+//    
+//    override func tearDown() {
+//        super.tearDown()
+//    }
+//    
+//    func testExample() {}
+//    
+//}

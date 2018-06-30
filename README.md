@@ -29,3 +29,10 @@ After you execute the commands above in yout terminal app, the app project alrea
 
 	pod install
 	
+## Unit Tests
+
+This app has unit tests, and to date the percentage coverage is 91.18%. To check the correct percentage of each file, we provide an image in the Screenshots folder.
+
+## Screenshots
+
+You can check some of the app images by accessing the Screenshots folder

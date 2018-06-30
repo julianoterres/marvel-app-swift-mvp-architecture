@@ -22,10 +22,9 @@ class CharacterListCell: UITableViewCell {
     }
     
     func setup() {
-        guard let character = character, let url = character.getAvatarUrl(size: .portraitMedium) else { return }
+        guard let character = character, let url = character.getImage(size: .portraitMedium) else { return }
         name.text = character.name
-        avatar.kf.indicatorType = .activity
-        avatar.kf.setImage(with: url)
+        avatar.kf.setImage(with: url, placeholder: UIImage.placeholderAvatar())
     }
 
 }

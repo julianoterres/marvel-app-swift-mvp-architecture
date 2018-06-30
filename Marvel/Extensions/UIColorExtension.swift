@@ -1,5 +1,5 @@
 //
-//  UIColor.swift
+//  UIColorExtension.swift
 //  Marvel
 //
 //  Created by Juliano Terres on 26/06/18.
@@ -16,6 +16,10 @@ extension UIColor {
     
     class var shiraz: UIColor {
         return UIColor.init(red: 0.71, green: 0.06, blue: 0.09, alpha: 1.0)
+    }
+    
+    class var silver: UIColor {
+        return UIColor.init(red: 0.35, green: 0.35, blue: 0.35, alpha: 1.0)
     }
     
 }

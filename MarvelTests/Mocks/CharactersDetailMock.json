@@ -1,0 +1,16 @@
+{
+"id":1,
+"name":"Character Name",
+"description":"Character Description",
+"thumbnail":{
+"path":"http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
+"extension":"jpg"
+},
+"comics":{
+"items":[
+      {
+      "name":"Comics Name"
+      }
+      ]
+}
+}

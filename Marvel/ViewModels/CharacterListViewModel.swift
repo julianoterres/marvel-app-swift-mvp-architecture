@@ -16,9 +16,9 @@ class CharacterListViewModel {
     private let footerHeigth = CGFloat(44)
     private var offset = 0
     private var loadingActive = false
-    private var characters = [Character]()
-    private var totalCharacters = 0
+    var totalCharacters = 0
     
+    var characters = [Character]()
     
     func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void) {
         if !loadingActive && !checkAlreadyLoadedAll() {
