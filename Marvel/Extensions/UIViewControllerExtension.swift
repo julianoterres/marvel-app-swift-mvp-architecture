@@ -10,10 +10,6 @@ import UIKit
 
 extension UIViewController {
     
-    func preload() {
-        _ = self.view
-    }
-    
     func showAlert(title: String, message: String, buttonText: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: buttonText, style: .cancel) { (action) in }

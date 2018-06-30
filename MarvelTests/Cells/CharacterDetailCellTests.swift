@@ -18,15 +18,12 @@ class CharacterDetailCellTests: XCTestCaseBase {
     
     override func setUp() {
         super.setUp()
-        
         guard let characterMock = getCharacter() else {
             XCTFail("Failed get character")
             return
         }
-        
         character = characterMock
         characterDetailCell.character = character
-        
     }
     
     override func tearDown() {
@@ -34,18 +31,9 @@ class CharacterDetailCellTests: XCTestCaseBase {
     }
     
     func testCell() {
-        
-//        @IBOutlet weak var banner: UIImageView!
-//        @IBOutlet weak var title: UILabel!
-//        @IBOutlet weak var item: UILabel!
-//        @IBOutlet weak var separator: UIView!
-//        @IBOutlet weak var consTitleTop: NSLayoutConstraint!
-//        @IBOutlet weak var consSeparatorTop: NSLayoutConstraint!
-        //characterDetailCell.indexPath = IndexPath.init(row: 0, section: 0)
-        //characterDetailCell.setup()
-        //XCTAssertEqual(characterDetailCell.banner.kf.webURL, character.getImage(size: .landscapeIncredible), "Erro")
-        
-        
+        XCTAssertTrue(characterDetailCell.descriptionExist())
+        characterDetailCell.character.desc = nil
+        XCTAssertFalse(characterDetailCell.descriptionExist())
     }
     
 }

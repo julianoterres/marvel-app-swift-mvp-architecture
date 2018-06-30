@@ -13,27 +13,6 @@
            "name":"Comics Name"
            }
            ]
-  },
-  "series":{
-  "items":[
-           {
-           "name":"Series Name"
-           }
-           ]
-  },
-  "stories":{
-  "items":[
-           {
-           "name":"Stories Name"
-           }
-           ]
-  },
-  "events":{
-  "items":[
-           {
-           "name":"Events Name"
-           }
-           ]
   }
   }
   ]

@@ -22,14 +22,10 @@
 		E333DDE820E6A9E50031E6AA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C520E3CB2B004A3E59 /* Network.swift */; };
 		E333DDE920E6A9EE0031E6AA /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D620E3F813004A3E59 /* Character.swift */; };
 		E333DDEA20E6A9F60031E6AA /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D820E3F87D004A3E59 /* Comics.swift */; };
-		E333DDEB20E6AA000031E6AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DA20E3F8C7004A3E59 /* Events.swift */; };
 		E333DDEC20E6AA030031E6AA /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DC20E3F8E3004A3E59 /* Items.swift */; };
-		E333DDED20E6AA070031E6AA /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DE20E3F92B004A3E59 /* Series.swift */; };
-		E333DDEE20E6AA0A0031E6AA /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1E020E3F950004A3E59 /* Stories.swift */; };
 		E333DDEF20E6AA0C0031E6AA /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1E220E3F971004A3E59 /* Thumbnail.swift */; };
 		E333DDF020E6AA110031E6AA /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1CA20E3CBD4004A3E59 /* CharacterService.swift */; };
 		E333DDF120E6AA1C0031E6AA /* UIImageViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19620E28E3F004A3E59 /* UIImageViewCustom.swift */; };
-		E333DDF220E6AA1F0031E6AA /* UIViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19120E28997004A3E59 /* UIViewCustom.swift */; };
 		E333DDF320E6AA240031E6AA /* PlistUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D020E3CC9B004A3E59 /* PlistUtil.swift */; };
 		E333DDF420E6AA290031E6AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C220E2BD3B004A3E59 /* BaseViewController.swift */; };
 		E333DDF520E6AA2B0031E6AA /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19A20E2990F004A3E59 /* CharacterDetailViewController.swift */; };
@@ -47,6 +43,13 @@
 		E36937C920E18568009B9EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36937C720E18568009B9EFC /* LaunchScreen.storyboard */; };
 		E36937D420E18568009B9EFC /* CharacterListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */; };
 		E36937DF20E18568009B9EFC /* CharacterListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937DE20E18568009B9EFC /* CharacterListViewControllerTest.swift */; };
+		E3D3C72A20E725B6008D1AB9 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C72920E725B6008D1AB9 /* CharacterTests.swift */; };
+		E3D3C72D20E7347E008D1AB9 /* UIColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C72C20E7347E008D1AB9 /* UIColorExtensionTests.swift */; };
+		E3D3C72F20E7380F008D1AB9 /* ComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C72E20E7380F008D1AB9 /* ComicsTests.swift */; };
+		E3D3C73120E73821008D1AB9 /* ItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C73020E73821008D1AB9 /* ItemsTests.swift */; };
+		E3D3C73420E739DA008D1AB9 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C73320E739DA008D1AB9 /* NetworkTests.swift */; };
+		E3D3C73620E74090008D1AB9 /* ThumbnailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C73520E74090008D1AB9 /* ThumbnailTests.swift */; };
+		E3D3C73820E741FC008D1AB9 /* UIViewControllerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C73720E741FC008D1AB9 /* UIViewControllerExtensionTests.swift */; };
 		E3F2B1B020E2B4F6004A3E59 /* BarlowCondensed-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B19E20E2B4DF004A3E59 /* BarlowCondensed-ExtraBold.ttf */; };
 		E3F2B1B120E2B4F6004A3E59 /* BarlowCondensed-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B19F20E2B4DF004A3E59 /* BarlowCondensed-ExtraLight.ttf */; };
 		E3F2B1B220E2B4F6004A3E59 /* BarlowCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B1A020E2B4E0004A3E59 /* BarlowCondensed-Italic.ttf */; };
@@ -114,10 +117,16 @@
 		E36937DA20E18568009B9EFC /* MarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36937DE20E18568009B9EFC /* CharacterListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTest.swift; sourceTree = "<group>"; };
 		E36937E020E18568009B9EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3D3C72920E725B6008D1AB9 /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
+		E3D3C72C20E7347E008D1AB9 /* UIColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionTests.swift; sourceTree = "<group>"; };
+		E3D3C72E20E7380F008D1AB9 /* ComicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsTests.swift; sourceTree = "<group>"; };
+		E3D3C73020E73821008D1AB9 /* ItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTests.swift; sourceTree = "<group>"; };
+		E3D3C73320E739DA008D1AB9 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		E3D3C73520E74090008D1AB9 /* ThumbnailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailTests.swift; sourceTree = "<group>"; };
+		E3D3C73720E741FC008D1AB9 /* UIViewControllerExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensionTests.swift; sourceTree = "<group>"; };
 		E3D807D920E422D100CC9040 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		E3D807DB20E4384500CC9040 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		E3F2B17820E281A5004A3E59 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		E3F2B19120E28997004A3E59 /* UIViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewCustom.swift; sourceTree = "<group>"; };
 		E3F2B19420E28AB8004A3E59 /* CharacterListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListCell.swift; sourceTree = "<group>"; };
 		E3F2B19620E28E3F004A3E59 /* UIImageViewCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewCustom.swift; sourceTree = "<group>"; };
 		E3F2B19820E2987E004A3E59 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
@@ -150,10 +159,7 @@
 		E3F2B1D320E3D0B6004A3E59 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		E3F2B1D620E3F813004A3E59 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		E3F2B1D820E3F87D004A3E59 /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
-		E3F2B1DA20E3F8C7004A3E59 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		E3F2B1DC20E3F8E3004A3E59 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
-		E3F2B1DE20E3F92B004A3E59 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
-		E3F2B1E020E3F950004A3E59 /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
 		E3F2B1E220E3F971004A3E59 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		F41110D7FA148BE89A3FD022 /* Pods-MarvelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelUITests/Pods-MarvelUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FEE1562447584EFA1B4A1437 /* Pods_Marvel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marvel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,8 +219,8 @@
 		E333DDBE20E67BE40031E6AA /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				E333DDBF20E67C080031E6AA /* CharactersListMock.json */,
 				E333DE0320E6E4F20031E6AA /* CharactersDetailMock.json */,
+				E333DDBF20E67C080031E6AA /* CharactersListMock.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -222,8 +228,8 @@
 		E333DDFE20E6BC770031E6AA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */,
 				E333DE0120E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift */,
+				E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -239,8 +245,8 @@
 		E333DE0820E70A680031E6AA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E333DE0920E70A7F0031E6AA /* CharacterListViewModelTests.swift */,
 				E333DE0E20E714D60031E6AA /* CharacterDetailViewModelTests.swift */,
+				E333DE0920E70A7F0031E6AA /* CharacterListViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -312,8 +318,11 @@
 			isa = PBXGroup;
 			children = (
 				E333DE0520E6FC640031E6AA /* Cells */,
+				E3D3C72B20E73470008D1AB9 /* Extensions */,
 				E36937D520E18568009B9EFC /* Info.plist */,
+				E3D3C73220E739C7008D1AB9 /* Libraries */,
 				E333DDBE20E67BE40031E6AA /* Mocks */,
+				E3D3C72820E72581008D1AB9 /* Models */,
 				E333DDFE20E6BC770031E6AA /* ViewControllers */,
 				E333DE0820E70A680031E6AA /* ViewModels */,
 				E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */,
@@ -328,6 +337,34 @@
 				E36937E020E18568009B9EFC /* Info.plist */,
 			);
 			path = MarvelUITests;
+			sourceTree = "<group>";
+		};
+		E3D3C72820E72581008D1AB9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3D3C72920E725B6008D1AB9 /* CharacterTests.swift */,
+				E3D3C72E20E7380F008D1AB9 /* ComicsTests.swift */,
+				E3D3C73020E73821008D1AB9 /* ItemsTests.swift */,
+				E3D3C73520E74090008D1AB9 /* ThumbnailTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E3D3C72B20E73470008D1AB9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E3D3C72C20E7347E008D1AB9 /* UIColorExtensionTests.swift */,
+				E3D3C73720E741FC008D1AB9 /* UIViewControllerExtensionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E3D3C73220E739C7008D1AB9 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E3D3C73320E739DA008D1AB9 /* NetworkTests.swift */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		E3F2B17720E28186004A3E59 /* Extensions */ = {
@@ -378,7 +415,6 @@
 			isa = PBXGroup;
 			children = (
 				E3F2B19620E28E3F004A3E59 /* UIImageViewCustom.swift */,
-				E3F2B19120E28997004A3E59 /* UIViewCustom.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -439,10 +475,7 @@
 			children = (
 				E3F2B1D620E3F813004A3E59 /* Character.swift */,
 				E3F2B1D820E3F87D004A3E59 /* Comics.swift */,
-				E3F2B1DA20E3F8C7004A3E59 /* Events.swift */,
 				E3F2B1DC20E3F8E3004A3E59 /* Items.swift */,
-				E3F2B1DE20E3F92B004A3E59 /* Series.swift */,
-				E3F2B1E020E3F950004A3E59 /* Stories.swift */,
 				E3F2B1E220E3F971004A3E59 /* Thumbnail.swift */,
 			);
 			path = Models;
@@ -684,8 +717,6 @@
 			files = (
 				E333DDF820E6AA350031E6AA /* CharacterListViewModel.swift in Sources */,
 				E333DDEF20E6AA0C0031E6AA /* Thumbnail.swift in Sources */,
-				E333DDEB20E6AA000031E6AA /* Events.swift in Sources */,
-				E333DDEE20E6AA0A0031E6AA /* Stories.swift in Sources */,
 				E333DDE820E6A9E50031E6AA /* Network.swift in Sources */,
 				E333DDF620E6AA2E0031E6AA /* CharacterListViewController.swift in Sources */,
 				E333DDE320E6A9C20031E6AA /* UrlDefinition.swift in Sources */,
@@ -694,13 +725,11 @@
 				E333DDEC20E6AA030031E6AA /* Items.swift in Sources */,
 				E333DDE120E6A9BA0031E6AA /* CharacterListCell.swift in Sources */,
 				E333DDE720E6A9D00031E6AA /* UIViewControllerExtension.swift in Sources */,
-				E333DDF220E6AA1F0031E6AA /* UIViewCustom.swift in Sources */,
 				E333DDF320E6AA240031E6AA /* PlistUtil.swift in Sources */,
 				E333DDEA20E6A9F60031E6AA /* Comics.swift in Sources */,
 				E333DDF120E6AA1C0031E6AA /* UIImageViewCustom.swift in Sources */,
 				E333DDF420E6AA290031E6AA /* BaseViewController.swift in Sources */,
 				E333DDE520E6A9CB0031E6AA /* UIImageExtension.swift in Sources */,
-				E333DDED20E6AA070031E6AA /* Series.swift in Sources */,
 				E333DDE220E6A9BF0031E6AA /* EnumDefinition.swift in Sources */,
 				E333DDE020E6A9B70031E6AA /* CharacterDetailCell.swift in Sources */,
 				E36937BF20E18567009B9EFC /* AppDelegate.swift in Sources */,
@@ -718,9 +747,16 @@
 				E333DE0720E6FC710031E6AA /* CharacterDetailCellTests.swift in Sources */,
 				E333DE0F20E714D60031E6AA /* CharacterDetailViewModelTests.swift in Sources */,
 				E333DE0220E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift in Sources */,
+				E3D3C72D20E7347E008D1AB9 /* UIColorExtensionTests.swift in Sources */,
+				E3D3C72F20E7380F008D1AB9 /* ComicsTests.swift in Sources */,
+				E3D3C73420E739DA008D1AB9 /* NetworkTests.swift in Sources */,
 				E333DE0020E6BCAF0031E6AA /* XCTestCaseBase.swift in Sources */,
+				E3D3C73120E73821008D1AB9 /* ItemsTests.swift in Sources */,
 				E36937D420E18568009B9EFC /* CharacterListViewControllerTests.swift in Sources */,
+				E3D3C73820E741FC008D1AB9 /* UIViewControllerExtensionTests.swift in Sources */,
 				E333DE0A20E70A7F0031E6AA /* CharacterListViewModelTests.swift in Sources */,
+				E3D3C73620E74090008D1AB9 /* ThumbnailTests.swift in Sources */,
+				E3D3C72A20E725B6008D1AB9 /* CharacterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

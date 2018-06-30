@@ -15,9 +15,6 @@ class Character: NSObject, Mappable {
     var desc: String?
     var thumbnail: Thumbnail?
     var comics: Comics?
-    var series: Series?
-    var stories: Stories?
-    var events: Events?
     
     override init() {}
     
@@ -29,9 +26,6 @@ class Character: NSObject, Mappable {
         desc <- map["description"]
         thumbnail <- map["thumbnail"]
         comics <- map["comics"]
-        series <- map["series"]
-        stories <- map["stories"]
-        events <- map["events"]
     }
     
     func getImage(size: EnumImagesSizes) -> URL? {

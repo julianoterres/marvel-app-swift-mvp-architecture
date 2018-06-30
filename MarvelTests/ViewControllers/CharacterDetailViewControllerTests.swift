@@ -36,45 +36,60 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     }
     
     func checkTable() {
-        XCTAssertNotNil(characterDetailViewController.tableView, "Tableview not exist")
-        XCTAssertNotNil(characterDetailViewController.tableView.delegate, "Tableview not have a connection with delegate")
-        XCTAssertNotNil(characterDetailViewController.tableView.dataSource, "Tableview not have a connection with dataSource")
-        XCTAssertTrue(characterDetailViewController.conforms(to: UITableViewDelegate.self), "Tableview complies with the protocol")
+        XCTAssertNotNil(characterDetailViewController.tableView)
+        XCTAssertNotNil(characterDetailViewController.tableView.delegate)
+        XCTAssertNotNil(characterDetailViewController.tableView.dataSource)
+        XCTAssertTrue(characterDetailViewController.conforms(to: UITableViewDelegate.self))
         XCTAssertTrue(characterDetailViewController.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:numberOfRowsInSection:))), "Tableview does not have the method numberOfRowsInSection")
-        XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:cellForRowAt:))), "Tableview does not have the method cellForRowAt")
+        XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:numberOfRowsInSection:))))
+        XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:cellForRowAt:))))
     }
     
     func testViewController() {
         checkTable()
         
-        XCTAssertEqual(characterDetailViewController.title, character.name, "Title of scrren not equals to character name")
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfSections, 4, "Number of sections not is equals to that should be")
+        XCTAssertEqual(characterDetailViewController.title, character.name)
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfSections, 4)
         
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.banner.rawValue), 1, "Numbers of rows of banner rows not is equals to that should be")
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.banner.rawValue), 1)
         let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellBanner.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.image.rawValue, "Cell banner reuseble identifier not is equals to that should be")
-        XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible), "Character banner URL not is equals to that should be")
+        XCTAssertEqual(cellBanner.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.image.rawValue)
+        XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
         
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.description.rawValue), 1, "Numbers of rows of description rows not is equals to that should be")
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.description.rawValue), 1)
         let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellDescription.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue, "Cell description reuseble identifier not is equals to that should be")
-        XCTAssertEqual(cellDescription.item.text, character.desc, "Character description not is equals to that should be")
+        XCTAssertEqual(cellDescription.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(cellDescription.item.text, character.desc)
         
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1, "Numbers of rows of title rows not is equals to that should be")
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
         let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellTitleComics.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue, "Cell title reuseble identifier not is equals to that should be")
-        XCTAssertEqual(cellTitleComics.title.text, "Comics", "Comics title not is equals to that should be")
+        XCTAssertEqual(cellTitleComics.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
+        XCTAssertEqual(cellTitleComics.title.text, "Comics")
+        XCTAssertEqual(cellTitleComics.consTitleTop.constant, 20)
+        XCTAssertEqual(cellTitleComics.consSeparatorTop.constant, 20)
+        XCTAssertEqual(cellTitleComics.separator.isHidden, false)
         
         guard let itens = character.comics?.items else {
             XCTFail("Characters not have comics intens")
             return
         }
         
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue), itens.count, "Numbers of rows of comics itens rows not is equals to that should be")
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue), itens.count)
         let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellComicsItem.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue, "Cell comics item reuseble identifier not is equals to that should be")
-        XCTAssertEqual(cellComicsItem.item.text, itens[0].name, "Comics item name not is equals to that should be")
+        XCTAssertEqual(cellComicsItem.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(cellComicsItem.item.text, itens[0].name)
+        
+        characterDetailViewController.character.desc = ""
+        characterDetailViewController.tableView.reloadData()
+            
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
+        let cellTitleComicsWithDesc = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as! CharacterDetailCell
+        XCTAssertEqual(cellTitleComicsWithDesc.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
+        XCTAssertEqual(cellTitleComicsWithDesc.title.text, "Comics")
+        XCTAssertEqual(cellTitleComicsWithDesc.consTitleTop.constant, 0)
+        XCTAssertEqual(cellTitleComicsWithDesc.consSeparatorTop.constant, 0)
+        XCTAssertEqual(cellTitleComicsWithDesc.separator.isHidden, true)
+        
     }
     
 }

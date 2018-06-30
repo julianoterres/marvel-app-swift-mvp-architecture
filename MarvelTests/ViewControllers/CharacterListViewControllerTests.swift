@@ -42,14 +42,14 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     }
     
     func checkTable() {
-        XCTAssertNotNil(characterListViewController.tableView, "Tableview not exist")
-        XCTAssertNotNil(characterListViewController.tableView.delegate, "Tableview not have a connection with delegate")
-        XCTAssertNotNil(characterListViewController.tableView.dataSource, "Tableview not have a connection with dataSource")
-        XCTAssertTrue(characterListViewController.conforms(to: UITableViewDelegate.self), "Tableview complies with the protocol")
+        XCTAssertNotNil(characterListViewController.tableView)
+        XCTAssertNotNil(characterListViewController.tableView.delegate)
+        XCTAssertNotNil(characterListViewController.tableView.dataSource)
+        XCTAssertTrue(characterListViewController.conforms(to: UITableViewDelegate.self))
         XCTAssertTrue(characterListViewController.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:numberOfRowsInSection:))), "Tableview does not have the method numberOfRowsInSection")
-        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:cellForRowAt:))), "Tableview does not have the method cellForRowAt")
-        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:didSelectRowAt:))), "Tableview does not have the method didSelectRowAt")
+        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:numberOfRowsInSection:))))
+        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:cellForRowAt:))))
+        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:didSelectRowAt:))))
     }
     
     func testViewController() {
@@ -57,23 +57,30 @@ class CharacterListViewControllerTests: XCTestCaseBase {
         
         characterListViewController.tableView.reloadData()
             
-        XCTAssertEqual(characterListViewController.tableView.numberOfSections, 1, "Number of sections not is equals to that should be")
-        XCTAssertEqual(characterListViewController.tableView.numberOfRows(inSection: EnumCharacterListCellSection.character.rawValue), characters.count, "Number of rows of section table not equal to character array")
+        XCTAssertEqual(characterListViewController.tableView.numberOfSections, 1)
+        XCTAssertEqual(characterListViewController.tableView.numberOfRows(inSection: EnumCharacterListCellSection.character.rawValue), characters.count)
 
         let character = characterListViewController.characterListViewModel.get(index: 0)
         let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterListCellSection.character.rawValue)) as! CharacterListCell
         
-        XCTAssertEqual(cell.reuseIdentifier, EnumCharacterListCellReusubleIdentifier.character.rawValue, "Cell character reuseble identifier not is equals to that should be")
-        XCTAssertEqual(cell.name.text, character.name, "Character name not is equals to that should be")
-        XCTAssertEqual(cell.avatar.kf.webURL, character.getImage(size: EnumImagesSizes.portraitMedium), "Character avatar URL not is equals to that should be")
+        XCTAssertEqual(cell.reuseIdentifier, EnumCharacterListCellReusubleIdentifier.character.rawValue)
+        XCTAssertEqual(cell.name.text, character.name)
+        XCTAssertEqual(cell.avatar.kf.webURL, character.getImage(size: EnumImagesSizes.portraitMedium))
         
         characterListViewController.tableView.delegate?.tableView!(characterListViewController.tableView, didSelectRowAt: IndexPath.init(row: 0, section: EnumCharacterListCellSection.character.rawValue))
 
         wait(seconds: 1) { [weak self] in
-            XCTAssertTrue(self?.characterListViewController.navigationController?.topViewController is CharacterDetailViewController,
-                          "When tap in a cell, the user not is send to CharacterDetailViewController screen")
-
+            XCTAssertTrue(self?.characterListViewController.navigationController?.topViewController is CharacterDetailViewController)
         }
+    }
+    
+    func testReloadTable() {
+        checkTable()
+        characterListViewController.reloadTable()
+        XCTAssertEqual(characterListViewController.tableViewFooter.frame.size.height, 44)
+        XCTAssertNotNil(characterListViewController.tableView.reloadData())
+        XCTAssertFalse(characterListViewController.tableView.isHidden)
+        XCTAssertTrue(characterListViewController.loaderMain.isHidden)
     }
     
 }

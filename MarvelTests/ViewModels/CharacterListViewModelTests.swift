@@ -32,15 +32,15 @@ class CharacterListViewModelTests: XCTestCaseBase {
     }
     
     func testViewModel() {
-        XCTAssertEqual(characterListViewModel.get(index: 0), characters[0], "Character is not equal to returned")
+        XCTAssertEqual(characterListViewModel.get(index: 0), characters[0])
         XCTAssertEqual(characterListViewModel.count(), characters.count)
-        XCTAssertFalse(characterListViewModel.checkAlreadyLoadedAll(), "Already loaded all characters, with wrong return when not all loaded")
-        XCTAssertEqual(characterListViewModel.heightFooter(), 44, "Footer height wrong when did not load all characters")
+        XCTAssertFalse(characterListViewModel.checkAlreadyLoadedAll())
+        XCTAssertEqual(characterListViewModel.heightFooter(), 44)
         
         characterListViewModel.totalCharacters = characters.count
         
-        XCTAssertTrue(characterListViewModel.checkAlreadyLoadedAll(), "You have already loaded all the characters, with wrong return when you have already loaded all")
-        XCTAssertEqual(characterListViewModel.heightFooter(), 0, "Footer height wrong when already loaded all characters")
+        XCTAssertTrue(characterListViewModel.checkAlreadyLoadedAll())
+        XCTAssertEqual(characterListViewModel.heightFooter(), 0)
     }
     
 }

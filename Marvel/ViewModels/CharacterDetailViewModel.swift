@@ -47,11 +47,15 @@ class CharacterDetailViewModel {
     }
     
     func getTableViewNumberRows(section: Int) -> Int {
-        var totalRows = 1
-        if section == EnumCharacterDetailCellSection.itens.rawValue {
-            totalRows = character.comics?.items?.count ?? 0
+        switch section {
+            case EnumCharacterDetailCellSection.itens.rawValue:
+                guard let itens = character.comics?.items else {
+                    return 0
+                }
+                return itens.count
+            default:
+                return 1
         }
-        return totalRows
     }
     
 }

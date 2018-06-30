@@ -1,5 +1,5 @@
 //
-//  UIColor.swift
+//  UIColorExtension.swift
 //  Marvel
 //
 //  Created by Juliano Terres on 26/06/18.
