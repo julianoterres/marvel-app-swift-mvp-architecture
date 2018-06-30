@@ -53,7 +53,7 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: "character", for: indexPath) as! CharacterListCell
+        let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: EnumCharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as! CharacterListCell
         cell.character = characterListViewModel.get(index: indexPath.row)
         cell.setup()
         return cell

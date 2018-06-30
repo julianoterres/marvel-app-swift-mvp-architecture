@@ -15,28 +15,28 @@ class CharacterDetailViewModel {
     
     func getTableViewIdentifier(section: Int) -> String {
         switch section {
-            case 0:
-                return "image"
-            case 2:
-                return "title"
+            case EnumCharacterDetailCellSection.banner.rawValue:
+                return EnumCharacterDetailCellReusubleIdentifier.image.rawValue
+            case EnumCharacterDetailCellSection.title.rawValue:
+                return EnumCharacterDetailCellReusubleIdentifier.title.rawValue
             default:
-                return "text"
+                return EnumCharacterDetailCellReusubleIdentifier.text.rawValue
         }
     }
     
     func getTableViewHeightForRow(section: Int) -> CGFloat {
         switch section {
-            case 0:
+            case EnumCharacterDetailCellSection.banner.rawValue:
                 return UIScreen.main.bounds.width * 0.6
-            case 1:
+            case EnumCharacterDetailCellSection.description.rawValue:
                 guard let desc = character.desc, desc != "" else {
                     return 0
                 }
-            case 2:
+            case EnumCharacterDetailCellSection.title.rawValue:
                 guard let comics = character.comics, let itens = comics.items, itens.count != 0 else {
                     return 0
                 }
-            case 3:
+            case EnumCharacterDetailCellSection.itens.rawValue:
                 guard let comics = character.comics, let itens = comics.items, itens.count != 0 else {
                     return 0
                 }
@@ -48,7 +48,7 @@ class CharacterDetailViewModel {
     
     func getTableViewNumberRows(section: Int) -> Int {
         var totalRows = 1
-        if section == 3 {
+        if section == EnumCharacterDetailCellSection.itens.rawValue {
             totalRows = character.comics?.items?.count ?? 0
         }
         return totalRows

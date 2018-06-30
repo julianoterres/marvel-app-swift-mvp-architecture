@@ -112,8 +112,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="nwO-9S-CIf"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="QdM-E2-BMI"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="z0M-QD-4f7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oWF-7g-NhD"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -133,7 +133,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loaderMain" destination="jvq-f1-nSd" id="YdE-PY-0ZX"/>
-                        <outlet property="tableView" destination="05v-aL-Or1" id="c6t-KJ-q2S"/>
+                        <outlet property="tableView" destination="05v-aL-Or1" id="X74-LE-acZ"/>
                         <outlet property="tableViewBottomConstraint" destination="QvS-MI-93j" id="Yy9-15-S2n"/>
                         <outlet property="tableViewFooter" destination="Jq0-hC-VQO" id="9sO-NJ-uEx"/>
                     </connections>
@@ -275,7 +275,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dH8-kD-hfX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wi4-bb-Xs4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CharacterListNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Wi4-bb-Xs4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="iZn-Lu-nTf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

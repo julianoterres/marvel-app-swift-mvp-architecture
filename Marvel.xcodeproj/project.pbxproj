@@ -9,23 +9,44 @@
 /* Begin PBXBuildFile section */
 		26D304AF17D7AFB01CF78619 /* Pods_Marvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE1562447584EFA1B4A1437 /* Pods_Marvel.framework */; };
 		CB218F980CE3C43FB6BDABB5 /* Pods_MarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8EBAD5F8F5ED9666819DF1 /* Pods_MarvelUITests.framework */; };
-		E316738C20E523F100442A55 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E316738B20E523F100442A55 /* UIImageExtension.swift */; };
-		E340B91520E195390061AFD6 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340B91420E195390061AFD6 /* CharacterListViewController.swift */; };
+		E333DDC020E67C080031E6AA /* CharactersListMock.json in Resources */ = {isa = PBXBuildFile; fileRef = E333DDBF20E67C080031E6AA /* CharactersListMock.json */; };
+		E333DDDF20E6A9A80031E6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36937C220E18567009B9EFC /* Main.storyboard */; };
+		E333DDE020E6A9B70031E6AA /* CharacterDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19C20E2A25B004A3E59 /* CharacterDetailCell.swift */; };
+		E333DDE120E6A9BA0031E6AA /* CharacterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19420E28AB8004A3E59 /* CharacterListCell.swift */; };
+		E333DDE220E6A9BF0031E6AA /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C820E3CB73004A3E59 /* EnumDefinition.swift */; };
+		E333DDE320E6A9C20031E6AA /* UrlDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1CD20E3CC57004A3E59 /* UrlDefinition.swift */; };
+		E333DDE420E6A9C80031E6AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B17820E281A5004A3E59 /* UIColorExtension.swift */; };
+		E333DDE520E6A9CB0031E6AA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E316738B20E523F100442A55 /* UIImageExtension.swift */; };
+		E333DDE620E6A9CE0031E6AA /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19820E2987E004A3E59 /* UINavigationControllerExtension.swift */; };
+		E333DDE720E6A9D00031E6AA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D807D920E422D100CC9040 /* UIViewControllerExtension.swift */; };
+		E333DDE820E6A9E50031E6AA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C520E3CB2B004A3E59 /* Network.swift */; };
+		E333DDE920E6A9EE0031E6AA /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D620E3F813004A3E59 /* Character.swift */; };
+		E333DDEA20E6A9F60031E6AA /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D820E3F87D004A3E59 /* Comics.swift */; };
+		E333DDEB20E6AA000031E6AA /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DA20E3F8C7004A3E59 /* Events.swift */; };
+		E333DDEC20E6AA030031E6AA /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DC20E3F8E3004A3E59 /* Items.swift */; };
+		E333DDED20E6AA070031E6AA /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DE20E3F92B004A3E59 /* Series.swift */; };
+		E333DDEE20E6AA0A0031E6AA /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1E020E3F950004A3E59 /* Stories.swift */; };
+		E333DDEF20E6AA0C0031E6AA /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1E220E3F971004A3E59 /* Thumbnail.swift */; };
+		E333DDF020E6AA110031E6AA /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1CA20E3CBD4004A3E59 /* CharacterService.swift */; };
+		E333DDF120E6AA1C0031E6AA /* UIImageViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19620E28E3F004A3E59 /* UIImageViewCustom.swift */; };
+		E333DDF220E6AA1F0031E6AA /* UIViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19120E28997004A3E59 /* UIViewCustom.swift */; };
+		E333DDF320E6AA240031E6AA /* PlistUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D020E3CC9B004A3E59 /* PlistUtil.swift */; };
+		E333DDF420E6AA290031E6AA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C220E2BD3B004A3E59 /* BaseViewController.swift */; };
+		E333DDF520E6AA2B0031E6AA /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19A20E2990F004A3E59 /* CharacterDetailViewController.swift */; };
+		E333DDF620E6AA2E0031E6AA /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E340B91420E195390061AFD6 /* CharacterListViewController.swift */; };
+		E333DDF720E6AA330031E6AA /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D807DB20E4384500CC9040 /* CharacterDetailViewModel.swift */; };
+		E333DDF820E6AA350031E6AA /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D320E3D0B6004A3E59 /* CharacterListViewModel.swift */; };
+		E333DE0020E6BCAF0031E6AA /* XCTestCaseBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */; };
+		E333DE0220E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333DE0120E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift */; };
+		E333DE0420E6E4F20031E6AA /* CharactersDetailMock.json in Resources */ = {isa = PBXBuildFile; fileRef = E333DE0320E6E4F20031E6AA /* CharactersDetailMock.json */; };
+		E333DE0720E6FC710031E6AA /* CharacterDetailCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333DE0620E6FC710031E6AA /* CharacterDetailCellTests.swift */; };
+		E333DE0A20E70A7F0031E6AA /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333DE0920E70A7F0031E6AA /* CharacterListViewModelTests.swift */; };
+		E333DE0F20E714D60031E6AA /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E333DE0E20E714D60031E6AA /* CharacterDetailViewModelTests.swift */; };
 		E36937BF20E18567009B9EFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937BE20E18567009B9EFC /* AppDelegate.swift */; };
-		E36937C420E18567009B9EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36937C220E18567009B9EFC /* Main.storyboard */; };
 		E36937C620E18568009B9EFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E36937C520E18568009B9EFC /* Assets.xcassets */; };
 		E36937C920E18568009B9EFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36937C720E18568009B9EFC /* LaunchScreen.storyboard */; };
-		E36937D420E18568009B9EFC /* MarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937D320E18568009B9EFC /* MarvelTests.swift */; };
+		E36937D420E18568009B9EFC /* CharacterListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */; };
 		E36937DF20E18568009B9EFC /* CharacterListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937DE20E18568009B9EFC /* CharacterListViewControllerTest.swift */; };
-		E3D807DA20E422D100CC9040 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D807D920E422D100CC9040 /* UIViewControllerExtension.swift */; };
-		E3D807DC20E4384500CC9040 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D807DB20E4384500CC9040 /* CharacterDetailViewModel.swift */; };
-		E3F2B17920E281A5004A3E59 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B17820E281A5004A3E59 /* UIColorExtension.swift */; };
-		E3F2B19220E28997004A3E59 /* UIViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19120E28997004A3E59 /* UIViewCustom.swift */; };
-		E3F2B19520E28AB8004A3E59 /* CharacterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19420E28AB8004A3E59 /* CharacterListCell.swift */; };
-		E3F2B19720E28E3F004A3E59 /* UIImageViewCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19620E28E3F004A3E59 /* UIImageViewCustom.swift */; };
-		E3F2B19920E2987E004A3E59 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19820E2987E004A3E59 /* UINavigationControllerExtension.swift */; };
-		E3F2B19B20E2990F004A3E59 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19A20E2990F004A3E59 /* CharacterDetailViewController.swift */; };
-		E3F2B19D20E2A25B004A3E59 /* CharacterDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19C20E2A25B004A3E59 /* CharacterDetailCell.swift */; };
 		E3F2B1B020E2B4F6004A3E59 /* BarlowCondensed-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B19E20E2B4DF004A3E59 /* BarlowCondensed-ExtraBold.ttf */; };
 		E3F2B1B120E2B4F6004A3E59 /* BarlowCondensed-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B19F20E2B4DF004A3E59 /* BarlowCondensed-ExtraLight.ttf */; };
 		E3F2B1B220E2B4F6004A3E59 /* BarlowCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B1A020E2B4E0004A3E59 /* BarlowCondensed-Italic.ttf */; };
@@ -44,20 +65,6 @@
 		E3F2B1BF20E2B4F6004A3E59 /* BarlowCondensed-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B1AD20E2B4F1004A3E59 /* BarlowCondensed-Black.ttf */; };
 		E3F2B1C020E2B4F6004A3E59 /* BarlowCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B1AE20E2B4F2004A3E59 /* BarlowCondensed-Light.ttf */; };
 		E3F2B1C120E2B4F6004A3E59 /* BarlowCondensed-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F2B1AF20E2B4F3004A3E59 /* BarlowCondensed-ThinItalic.ttf */; };
-		E3F2B1C320E2BD3B004A3E59 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C220E2BD3B004A3E59 /* BaseViewController.swift */; };
-		E3F2B1C620E3CB2B004A3E59 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C520E3CB2B004A3E59 /* Network.swift */; };
-		E3F2B1C920E3CB73004A3E59 /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C820E3CB73004A3E59 /* EnumDefinition.swift */; };
-		E3F2B1CB20E3CBD4004A3E59 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1CA20E3CBD4004A3E59 /* CharacterService.swift */; };
-		E3F2B1CE20E3CC57004A3E59 /* UrlDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1CD20E3CC57004A3E59 /* UrlDefinition.swift */; };
-		E3F2B1D120E3CC9B004A3E59 /* PlistUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D020E3CC9B004A3E59 /* PlistUtil.swift */; };
-		E3F2B1D420E3D0B6004A3E59 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D320E3D0B6004A3E59 /* CharacterListViewModel.swift */; };
-		E3F2B1D720E3F813004A3E59 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D620E3F813004A3E59 /* Character.swift */; };
-		E3F2B1D920E3F87D004A3E59 /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D820E3F87D004A3E59 /* Comics.swift */; };
-		E3F2B1DB20E3F8C7004A3E59 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DA20E3F8C7004A3E59 /* Events.swift */; };
-		E3F2B1DD20E3F8E3004A3E59 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DC20E3F8E3004A3E59 /* Items.swift */; };
-		E3F2B1DF20E3F92B004A3E59 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DE20E3F92B004A3E59 /* Series.swift */; };
-		E3F2B1E120E3F950004A3E59 /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1E020E3F950004A3E59 /* Stories.swift */; };
-		E3F2B1E320E3F971004A3E59 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1E220E3F971004A3E59 /* Thumbnail.swift */; };
 		E7F821E2B1C604B536EA261A /* Pods_MarvelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56740CECEAE8961329C1B825 /* Pods_MarvelTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +94,13 @@
 		BFB844D8E000EED23E0727D5 /* Pods-MarvelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelTests/Pods-MarvelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C66A1CF597DBBB291711E409 /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
 		E316738B20E523F100442A55 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		E333DDBF20E67C080031E6AA /* CharactersListMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharactersListMock.json; sourceTree = "<group>"; };
+		E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseBase.swift; sourceTree = "<group>"; };
+		E333DE0120E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		E333DE0320E6E4F20031E6AA /* CharactersDetailMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharactersDetailMock.json; sourceTree = "<group>"; };
+		E333DE0620E6FC710031E6AA /* CharacterDetailCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCellTests.swift; sourceTree = "<group>"; };
+		E333DE0920E70A7F0031E6AA /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
+		E333DE0E20E714D60031E6AA /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
 		E340B91420E195390061AFD6 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		E36937BB20E18567009B9EFC /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36937BE20E18567009B9EFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +109,7 @@
 		E36937C820E18568009B9EFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E36937CA20E18568009B9EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E36937CF20E18568009B9EFC /* MarvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E36937D320E18568009B9EFC /* MarvelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelTests.swift; sourceTree = "<group>"; };
+		E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTests.swift; sourceTree = "<group>"; };
 		E36937D520E18568009B9EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E36937DA20E18568009B9EFC /* MarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36937DE20E18568009B9EFC /* CharacterListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTest.swift; sourceTree = "<group>"; };
@@ -196,6 +210,41 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E333DDBE20E67BE40031E6AA /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E333DDBF20E67C080031E6AA /* CharactersListMock.json */,
+				E333DE0320E6E4F20031E6AA /* CharactersDetailMock.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E333DDFE20E6BC770031E6AA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */,
+				E333DE0120E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E333DE0520E6FC640031E6AA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E333DE0620E6FC710031E6AA /* CharacterDetailCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E333DE0820E70A680031E6AA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E333DE0920E70A7F0031E6AA /* CharacterListViewModelTests.swift */,
+				E333DE0E20E714D60031E6AA /* CharacterDetailViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E340B91320E195080061AFD6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,8 +311,12 @@
 		E36937D220E18568009B9EFC /* MarvelTests */ = {
 			isa = PBXGroup;
 			children = (
-				E36937D320E18568009B9EFC /* MarvelTests.swift */,
+				E333DE0520E6FC640031E6AA /* Cells */,
 				E36937D520E18568009B9EFC /* Info.plist */,
+				E333DDBE20E67BE40031E6AA /* Mocks */,
+				E333DDFE20E6BC770031E6AA /* ViewControllers */,
+				E333DE0820E70A680031E6AA /* ViewModels */,
+				E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */,
 			);
 			path = MarvelTests;
 			sourceTree = "<group>";
@@ -503,6 +556,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E333DDDF20E6A9A80031E6AA /* Main.storyboard in Resources */,
 				E3F2B1C120E2B4F6004A3E59 /* BarlowCondensed-ThinItalic.ttf in Resources */,
 				E3F2B1B520E2B4F6004A3E59 /* BarlowCondensed-MediumItalic.ttf in Resources */,
 				E3F2B1B420E2B4F6004A3E59 /* BarlowCondensed-LightItalic.ttf in Resources */,
@@ -519,7 +573,6 @@
 				E3F2B1B620E2B4F6004A3E59 /* BarlowCondensed-SemiBold.ttf in Resources */,
 				E3F2B1B820E2B4F6004A3E59 /* BarlowCondensed-SemiBoldItalic.ttf in Resources */,
 				E36937C620E18568009B9EFC /* Assets.xcassets in Resources */,
-				E36937C420E18567009B9EFC /* Main.storyboard in Resources */,
 				E3F2B1B320E2B4F6004A3E59 /* BarlowCondensed-BoldItalic.ttf in Resources */,
 				E3F2B1BD20E2B4F6004A3E59 /* BarlowCondensed-Thin.ttf in Resources */,
 				E3F2B1B120E2B4F6004A3E59 /* BarlowCondensed-ExtraLight.ttf in Resources */,
@@ -531,6 +584,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E333DE0420E6E4F20031E6AA /* CharactersDetailMock.json in Resources */,
+				E333DDC020E67C080031E6AA /* CharactersListMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,32 +682,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F2B1DB20E3F8C7004A3E59 /* Events.swift in Sources */,
-				E3F2B19920E2987E004A3E59 /* UINavigationControllerExtension.swift in Sources */,
-				E340B91520E195390061AFD6 /* CharacterListViewController.swift in Sources */,
-				E3F2B19720E28E3F004A3E59 /* UIImageViewCustom.swift in Sources */,
-				E3F2B19220E28997004A3E59 /* UIViewCustom.swift in Sources */,
-				E3F2B1E120E3F950004A3E59 /* Stories.swift in Sources */,
-				E3F2B19520E28AB8004A3E59 /* CharacterListCell.swift in Sources */,
-				E3D807DC20E4384500CC9040 /* CharacterDetailViewModel.swift in Sources */,
-				E3F2B1DF20E3F92B004A3E59 /* Series.swift in Sources */,
-				E316738C20E523F100442A55 /* UIImageExtension.swift in Sources */,
-				E3F2B1C920E3CB73004A3E59 /* EnumDefinition.swift in Sources */,
-				E3F2B1C620E3CB2B004A3E59 /* Network.swift in Sources */,
-				E3F2B1C320E2BD3B004A3E59 /* BaseViewController.swift in Sources */,
-				E3F2B1CE20E3CC57004A3E59 /* UrlDefinition.swift in Sources */,
-				E3F2B19D20E2A25B004A3E59 /* CharacterDetailCell.swift in Sources */,
-				E3F2B19B20E2990F004A3E59 /* CharacterDetailViewController.swift in Sources */,
-				E3F2B17920E281A5004A3E59 /* UIColorExtension.swift in Sources */,
-				E3F2B1D420E3D0B6004A3E59 /* CharacterListViewModel.swift in Sources */,
-				E3F2B1CB20E3CBD4004A3E59 /* CharacterService.swift in Sources */,
-				E3F2B1D120E3CC9B004A3E59 /* PlistUtil.swift in Sources */,
-				E3F2B1E320E3F971004A3E59 /* Thumbnail.swift in Sources */,
-				E3F2B1DD20E3F8E3004A3E59 /* Items.swift in Sources */,
-				E3D807DA20E422D100CC9040 /* UIViewControllerExtension.swift in Sources */,
-				E3F2B1D720E3F813004A3E59 /* Character.swift in Sources */,
+				E333DDF820E6AA350031E6AA /* CharacterListViewModel.swift in Sources */,
+				E333DDEF20E6AA0C0031E6AA /* Thumbnail.swift in Sources */,
+				E333DDEB20E6AA000031E6AA /* Events.swift in Sources */,
+				E333DDEE20E6AA0A0031E6AA /* Stories.swift in Sources */,
+				E333DDE820E6A9E50031E6AA /* Network.swift in Sources */,
+				E333DDF620E6AA2E0031E6AA /* CharacterListViewController.swift in Sources */,
+				E333DDE320E6A9C20031E6AA /* UrlDefinition.swift in Sources */,
+				E333DDE920E6A9EE0031E6AA /* Character.swift in Sources */,
+				E333DDF720E6AA330031E6AA /* CharacterDetailViewModel.swift in Sources */,
+				E333DDEC20E6AA030031E6AA /* Items.swift in Sources */,
+				E333DDE120E6A9BA0031E6AA /* CharacterListCell.swift in Sources */,
+				E333DDE720E6A9D00031E6AA /* UIViewControllerExtension.swift in Sources */,
+				E333DDF220E6AA1F0031E6AA /* UIViewCustom.swift in Sources */,
+				E333DDF320E6AA240031E6AA /* PlistUtil.swift in Sources */,
+				E333DDEA20E6A9F60031E6AA /* Comics.swift in Sources */,
+				E333DDF120E6AA1C0031E6AA /* UIImageViewCustom.swift in Sources */,
+				E333DDF420E6AA290031E6AA /* BaseViewController.swift in Sources */,
+				E333DDE520E6A9CB0031E6AA /* UIImageExtension.swift in Sources */,
+				E333DDED20E6AA070031E6AA /* Series.swift in Sources */,
+				E333DDE220E6A9BF0031E6AA /* EnumDefinition.swift in Sources */,
+				E333DDE020E6A9B70031E6AA /* CharacterDetailCell.swift in Sources */,
 				E36937BF20E18567009B9EFC /* AppDelegate.swift in Sources */,
-				E3F2B1D920E3F87D004A3E59 /* Comics.swift in Sources */,
+				E333DDF020E6AA110031E6AA /* CharacterService.swift in Sources */,
+				E333DDF520E6AA2B0031E6AA /* CharacterDetailViewController.swift in Sources */,
+				E333DDE420E6A9C80031E6AA /* UIColorExtension.swift in Sources */,
+				E333DDE620E6A9CE0031E6AA /* UINavigationControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,7 +715,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E36937D420E18568009B9EFC /* MarvelTests.swift in Sources */,
+				E333DE0720E6FC710031E6AA /* CharacterDetailCellTests.swift in Sources */,
+				E333DE0F20E714D60031E6AA /* CharacterDetailViewModelTests.swift in Sources */,
+				E333DE0220E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift in Sources */,
+				E333DE0020E6BCAF0031E6AA /* XCTestCaseBase.swift in Sources */,
+				E36937D420E18568009B9EFC /* CharacterListViewControllerTests.swift in Sources */,
+				E333DE0A20E70A7F0031E6AA /* CharacterListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

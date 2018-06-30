@@ -34,7 +34,7 @@ class Character: NSObject, Mappable {
         events <- map["events"]
     }
     
-    func getAvatarUrl(size: ImagesSizes) -> URL? {
+    func getImage(size: EnumImagesSizes) -> URL? {
         guard let thumbnail = thumbnail, let path = thumbnail.path, let type = thumbnail.typeFile,
             let url = URL(string: path+"/" + size.rawValue + "."+type) else {
                 return nil

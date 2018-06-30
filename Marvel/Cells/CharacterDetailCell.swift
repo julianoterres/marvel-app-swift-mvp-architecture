@@ -27,11 +27,11 @@ class CharacterDetailCell: UITableViewCell {
     
     func setup() {
         switch indexPath.section {
-            case 0:
+            case EnumCharacterDetailCellSection.banner.rawValue:
                 setupBanner()
-            case 1:
+            case EnumCharacterDetailCellSection.description.rawValue:
                 setupDescription()
-            case 2:
+            case EnumCharacterDetailCellSection.title.rawValue:
                 setupTitle()
             default:
                 setupComics()
@@ -39,7 +39,7 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     private func setupBanner() {
-        banner.kf.setImage(with: character.getAvatarUrl(size: .landscapeIncredible), placeholder: UIImage.placeholderBanner())
+        banner.kf.setImage(with: character.getImage(size: .landscapeIncredible), placeholder: UIImage.placeholderBanner())
     }
     
     private func setupTitle() {
@@ -61,7 +61,7 @@ class CharacterDetailCell: UITableViewCell {
         self.item.text = item.name ?? "Comic without name"
     }
     
-    private func descriptionExist() -> Bool {
+    internal func descriptionExist() -> Bool {
         if let desc = character.desc, desc != "" {
             return true
         }
