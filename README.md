@@ -29,6 +29,10 @@ After you execute the commands above in yout terminal app, the app project alrea
 
 	pod install
 	
+And wait until all the dependencies are installed.
+
+After all the dependencies are installed, cocoa pods will create a file in the root of your project with the name of your project containing the extension "xcworkspace", from that moment on, you should always open your project for this file.
+	
 ## Unit Tests
 
 This app has unit tests, and to date the percentage coverage is 91.18%. To check the correct percentage of each file, we provide an image in the Screenshots folder.
