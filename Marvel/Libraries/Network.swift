@@ -18,7 +18,7 @@ class Network {
             }
             guard let statusCode = response.response?.statusCode, statusCode == 200, let result = response.result.value! as? [String:Any]  else {
                 var errorMessage = "Error in loading data of API"
-                if let result = response.result.value! as? [String:Any], let message = result["status"] as? String {
+                if let result = response.result.value! as? [String:Any], let message = result["message"] as? String {
                     errorMessage = message
                 }
                 failure(errorMessage)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CharacterListViewController: BaseViewController {
 
@@ -16,6 +17,7 @@ class CharacterListViewController: BaseViewController {
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     let characterListViewModel = CharacterListViewModel()
+    private let footerHeigth = CGFloat(44)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +34,14 @@ class CharacterListViewController: BaseViewController {
     }
     
     func reloadTable() {
-        tableViewFooter.frame.size.height = characterListViewModel.heightFooter()
+        tableViewFooter.frame.size.height = footerHeight()
         tableView.reloadData()
         tableView.isHidden = false
         loaderMain.isHidden = true        
+    }
+    
+    func footerHeight() -> CGFloat {
+        return (characterListViewModel.checkAlreadyLoadedAll()) ? 0 : footerHeigth
     }
     
 }

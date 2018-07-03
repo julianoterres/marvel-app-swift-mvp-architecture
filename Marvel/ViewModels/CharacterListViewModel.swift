@@ -12,12 +12,13 @@ import Foundation
 class CharacterListViewModel {
     
     private let characterService = CharacterService()
-    private let limit = 20
-    private let footerHeigth = CGFloat(44)
     private var offset = 0
     private var loadingActive = false
-    var totalCharacters = 0
     
+    //private let limit = 20
+    
+    var limit = 20
+    var totalCharacters = 0
     var characters = [Character]()
     
     func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void) {
@@ -49,13 +50,6 @@ class CharacterListViewModel {
             return true
         }
         return false
-    }
-    
-    func heightFooter() -> CGFloat {
-        if checkAlreadyLoadedAll() {
-            return 0
-        }
-        return footerHeigth
     }
     
 }

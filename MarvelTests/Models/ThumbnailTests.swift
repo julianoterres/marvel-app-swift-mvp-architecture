@@ -11,16 +11,19 @@ import XCTest
 
 class ThumbnailTests: XCTestCaseBase {
     
+    private var thumbnail: Thumbnail!
+    
     override func setUp() {
         super.setUp()
+        thumbnail = Thumbnail()
     }
     
     override func tearDown() {
         super.tearDown()
+        thumbnail = nil
     }
     
-    func testCharacterWithoutData() {
-        let thumbnail = Thumbnail()
+    func testThumbnailWithoutData() {
         XCTAssertNotNil(thumbnail)
     }
     
