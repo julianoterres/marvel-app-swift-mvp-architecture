@@ -11,16 +11,19 @@ import XCTest
 
 class ComicsTests: XCTestCaseBase {
     
+    private var comics: Comics!
+    
     override func setUp() {
         super.setUp()
+        comics = Comics()
     }
     
     override func tearDown() {
         super.tearDown()
+        comics = nil
     }
     
-    func testCharacterWithoutData() {
-        let comics = Comics()
+    func testComicsWithoutData() {
         XCTAssertNotNil(comics)
     }
     

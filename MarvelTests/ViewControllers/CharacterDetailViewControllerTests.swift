@@ -15,27 +15,45 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     private var characterDetailViewController: CharacterDetailViewController!
     private var character: Marvel.Character!
+    private var characterMock: CharacterMock!
     
     override func setUp() {
         super.setUp()
-        
-        guard let characterMock = getCharacter() else {
-            XCTFail("Failed get character")
-            return
-        }
-        
+        characterMock = CharacterMock()
         characterDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterDetailViewController") as! CharacterDetailViewController
-        character = characterMock
-        characterDetailViewController.character = character
         characterDetailViewController.loadView()
-        characterDetailViewController.viewDidLoad()
     }
     
     override func tearDown() {
         super.tearDown()
+        characterDetailViewController = nil
+        character = nil
+        characterMock = nil
     }
     
-    func checkTable() {
+    func setCharacterWithData() {
+        character = characterMock.characterWithAllData()
+        characterDetailViewController.character = character
+        viewDidLoad()
+    }
+    
+    func setCharacterWithoutData() {
+        character = characterMock.characterWithoutData()
+        characterDetailViewController.character = character
+        viewDidLoad()
+    }
+    
+    func viewDidLoad() {
+        characterDetailViewController.viewDidLoad()
+        characterDetailViewController.tableView.reloadData()
+    }
+    
+    func testNavigationTitle() {
+        setCharacterWithData()
+        XCTAssertEqual(characterDetailViewController.title, character.name)
+    }
+    
+    func testCheckTable() {
         XCTAssertNotNil(characterDetailViewController.tableView)
         XCTAssertNotNil(characterDetailViewController.tableView.delegate)
         XCTAssertNotNil(characterDetailViewController.tableView.dataSource)
@@ -45,51 +63,57 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
         XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:cellForRowAt:))))
     }
     
-    func testViewController() {
-        checkTable()
-        
-        XCTAssertEqual(characterDetailViewController.title, character.name)
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfSections, 4)
-        
+    func testNumberOfSections() {
+        setCharacterWithData()
+       XCTAssertEqual(characterDetailViewController.tableView.numberOfSections, 4)
+    }
+    
+    func testNumberOfRows() {
+        setCharacterWithData()
         XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.banner.rawValue), 1)
-        let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellBanner.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.image.rawValue)
-        XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
-        
         XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.description.rawValue), 1)
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
+        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue), character.comics!.items!.count)
+    }
+    
+    func testCellReuseIdentifier() {
+        setCharacterWithData()
+        
+        let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as! CharacterDetailCell
         let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellDescription.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
-        XCTAssertEqual(cellDescription.item.text, character.desc)
-        
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
         let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellTitleComics.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
-        XCTAssertEqual(cellTitleComics.title.text, "Comics")
-        XCTAssertEqual(cellTitleComics.consTitleTop.constant, 20)
-        XCTAssertEqual(cellTitleComics.consSeparatorTop.constant, 20)
-        XCTAssertEqual(cellTitleComics.separator.isHidden, false)
-        
-        guard let itens = character.comics?.items else {
-            XCTFail("Characters not have comics intens")
-            return
-        }
-        
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue), itens.count)
         let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as! CharacterDetailCell
+        
+        XCTAssertEqual(cellBanner.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.image.rawValue)
+        XCTAssertEqual(cellDescription.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(cellTitleComics.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
         XCTAssertEqual(cellComicsItem.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
-        XCTAssertEqual(cellComicsItem.item.text, itens[0].name)
+    }
+    
+    func testCellDataItensWithCharacterWithData() {
+        setCharacterWithData()
         
-        characterDetailViewController.character.desc = ""
-        characterDetailViewController.tableView.reloadData()
-            
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
-        let cellTitleComicsWithDesc = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as! CharacterDetailCell
-        XCTAssertEqual(cellTitleComicsWithDesc.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
-        XCTAssertEqual(cellTitleComicsWithDesc.title.text, "Comics")
-        XCTAssertEqual(cellTitleComicsWithDesc.consTitleTop.constant, 0)
-        XCTAssertEqual(cellTitleComicsWithDesc.consSeparatorTop.constant, 0)
-        XCTAssertEqual(cellTitleComicsWithDesc.separator.isHidden, true)
+        let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as! CharacterDetailCell
+        let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as! CharacterDetailCell
+        let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as! CharacterDetailCell
+        let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as! CharacterDetailCell
         
+        XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
+        XCTAssertEqual(cellDescription.item.text, character.desc)
+        XCTAssertEqual(cellTitleComics.title.text, "Comics")
+        XCTAssertEqual(cellComicsItem.item.text, character.comics!.items![0].name)
+    }
+    
+    func testCellDataItensWithCharacterWithoutData() {
+        setCharacterWithoutData()
+        
+        let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as! CharacterDetailCell
+        let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as! CharacterDetailCell
+        let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as! CharacterDetailCell
+        
+        XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
+        XCTAssertEqual(cellDescription.item.text, character.desc)
+        XCTAssertEqual(cellTitleComics.title.text, "Comics")
     }
     
 }

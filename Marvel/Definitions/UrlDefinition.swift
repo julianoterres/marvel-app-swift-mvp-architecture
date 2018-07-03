@@ -20,6 +20,10 @@ class UrlDefinition {
         return URL.init(string: self.url(method: "characters", parameters: parameters))!
     }
     
+    static func testError() -> URL {
+        return URL.init(string: self.url(method: "testeError"))!
+    }
+    
     private static func url(method: String, parameters: String = "") -> String {
         return apiBaseURl + method + "?apikey=" + apiKey + "&hash=" + apiHash + "&ts=" + apiTs + parameters
     }

@@ -13,21 +13,24 @@ import XCTest
 
 class CharacterDetailCellTests: XCTestCaseBase {
     
-    private var characterDetailCell = CharacterDetailCell()
+    private var characterDetailCell: CharacterDetailCell!
     private var character: Marvel.Character!
+    private var characterMock: CharacterMock!
     
     override func setUp() {
         super.setUp()
-        guard let characterMock = getCharacter() else {
-            XCTFail("Failed get character")
-            return
-        }
-        character = characterMock
+        characterMock = CharacterMock()
+        character = characterMock.characterWithAllData()
+        
+        characterDetailCell = CharacterDetailCell()
         characterDetailCell.character = character
     }
     
     override func tearDown() {
         super.tearDown()
+        characterDetailCell = nil
+        character = nil
+        characterMock = nil
     }
     
     func testCell() {

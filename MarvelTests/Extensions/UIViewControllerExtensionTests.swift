@@ -11,16 +11,18 @@ import XCTest
 
 class UIViewControllerExtensionTests: XCTestCaseBase {
     
-    private let viewController = UIViewController()
+    private var viewController: UIViewController!
     
     override func setUp() {
         super.setUp()
+        viewController = UIViewController()
         viewController.loadView()
         viewController.viewDidLoad()
     }
     
     override func tearDown() {
         super.tearDown()
+        viewController = nil
     }
     
     func testAlert() {
