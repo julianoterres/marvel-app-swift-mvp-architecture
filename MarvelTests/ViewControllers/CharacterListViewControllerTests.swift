@@ -87,7 +87,7 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     func testDidSelectRowAt() {
         setCharacterWithData()
         characterListViewController.tableView.delegate?.tableView!(characterListViewController.tableView, didSelectRowAt: IndexPath.init(row: 0, section: EnumCharacterListCellSection.character.rawValue))
-        wait(seconds: 1) { [weak self] in
+        wait(seconds: 7) { [weak self] in
             XCTAssertTrue(self?.characterListViewController.navigationController?.topViewController is CharacterDetailViewController)
         }
     }
