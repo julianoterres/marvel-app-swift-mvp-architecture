@@ -55,10 +55,10 @@ class CharacterListViewModelTests: XCTestCaseBase {
         characterListViewModel.load(success: { [weak self] in
             XCTAssert(true)
             self?.promise.fulfill()
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             XCTAssertNotNil(error)
             self?.promise.fulfill()
-        }
+        })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     
@@ -68,10 +68,10 @@ class CharacterListViewModelTests: XCTestCaseBase {
         characterListViewModel.load(success: { [weak self] in
             XCTAssert(true)
             self?.promise.fulfill()
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             XCTAssertNotNil(error)
             self?.promise.fulfill()
-        }
+        })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     

@@ -11,7 +11,9 @@ import UIKit
 extension UINavigationController {
     
     func goToCharacterDetailScreen(character: Character) {
-        let controller: CharacterDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterDetailViewController") as! CharacterDetailViewController
+        guard let controller: CharacterDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController else {
+            return
+        }
         controller.character = character
         self.openWithPush(controller: controller)
     }
@@ -27,5 +29,3 @@ extension UINavigationController {
     }
     
 }
-
-

@@ -25,26 +25,29 @@ class CharacterServiceTests: XCTestCaseBase {
     
     func testGetAllWithPaginationWithReturnError() {
         characterService.getAllWithPagination(offset: "-99", limit: "1", success: { (characters, totalCharacters) in
-            XCTAssert(true)
-        }) { (error) in
+            XCTAssertNotNil(characters)
+            XCTAssertNotNil(totalCharacters)
+        }, failure: { error in
             XCTAssertNotNil(error)
-        }
+        })
     }
     
     func testGetAllWithPaginationWithReturnCharacters() {
         characterService.getAllWithPagination(offset: "1", limit: "1", success: { (characters, totalCharacters) in
-            XCTAssert(true)
-        }) { (error) in
+            XCTAssertNotNil(characters)
+            XCTAssertNotNil(totalCharacters)
+        }, failure: { error in
             XCTAssertNotNil(error)
-        }
+        })
     }
     
     func testGetAllWithPaginationWithReturnNoCharacters() {
         characterService.getAllWithPagination(offset: "9999", limit: "1", success: { (characters, totalCharacters) in
-            XCTAssert(true)
-        }) { (error) in
+            XCTAssertNotNil(characters)
+            XCTAssertNotNil(totalCharacters)
+        }, failure: { error in
             XCTAssertNotNil(error)
-        }
+        })
     }
     
 }

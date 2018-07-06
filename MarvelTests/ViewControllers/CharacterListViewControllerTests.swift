@@ -23,11 +23,11 @@ class CharacterListViewControllerTests: XCTestCaseBase {
         super.setUp()
         characterMock = CharacterMock()
         
-        characterListNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterListNavigationController") as! UINavigationController
+        characterListNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterListNavigationController") as? UINavigationController
         characterListNavigationController.loadView()
         characterListNavigationController.viewDidLoad()
         
-        characterListViewController = characterListNavigationController.viewControllers[0] as! CharacterListViewController
+        characterListViewController = characterListNavigationController.viewControllers[0] as? CharacterListViewController
         characterListViewController.loadView()
     }
     
@@ -74,13 +74,19 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testHeightForRowAt() {
         setCharacterWithData()
-        let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! CharacterListCell
+        guard let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? CharacterListCell else {
+            XCTAssert(false, "Failed to load of cell")
+            return
+        }
         XCTAssertEqual(cell.bounds.height, 57)
     }
     
     func testCellReuseIdentifier() {
         setCharacterWithData()
-        let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! CharacterListCell
+        guard let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? CharacterListCell else {
+            XCTAssert(false, "Failed to load of cell")
+            return
+        }
         XCTAssertEqual(cell.reuseIdentifier, EnumCharacterListCellReusubleIdentifier.character.rawValue)
     }
     
@@ -92,11 +98,11 @@ class CharacterListViewControllerTests: XCTestCaseBase {
         }
     }
     
-    func testLoadSuccess(){
+    func testLoadSuccess() {
         XCTAssertNotNil(characterListViewController.load())
     }
     
-    func testLoadError(){
+    func testLoadError() {
         promise = expectation(description: "waiting")
         characterListViewController.characterListViewModel.limit = -99
         characterListViewController.load()

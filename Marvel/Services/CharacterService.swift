@@ -15,19 +15,19 @@ class CharacterService {
         
         Network.request(url: url, completion: { (response) in
 
-            guard let data = response["data"] as? [String:Any], let results = data["results"] as? [[String : Any]], results.count > 1 else {
+            guard let data = response["data"] as? [String: Any], let results = data["results"] as? [[String: Any]], results.count > 1 else {
                 failure("Error in loading data of API")
                 return
             }
             
-            let characters : [Character] = Mapper<Character>().mapArray(JSONArray: results)
+            let characters: [Character] = Mapper<Character>().mapArray(JSONArray: results)
             let totalCharacters = data["total"] as? Int ?? 0
             
             success(characters, totalCharacters)
             
-        }) { (error) in
+        }, failure: { error in
             failure(error)
-        }
+        })
     }
     
 }

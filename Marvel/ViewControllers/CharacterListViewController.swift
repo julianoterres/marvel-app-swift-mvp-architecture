@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class CharacterListViewController: BaseViewController {
 
@@ -27,10 +28,10 @@ class CharacterListViewController: BaseViewController {
     func load() {
         characterListViewModel.load(success: { [weak self] in
             self?.reloadTable()
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             self?.loaderMain.isHidden = true
             self?.showAlert(title: "Sorry", message: error, buttonText: "Try again")
-        }
+        })
     }
     
     func reloadTable() {
@@ -46,7 +47,7 @@ class CharacterListViewController: BaseViewController {
     
 }
 
-//MARK: Methods of UITableViewDelegate and UITableViewDataSource
+// MARK: Methods of UITableViewDelegate and UITableViewDataSource
 
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -59,7 +60,9 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: EnumCharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as! CharacterListCell
+        guard let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: EnumCharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as? CharacterListCell else {
+            return UITableViewCell()
+        }
         cell.character = characterListViewModel.get(index: indexPath.row)
         cell.setup()
         return cell

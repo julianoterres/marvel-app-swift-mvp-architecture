@@ -14,9 +14,6 @@ class CharacterListViewModel {
     private let characterService = CharacterService()
     private var offset = 0
     private var loadingActive = false
-    
-    //private let limit = 20
-    
     var limit = 20
     var totalCharacters = 0
     var characters = [Character]()
@@ -29,10 +26,10 @@ class CharacterListViewModel {
                 self?.loadingActive = false
                 self?.offset += self?.limit ?? 0
                 success()
-            }) { [weak self] (error) in
+            }, failure: { [weak self] error in
                 self?.loadingActive = false
-                failure(error);
-            }
+                failure(error)
+            })
             loadingActive = true
         }
     }

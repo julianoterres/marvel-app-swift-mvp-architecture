@@ -23,7 +23,7 @@ class CharacterDetailViewController: BaseViewController {
 
 }
 
-//MARK: Methods of UITableViewDelegate and UITableViewDataSource
+// MARK: Methods of UITableViewDelegate and UITableViewDataSource
 
 extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -41,7 +41,9 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = characterDetailViewModel.getTableViewIdentifier(section: indexPath.section)
-        let cell: CharacterDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! CharacterDetailCell
+        guard let cell: CharacterDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterDetailCell else {
+            return UITableViewCell()
+        }
         cell.character = character
         cell.indexPath = indexPath
         cell.setup()
@@ -49,4 +51,3 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
     }
     
 }
-
