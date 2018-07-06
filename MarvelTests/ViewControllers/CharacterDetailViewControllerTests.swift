@@ -78,11 +78,10 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     func testCellReuseIdentifier() {
         setCharacterWithData()
-        
-        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
-            let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
+            let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }
@@ -95,15 +94,13 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     func testCellDataItensWithCharacterWithData() {
         setCharacterWithData()
-        
-        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
-            let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
+            let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }
-        
         XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
         XCTAssertEqual(cellDescription.item.text, character.desc)
         XCTAssertEqual(cellTitleComics.title.text, "Comics")
@@ -112,14 +109,12 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     func testCellDataItensWithCharacterWithoutData() {
         setCharacterWithoutData()
-        
-        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }
-        
         XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
         XCTAssertEqual(cellDescription.item.text, character.desc)
         XCTAssertEqual(cellTitleComics.title.text, "Comics")

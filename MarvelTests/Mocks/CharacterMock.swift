@@ -34,11 +34,19 @@ class CharacterMock {
     }
     
     func charactersWithData() -> [Marvel.Character] {
-        return [characterWithAllData()]
+        var characters = [Marvel.Character]()
+        for _ in 0 ..< 20 {
+            characters.append(characterWithAllData())
+        }
+        return characters
     }
     
     func charactersWithoutData() -> [Marvel.Character] {
-        return [characterWithoutData()]
+        var characters = [Marvel.Character]()
+        for _ in 0 ..< 20 {
+            characters.append(characterWithoutData())
+        }
+        return characters
     }
     
     func getThumbnail() -> Thumbnail {
