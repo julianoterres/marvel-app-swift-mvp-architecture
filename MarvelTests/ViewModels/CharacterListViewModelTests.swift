@@ -11,48 +11,48 @@ import XCTest
 
 class CharacterListViewModelTests: XCTestCaseBase {
     
-    private var characterListViewModel: CharacterListViewModel!
+    private var viewModel: CharacterListViewModel!
     private var characters: [Marvel.Character]!
     private var promise: XCTestExpectation!
-    private var characterMock: CharacterMock!
+    private var mock: CharacterMock!
     
     override func setUp() {
         super.setUp()
-        characterMock = CharacterMock()
-        characters = characterMock.charactersWithData()
-        characterListViewModel = CharacterListViewModel()
-        characterListViewModel.characters = characters
-        characterListViewModel.totalCharacters = 0
+        mock = CharacterMock()
+        characters = mock.charactersWithData()
+        viewModel = CharacterListViewModel()
+        viewModel.characters = characters
+        viewModel.totalCharacters = 0
     }
     
     override func tearDown() {
         super.tearDown()
-        characterListViewModel = nil
+        viewModel = nil
         characters = nil
         promise = nil
-        characterMock = nil
+        mock = nil
     }
     
     func testGetUserByRow() {
-        XCTAssertEqual(characterListViewModel.get(index: 0), characters[0])
+        XCTAssertEqual(viewModel.get(index: 0), characters[0])
     }
     
     func testCount() {
-        XCTAssertEqual(characterListViewModel.count(), characters.count)
+        XCTAssertEqual(viewModel.count(), characters.count)
     }
     
     func testCheckAlreadyLoadedAllFalse() {
-        XCTAssertFalse(characterListViewModel.checkAlreadyLoadedAll())
+        XCTAssertFalse(viewModel.checkAlreadyLoadedAll())
     }
     
     func testCheckAlreadyLoadedAllTrue() {
-        characterListViewModel.totalCharacters = characters.count
-        XCTAssertTrue(characterListViewModel.checkAlreadyLoadedAll())
+        viewModel.totalCharacters = characters.count
+        XCTAssertTrue(viewModel.checkAlreadyLoadedAll())
     }
     
     func testLoadSuccess() {
         promise = expectation(description: "waiting")
-        characterListViewModel.load(success: { [weak self] in
+        viewModel.load(success: { [weak self] in
             XCTAssert(true)
             self?.promise.fulfill()
         }, failure: { [weak self] error in
@@ -64,8 +64,8 @@ class CharacterListViewModelTests: XCTestCaseBase {
     
     func testLoadError() {
         promise = expectation(description: "waiting")
-        characterListViewModel.limit = -99
-        characterListViewModel.load(success: { [weak self] in
+        viewModel.limit = -99
+        viewModel.load(success: { [weak self] in
             XCTAssert(true)
             self?.promise.fulfill()
         }, failure: { [weak self] error in

@@ -11,28 +11,28 @@ import XCTest
 
 class CharacterTests: XCTestCaseBase {
     
-    private var characterMock: CharacterMock!
+    private var mock: CharacterMock!
     private var character: Marvel.Character!
     
     override func setUp() {
         super.setUp()
-        characterMock = CharacterMock()
+        mock = CharacterMock()
     }
     
     override func tearDown() {
         super.tearDown()
-        characterMock = nil
+        mock = nil
         character = nil
     }
     
     func testCharacterWithoutData() {
-        character = characterMock.characterWithoutData()
+        character = mock.characterWithoutData()
         XCTAssertNotNil(character)
         XCTAssertNil(character.getImage(size: .landscapeXlarge))
     }
     
     func testCharacterWithData() {
-        character = characterMock.characterWithAllData()
+        character = mock.characterWithAllData()
         XCTAssertNotNil(character.getImage(size: .landscapeXlarge))
     }
     

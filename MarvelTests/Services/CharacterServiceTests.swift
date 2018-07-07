@@ -11,20 +11,20 @@ import XCTest
 
 class CharacterServiceTests: XCTestCaseBase {
     
-    private var characterService: CharacterService!
+    private var service: CharacterService!
     
     override func setUp() {
         super.setUp()
-        characterService = CharacterService()
+        service = CharacterService()
     }
     
     override func tearDown() {
         super.tearDown()
-        characterService = nil
+        service = nil
     }
     
     func testGetAllWithPaginationWithReturnError() {
-        characterService.getAllWithPagination(offset: "-99", limit: "1", success: { (characters, totalCharacters) in
+        service.getAllWithPagination(offset: "-99", limit: "1", success: { (characters, totalCharacters) in
             XCTAssertNotNil(characters)
             XCTAssertNotNil(totalCharacters)
         }, failure: { error in
@@ -33,7 +33,7 @@ class CharacterServiceTests: XCTestCaseBase {
     }
     
     func testGetAllWithPaginationWithReturnCharacters() {
-        characterService.getAllWithPagination(offset: "1", limit: "1", success: { (characters, totalCharacters) in
+        service.getAllWithPagination(offset: "1", limit: "1", success: { (characters, totalCharacters) in
             XCTAssertNotNil(characters)
             XCTAssertNotNil(totalCharacters)
         }, failure: { error in
@@ -42,7 +42,7 @@ class CharacterServiceTests: XCTestCaseBase {
     }
     
     func testGetAllWithPaginationWithReturnNoCharacters() {
-        characterService.getAllWithPagination(offset: "9999", limit: "1", success: { (characters, totalCharacters) in
+        service.getAllWithPagination(offset: "9999", limit: "1", success: { (characters, totalCharacters) in
             XCTAssertNotNil(characters)
             XCTAssertNotNil(totalCharacters)
         }, failure: { error in

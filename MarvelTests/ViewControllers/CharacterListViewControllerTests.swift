@@ -12,68 +12,69 @@ import XCTest
 
 class CharacterListViewControllerTests: XCTestCaseBase {
     
-    private var characterListNavigationController: UINavigationController!
-    private var characterListViewController: CharacterListViewController!
+    private var navigation: UINavigationController!
+    private var controller: CharacterListViewController!
     private var characters: [Marvel.Character]!
-    private var characterMock: CharacterMock!
+    private var mock: CharacterMock!
     private var promise: XCTestExpectation!
+    private var storyboard: UIStoryboard!
     
     override func setUp() {
         super.setUp()
-        characterMock = CharacterMock()
-        
-        characterListNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterListNavigationController") as? UINavigationController
-        characterListNavigationController.loadView()
-        characterListNavigationController.viewDidLoad()
-        
-        characterListViewController = characterListNavigationController.viewControllers[0] as? CharacterListViewController
-        characterListViewController.loadView()
+        mock = CharacterMock()
+        storyboard = UIStoryboard(name: "Main", bundle: nil)
+        navigation = storyboard.instantiateViewController(withIdentifier: "CharacterListNavigationController") as? UINavigationController
+        navigation.loadView()
+        navigation.viewDidLoad()
+        controller = navigation.viewControllers[0] as? CharacterListViewController
+        controller.loadView()
     }
     
     override func tearDown() {
         super.tearDown()
-        characterListNavigationController = nil
-        characterListViewController = nil
+        navigation = nil
+        controller = nil
         characters = nil
-        characterMock = nil
+        mock = nil
         promise = nil
+        storyboard = nil
     }
     
     func setCharacterWithData() {
-        characters = characterMock.charactersWithData()
-        characterListViewController.characterListViewModel.characters = characters
+        characters = mock.charactersWithData()
+        controller.viewModel.characters = characters
         viewDidLoad()
     }
     
     func viewDidLoad() {
-        characterListViewController.viewDidLoad()
-        characterListViewController.tableView.reloadData()
+        controller.viewDidLoad()
+        controller.tableView.reloadData()
     }
     
     func testcheckTable() {
-        XCTAssertNotNil(characterListViewController.tableView)
-        XCTAssertNotNil(characterListViewController.tableView.delegate)
-        XCTAssertNotNil(characterListViewController.tableView.dataSource)
-        XCTAssertTrue(characterListViewController.conforms(to: UITableViewDelegate.self))
-        XCTAssertTrue(characterListViewController.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:numberOfRowsInSection:))))
-        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:cellForRowAt:))))
-        XCTAssertTrue(characterListViewController.responds(to: #selector(characterListViewController.tableView(_:didSelectRowAt:))))
+        XCTAssertNotNil(controller.tableView)
+        XCTAssertNotNil(controller.tableView.delegate)
+        XCTAssertNotNil(controller.tableView.dataSource)
+        XCTAssertTrue(controller.conforms(to: UITableViewDelegate.self))
+        XCTAssertTrue(controller.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(controller.responds(to: #selector(controller.tableView(_:numberOfRowsInSection:))))
+        XCTAssertTrue(controller.responds(to: #selector(controller.tableView(_:cellForRowAt:))))
+        XCTAssertTrue(controller.responds(to: #selector(controller.tableView(_:didSelectRowAt:))))
     }
     
     func testNumberOfSections() {
         setCharacterWithData()
-        XCTAssertEqual(characterListViewController.tableView.numberOfSections, 1)
+        XCTAssertEqual(controller.tableView.numberOfSections, 1)
     }
     
     func testNumberOfRows() {
         setCharacterWithData()
-        XCTAssertEqual(characterListViewController.tableView.numberOfRows(inSection: EnumCharacterListCellSection.character.rawValue), characters.count)
+        XCTAssertEqual(controller.tableView.numberOfRows(inSection: EnumCharacterListCellSection.character.rawValue), characters.count)
     }
     
     func testHeightForRowAt() {
         setCharacterWithData()
-        guard let cell = characterListViewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CharacterListCell else {
+        guard let cell = controller.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CharacterListCell else {
             XCTAssert(false, "Failed to load of cell")
             return
         }
@@ -82,7 +83,7 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testCellReuseIdentifier() {
         setCharacterWithData()
-        guard let cell = characterListViewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CharacterListCell else {
+        guard let cell = controller.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CharacterListCell else {
             XCTAssert(false, "Failed to load of cell")
             return
         }
@@ -91,7 +92,7 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testCellErrorGetCell() {
         setCharacterWithData()
-        guard (characterListViewController.tableView.cellForRow(at: IndexPath(row: 99999, section: 99999)) as? CharacterListCell) != nil else {
+        guard (controller.tableView.cellForRow(at: IndexPath(row: 99999, section: 99999)) as? CharacterListCell) != nil else {
             XCTAssert(true)
             return
         }
@@ -99,19 +100,20 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testDidSelectRowAt() {
         setCharacterWithData()
-        characterListViewController.tableView.delegate?.tableView!(characterListViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: EnumCharacterListCellSection.character.rawValue))
+        let section = EnumCharacterListCellSection.character.rawValue
+        controller.tableView.delegate?.tableView!(controller.tableView, didSelectRowAt: IndexPath(row: 0, section: section))
         wait(seconds: 7) { [weak self] in
-            XCTAssertTrue(self?.characterListViewController.navigationController?.topViewController is CharacterDetailViewController)
+            XCTAssertTrue(self?.controller.navigationController?.topViewController is CharacterDetailViewController)
         }
     }
     
     func testLoadSuccess() {
-        XCTAssertNotNil(characterListViewController.load())
+        XCTAssertNotNil(controller.load())
     }
     
     func testLoadError() {
-        characterListViewController.characterListViewModel.limit = -99
-        characterListViewController.load()
+        controller.viewModel.limit = -99
+        controller.load()
     }
     
 }
