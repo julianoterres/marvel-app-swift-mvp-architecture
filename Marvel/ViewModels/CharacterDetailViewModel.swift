@@ -29,7 +29,7 @@ class CharacterDetailViewModel {
         case EnumCharacterDetailCellSection.banner.rawValue:
             return UIScreen.main.bounds.width * 0.6
         case EnumCharacterDetailCellSection.description.rawValue:
-            guard let desc = character.desc, !desc.isEmpty else {
+            guard let desc = character.description, !desc.isEmpty else {
                 return 0
             }
         case EnumCharacterDetailCellSection.title.rawValue:

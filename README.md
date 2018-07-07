@@ -35,7 +35,7 @@ After all the dependencies are installed, cocoa pods will create a file in the r
 	
 ## Unit Tests
 
-This app has unit tests, and to date the percentage coverage is 97.11%.
+This app has unit tests, and to date the percentage coverage is 96%.
 
 ## Screenshots
 

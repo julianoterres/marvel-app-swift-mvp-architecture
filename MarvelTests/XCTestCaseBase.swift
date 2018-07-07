@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ObjectMapper
 @testable import Marvel
 
 class XCTestCaseBase: XCTestCase {

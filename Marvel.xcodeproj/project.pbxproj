@@ -45,6 +45,8 @@
 		E36937D420E18568009B9EFC /* CharacterListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36937D320E18568009B9EFC /* CharacterListViewControllerTests.swift */; };
 		E36B6F5B20ED72CB006609EE /* ScreenshotsTestsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B6F5A20ED72CB006609EE /* ScreenshotsTestsUI.swift */; };
 		E36B6F5D20ED7587006609EE /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36B6F5C20ED7587006609EE /* SnapshotHelper.swift */; };
+		E36BB2D420F06936007F9665 /* CharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36BB2D320F06936007F9665 /* CharacterData.swift */; };
+		E36BB2D620F0694D007F9665 /* CharacterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36BB2D520F0694D007F9665 /* CharacterResponse.swift */; };
 		E3D3C72A20E725B6008D1AB9 /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C72920E725B6008D1AB9 /* CharacterTests.swift */; };
 		E3D3C72D20E7347E008D1AB9 /* UIColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C72C20E7347E008D1AB9 /* UIColorExtensionTests.swift */; };
 		E3D3C72F20E7380F008D1AB9 /* ComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D3C72E20E7380F008D1AB9 /* ComicsTests.swift */; };
@@ -121,6 +123,8 @@
 		E36937E020E18568009B9EFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E36B6F5A20ED72CB006609EE /* ScreenshotsTestsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsTestsUI.swift; sourceTree = "<group>"; };
 		E36B6F5C20ED7587006609EE /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		E36BB2D320F06936007F9665 /* CharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterData.swift; sourceTree = "<group>"; };
+		E36BB2D520F0694D007F9665 /* CharacterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResponse.swift; sourceTree = "<group>"; };
 		E3D3C72920E725B6008D1AB9 /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 		E3D3C72C20E7347E008D1AB9 /* UIColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionTests.swift; sourceTree = "<group>"; };
 		E3D3C72E20E7380F008D1AB9 /* ComicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsTests.swift; sourceTree = "<group>"; };
@@ -485,6 +489,8 @@
 			isa = PBXGroup;
 			children = (
 				E3F2B1D620E3F813004A3E59 /* Character.swift */,
+				E36BB2D320F06936007F9665 /* CharacterData.swift */,
+				E36BB2D520F0694D007F9665 /* CharacterResponse.swift */,
 				E3F2B1D820E3F87D004A3E59 /* Comics.swift */,
 				E3F2B1DC20E3F8E3004A3E59 /* Items.swift */,
 				E3F2B1E220E3F971004A3E59 /* Thumbnail.swift */,
@@ -652,13 +658,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Marvel/Pods-Marvel-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -768,7 +772,9 @@
 				E333DDEA20E6A9F60031E6AA /* Comics.swift in Sources */,
 				E333DDF120E6AA1C0031E6AA /* UIImageViewCustom.swift in Sources */,
 				E333DDF420E6AA290031E6AA /* BaseViewController.swift in Sources */,
+				E36BB2D620F0694D007F9665 /* CharacterResponse.swift in Sources */,
 				E333DDE520E6A9CB0031E6AA /* UIImageExtension.swift in Sources */,
+				E36BB2D420F06936007F9665 /* CharacterData.swift in Sources */,
 				E333DDE220E6A9BF0031E6AA /* EnumDefinition.swift in Sources */,
 				E333DDE020E6A9B70031E6AA /* CharacterDetailCell.swift in Sources */,
 				E36937BF20E18567009B9EFC /* AppDelegate.swift in Sources */,
@@ -968,10 +974,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = Marvel/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.Marvel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -987,10 +990,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = Marvel/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.Marvel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1007,11 +1007,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = MarvelTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1029,11 +1025,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = MarvelTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1050,11 +1042,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = MarvelUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1071,11 +1059,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = MarvelUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

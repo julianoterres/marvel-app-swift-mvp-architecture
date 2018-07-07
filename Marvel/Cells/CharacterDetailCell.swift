@@ -52,7 +52,7 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     private func setupDescription() {
-        self.item.text = character.desc
+        self.item.text = character.description
     }
     
     private func setupComics() {
@@ -62,7 +62,7 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     internal func descriptionExist() -> Bool {
-        if let desc = character.desc, !desc.isEmpty {
+        if let desc = character.description, !desc.isEmpty {
             return true
         }
         return false

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ObjectMapper
 @testable import Kingfisher
 @testable import Marvel
 
@@ -102,7 +101,7 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
                 return
         }
         XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
-        XCTAssertEqual(cellDescription.item.text, character.desc)
+        XCTAssertEqual(cellDescription.item.text, character.description)
         XCTAssertEqual(cellTitleComics.title.text, "Comics")
         XCTAssertEqual(cellComicsItem.item.text, character.comics!.items![0].name)
     }
@@ -116,7 +115,7 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
                 return
         }
         XCTAssertEqual(cellBanner.banner.kf.webURL, character.getImage(size: EnumImagesSizes.landscapeIncredible))
-        XCTAssertEqual(cellDescription.item.text, character.desc)
+        XCTAssertEqual(cellDescription.item.text, character.description)
         XCTAssertEqual(cellTitleComics.title.text, "Comics")
     }
     

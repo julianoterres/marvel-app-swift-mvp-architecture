@@ -10,13 +10,13 @@ import Alamofire
 
 class Network {
     
-    static func request(url: URL, method: EnumNetworkMethod = .get, parameters: Parameters? = nil, headers: [String: String]? = nil, encoding: ParameterEncoding = JSONEncoding.default, log: Bool = true, completion: @escaping ([String: Any]) -> Void, failure: @escaping(_ error: String) -> Void) {
+    static func request(url: URL, method: EnumNetworkMethod = .get, parameters: Parameters? = nil, headers: [String: String]? = nil, encoding: ParameterEncoding = JSONEncoding.default, log: Bool = true, completion: @escaping (Data) -> Void, failure: @escaping(_ error: String) -> Void) {
         let alamofireMethod = HTTPMethod.init(rawValue: method.rawValue) ?? .get
         Alamofire.SessionManager.default.request(url, method: alamofireMethod, parameters: parameters, encoding: encoding, headers: headers).responseJSON(completionHandler: { response in
             if log {
                 logAlamofireRequest(response: response)
             }
-            guard let statusCode = response.response?.statusCode, statusCode == 200, let result = response.result.value! as? [String: Any]  else {
+            guard let statusCode = response.response?.statusCode, statusCode == 200, let data = response.data  else {
                 var errorMessage = "Error in loading data of API"
                 if let result = response.result.value! as? [String: Any], let message = result["message"] as? String {
                     errorMessage = message
@@ -24,7 +24,7 @@ class Network {
                 failure(errorMessage)
                 return
             }
-            completion(result)
+            completion(data)
         })
     }
     

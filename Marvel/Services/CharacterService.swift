@@ -6,25 +6,23 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-import ObjectMapper
+import Foundation
 
 class CharacterService {
     
     func getAllWithPagination(offset: String, limit: String, success: @escaping(_ characters: [Character], _ totalCharacters: Int) -> Void, failure: @escaping(_ message: String) -> Void) {
         let url = UrlDefinition.characters(offset: offset, limit: limit)
-        
         Network.request(url: url, completion: { (response) in
-
-            guard let data = response["data"] as? [String: Any], let results = data["results"] as? [[String: Any]], results.count > 1 else {
-                failure("Error in loading data of API")
-                return
+            do {
+                let characterData: CharacterData = try JSONDecoder().decode(CharacterData.self, from: response)
+                guard let characters = characterData.data?.results, let totalCharacters = characterData.data?.total else {
+                    failure("No result of characters in the search")
+                    return
+                }
+                success(characters, totalCharacters)
+            } catch {
+                failure("Failed to get API characters")
             }
-            
-            let characters: [Character] = Mapper<Character>().mapArray(JSONArray: results)
-            let totalCharacters = data["total"] as? Int ?? 0
-            
-            success(characters, totalCharacters)
-            
         }, failure: { error in
             failure(error)
         })
