@@ -6,18 +6,6 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-import ObjectMapper
-
-class Items: NSObject, Mappable {
-    
+class Items: Decodable {
     var name: String?
-    
-    override init() {}
-    
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        name <- map["name"]
-    }
-    
 }

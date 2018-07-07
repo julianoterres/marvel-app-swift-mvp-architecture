@@ -27,14 +27,14 @@ class CharacterDetailCell: UITableViewCell {
     
     func setup() {
         switch indexPath.section {
-            case EnumCharacterDetailCellSection.banner.rawValue:
-                setupBanner()
-            case EnumCharacterDetailCellSection.description.rawValue:
-                setupDescription()
-            case EnumCharacterDetailCellSection.title.rawValue:
-                setupTitle()
-            default:
-                setupComics()
+        case EnumCharacterDetailCellSection.banner.rawValue:
+            setupBanner()
+        case EnumCharacterDetailCellSection.description.rawValue:
+            setupDescription()
+        case EnumCharacterDetailCellSection.title.rawValue:
+            setupTitle()
+        default:
+            setupComics()
         }
     }
     
@@ -52,7 +52,7 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     private func setupDescription() {
-        self.item.text = character.desc
+        self.item.text = character.description
     }
     
     private func setupComics() {
@@ -62,7 +62,7 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     internal func descriptionExist() -> Bool {
-        if let desc = character.desc, desc != "" {
+        if let desc = character.description, !desc.isEmpty {
             return true
         }
         return false

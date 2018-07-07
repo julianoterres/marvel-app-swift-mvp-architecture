@@ -1,0 +1,18 @@
+fastlane_version "2.99.0"
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :tests do
+    # swiftlint
+    run_tests(
+      workspace: "Marvel.xcworkspace",
+      devices: ["iPhone 6s"],
+      clean: true
+    )
+  end
+  lane :screenshots do
+    capture_screenshots
+    frame_screenshots(white: true)
+  end
+end

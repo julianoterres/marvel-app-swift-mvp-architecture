@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ObjectMapper
 @testable import Marvel
 
 class XCTestCaseBase: XCTestCase {
@@ -25,8 +24,8 @@ class XCTestCaseBase: XCTestCase {
         let promise = expectation(description: "wait")
         let time = DispatchTime.now() + Double(seconds)
         DispatchQueue.main.asyncAfter(deadline: time) {
-            promise.fulfill()
             callback()
+            promise.fulfill()
         }
         waitForExpectations(timeout: Double(seconds + 2))
     }

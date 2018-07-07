@@ -6,18 +6,6 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-import ObjectMapper
-
-class Comics: NSObject, Mappable {
-    
+class Comics: Decodable {
     var items: [Items]?
-    
-    override init() {}
-    
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        items <- map["items"]
-    }
-    
 }

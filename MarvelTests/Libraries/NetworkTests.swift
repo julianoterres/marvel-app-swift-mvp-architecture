@@ -22,7 +22,7 @@ class NetworkTests: XCTestCaseBase {
         promise = expectation(description: "waiting")
         urlSuccess = UrlDefinition.characters(offset: "0", limit: "1")
         urlError = UrlDefinition.testError()
-        parameters = ["teste":1]
+        parameters = ["teste": 1]
     }
     
     override func tearDown() {
@@ -37,10 +37,10 @@ class NetworkTests: XCTestCaseBase {
         Network.request(url: urlSuccess, completion: { [weak self] (response) in
             XCTAssertNotNil(response)
             self?.promise.fulfill()
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             XCTAssertNotNil(error)
             self?.promise.fulfill()
-        }
+        })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     
@@ -48,10 +48,10 @@ class NetworkTests: XCTestCaseBase {
         Network.request(url: urlError, completion: { [weak self] (response) in
             XCTAssertNotNil(response)
             self?.promise.fulfill()
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             XCTAssertNotNil(error)
             self?.promise.fulfill()
-        }
+        })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     
@@ -59,10 +59,10 @@ class NetworkTests: XCTestCaseBase {
         Network.request(url: urlSuccess, method: .post, parameters: parameters, completion: { [weak self] (response) in
             XCTAssertNotNil(response)
             self?.promise.fulfill()
-        }) { [weak self] (error) in
+        }, failure: { [weak self] error in
             XCTAssertNotNil(error)
             self?.promise.fulfill()
-        }
+        })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     

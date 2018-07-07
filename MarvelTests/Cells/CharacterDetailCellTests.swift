@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ObjectMapper
 @testable import Kingfisher
 @testable import Marvel
 
@@ -35,9 +34,8 @@ class CharacterDetailCellTests: XCTestCaseBase {
     
     func testCell() {
         XCTAssertTrue(characterDetailCell.descriptionExist())
-        characterDetailCell.character.desc = nil
+        characterDetailCell.character.description = nil
         XCTAssertFalse(characterDetailCell.descriptionExist())
     }
     
 }
-

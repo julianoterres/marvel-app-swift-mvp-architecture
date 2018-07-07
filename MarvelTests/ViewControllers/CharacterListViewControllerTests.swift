@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ObjectMapper
 @testable import Kingfisher
 @testable import Marvel
 
@@ -23,11 +22,11 @@ class CharacterListViewControllerTests: XCTestCaseBase {
         super.setUp()
         characterMock = CharacterMock()
         
-        characterListNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterListNavigationController") as! UINavigationController
+        characterListNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterListNavigationController") as? UINavigationController
         characterListNavigationController.loadView()
         characterListNavigationController.viewDidLoad()
         
-        characterListViewController = characterListNavigationController.viewControllers[0] as! CharacterListViewController
+        characterListViewController = characterListNavigationController.viewControllers[0] as? CharacterListViewController
         characterListViewController.loadView()
     }
     
@@ -74,34 +73,45 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testHeightForRowAt() {
         setCharacterWithData()
-        let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! CharacterListCell
+        guard let cell = characterListViewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CharacterListCell else {
+            XCTAssert(false, "Failed to load of cell")
+            return
+        }
         XCTAssertEqual(cell.bounds.height, 57)
     }
     
     func testCellReuseIdentifier() {
         setCharacterWithData()
-        let cell = characterListViewController.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! CharacterListCell
+        guard let cell = characterListViewController.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CharacterListCell else {
+            XCTAssert(false, "Failed to load of cell")
+            return
+        }
         XCTAssertEqual(cell.reuseIdentifier, EnumCharacterListCellReusubleIdentifier.character.rawValue)
+    }
+    
+    func testCellErrorGetCell() {
+        setCharacterWithData()
+        guard (characterListViewController.tableView.cellForRow(at: IndexPath(row: 99999, section: 99999)) as? CharacterListCell) != nil else {
+            XCTAssert(true)
+            return
+        }
     }
     
     func testDidSelectRowAt() {
         setCharacterWithData()
-        characterListViewController.tableView.delegate?.tableView!(characterListViewController.tableView, didSelectRowAt: IndexPath.init(row: 0, section: EnumCharacterListCellSection.character.rawValue))
-        wait(seconds: 1) { [weak self] in
+        characterListViewController.tableView.delegate?.tableView!(characterListViewController.tableView, didSelectRowAt: IndexPath(row: 0, section: EnumCharacterListCellSection.character.rawValue))
+        wait(seconds: 7) { [weak self] in
             XCTAssertTrue(self?.characterListViewController.navigationController?.topViewController is CharacterDetailViewController)
         }
     }
     
-    func testLoadSuccess(){
+    func testLoadSuccess() {
         XCTAssertNotNil(characterListViewController.load())
     }
     
-    func testLoadError(){
-        promise = expectation(description: "waiting")
+    func testLoadError() {
         characterListViewController.characterListViewModel.limit = -99
         characterListViewController.load()
-        promise.fulfill()
-        waitForExpectations(timeout: 20.0, handler: nil)
     }
     
 }

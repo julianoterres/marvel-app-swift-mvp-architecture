@@ -6,34 +6,25 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-import ObjectMapper
+import Foundation
 
-class Character: NSObject, Mappable {
-    
+class Character: Decodable, Equatable {
     var id: Int?
     var name: String?
-    var desc: String?
+    var description: String?
     var thumbnail: Thumbnail?
     var comics: Comics?
     
-    override init() {}
-    
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        id <- map["id"]
-        name <- map["name"]
-        desc <- map["description"]
-        thumbnail <- map["thumbnail"]
-        comics <- map["comics"]
-    }
-    
     func getImage(size: EnumImagesSizes) -> URL? {
-        guard let thumbnail = thumbnail, let path = thumbnail.path, let type = thumbnail.typeFile,
+        guard let thumbnail = thumbnail, let path = thumbnail.path, let type = thumbnail.extension,
             let url = URL(string: path+"/" + size.rawValue + "."+type) else {
                 return nil
         }
         return url
+    }
+    
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        return true
     }
     
 }

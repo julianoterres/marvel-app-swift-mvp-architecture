@@ -15,7 +15,7 @@ class CharacterMock {
         let character = Marvel.Character()
         character.id = 1
         character.name = "Character Name"
-        character.desc = "Character description"
+        character.description = "Character description"
         character.thumbnail = getThumbnail()
         character.comics = getComics()
         
@@ -26,7 +26,7 @@ class CharacterMock {
         let character = Marvel.Character()
         character.id = 1
         character.name = ""
-        character.desc = ""
+        character.description = ""
         character.thumbnail = nil
         character.comics = nil
         
@@ -34,17 +34,25 @@ class CharacterMock {
     }
     
     func charactersWithData() -> [Marvel.Character] {
-        return [characterWithAllData()]
+        var characters = [Marvel.Character]()
+        for _ in 0 ..< 20 {
+            characters.append(characterWithAllData())
+        }
+        return characters
     }
     
     func charactersWithoutData() -> [Marvel.Character] {
-        return [characterWithoutData()]
+        var characters = [Marvel.Character]()
+        for _ in 0 ..< 20 {
+            characters.append(characterWithoutData())
+        }
+        return characters
     }
     
     func getThumbnail() -> Thumbnail {
         let thumbnail = Thumbnail()
         thumbnail.path = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784"
-        thumbnail.typeFile = "jpg"
+        thumbnail.extension = "jpg"
         return thumbnail
     }
     

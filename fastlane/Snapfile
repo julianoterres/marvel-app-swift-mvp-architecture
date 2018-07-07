@@ -1,0 +1,5 @@
+devices([
+  "iPhone X"
+])
+output_directory "./Screenshots"
+clear_previous_screenshots true

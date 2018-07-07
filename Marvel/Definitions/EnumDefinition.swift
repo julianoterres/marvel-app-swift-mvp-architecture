@@ -24,13 +24,13 @@ enum EnumCharacterListCellSection: Int {
 }
 
 enum EnumCharacterListCellReusubleIdentifier: String {
-    case character = "character"
+    case character
 }
 
 enum EnumCharacterDetailCellReusubleIdentifier: String {
-    case image = "image"
-    case title = "title"
-    case text = "text"
+    case image
+    case title
+    case text
 }
 
 enum EnumCharacterDetailCellSection: Int {
@@ -39,4 +39,3 @@ enum EnumCharacterDetailCellSection: Int {
     case title = 2
     case itens = 3
 }
-
