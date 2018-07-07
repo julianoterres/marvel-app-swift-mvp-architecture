@@ -10,16 +10,12 @@ import XCTest
 
 class ScreenshotsTestsUI: XCTestCase {
 
-    //var app = XCUIApplication!
-    
     override func setUp() {
         super.setUp()
-        //app = XCUIApplication()
     }
 
     override func tearDown() {
         super.tearDown()
-        //app = nil
     }
 
     func testMakeScreenshots() {
@@ -28,7 +24,8 @@ class ScreenshotsTestsUI: XCTestCase {
         app.launch()
         snapshot("0-List")
         let table = XCUIApplication().tables
-        table.element(boundBy: 0).tap()
+        let cells = table.cells
+        cells.element(boundBy: 4).tap()
         snapshot("1-Details")
     }
 
