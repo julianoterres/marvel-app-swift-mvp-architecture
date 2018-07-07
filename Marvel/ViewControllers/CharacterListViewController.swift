@@ -17,7 +17,7 @@ class CharacterListViewController: BaseViewController {
     @IBOutlet weak var tableViewFooter: UIView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
-    let characterListViewModel = CharacterListViewModel()
+    let viewModel = CharacterListViewModel()
     private let footerHeigth = CGFloat(44)
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class CharacterListViewController: BaseViewController {
     }
     
     func load() {
-        characterListViewModel.load(success: { [weak self] in
+        viewModel.load(success: { [weak self] in
             self?.reloadTable()
         }, failure: { [weak self] error in
             self?.loaderMain.isHidden = true
@@ -42,7 +42,7 @@ class CharacterListViewController: BaseViewController {
     }
     
     func footerHeight() -> CGFloat {
-        return (characterListViewModel.checkAlreadyLoadedAll()) ? 0 : footerHeigth
+        return (viewModel.checkAlreadyLoadedAll()) ? 0 : footerHeigth
     }
     
 }
@@ -52,7 +52,7 @@ class CharacterListViewController: BaseViewController {
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterListViewModel.count()
+        return viewModel.count()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,13 +63,13 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: EnumCharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as? CharacterListCell else {
             return UITableViewCell()
         }
-        cell.character = characterListViewModel.get(index: indexPath.row)
+        cell.character = viewModel.get(index: indexPath.row)
         cell.setup()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.goToCharacterDetailScreen(character: characterListViewModel.get(index: indexPath.row))
+        self.navigationController?.goToCharacterDetailScreen(character: viewModel.get(index: indexPath.row))
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

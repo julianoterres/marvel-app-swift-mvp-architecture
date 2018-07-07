@@ -12,75 +12,79 @@ import XCTest
 
 class CharacterDetailViewControllerTests: XCTestCaseBase {
     
-    private var characterDetailViewController: CharacterDetailViewController!
+    private var viewController: CharacterDetailViewController!
     private var character: Marvel.Character!
-    private var characterMock: CharacterMock!
+    private var mock: CharacterMock!
+    private var storyboard: UIStoryboard!
     
     override func setUp() {
         super.setUp()
-        characterMock = CharacterMock()
-        characterDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController
-        characterDetailViewController.loadView()
+        mock = CharacterMock()
+        storyboard = UIStoryboard(name: "Main", bundle: nil)
+        viewController = storyboard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController
+        viewController.loadView()
     }
     
     override func tearDown() {
         super.tearDown()
-        characterDetailViewController = nil
+        viewController = nil
         character = nil
-        characterMock = nil
+        mock = nil
+        storyboard = nil
     }
     
     func setCharacterWithData() {
-        character = characterMock.characterWithAllData()
-        characterDetailViewController.character = character
+        character = mock.characterWithAllData()
+        viewController.character = character
         viewDidLoad()
     }
     
     func setCharacterWithoutData() {
-        character = characterMock.characterWithoutData()
-        characterDetailViewController.character = character
+        character = mock.characterWithoutData()
+        viewController.character = character
         viewDidLoad()
     }
     
     func viewDidLoad() {
-        characterDetailViewController.viewDidLoad()
-        characterDetailViewController.tableView.reloadData()
+        viewController.viewDidLoad()
+        viewController.tableView.reloadData()
     }
     
     func testNavigationTitle() {
         setCharacterWithData()
-        XCTAssertEqual(characterDetailViewController.title, character.name)
+        XCTAssertEqual(viewController.title, character.name)
     }
     
     func testCheckTable() {
-        XCTAssertNotNil(characterDetailViewController.tableView)
-        XCTAssertNotNil(characterDetailViewController.tableView.delegate)
-        XCTAssertNotNil(characterDetailViewController.tableView.dataSource)
-        XCTAssertTrue(characterDetailViewController.conforms(to: UITableViewDelegate.self))
-        XCTAssertTrue(characterDetailViewController.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:numberOfRowsInSection:))))
-        XCTAssertTrue(characterDetailViewController.responds(to: #selector(characterDetailViewController.tableView(_:cellForRowAt:))))
+        XCTAssertNotNil(viewController.tableView)
+        XCTAssertNotNil(viewController.tableView.delegate)
+        XCTAssertNotNil(viewController.tableView.dataSource)
+        XCTAssertTrue(viewController.conforms(to: UITableViewDelegate.self))
+        XCTAssertTrue(viewController.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(viewController.responds(to: #selector(viewController.tableView(_:numberOfRowsInSection:))))
+        XCTAssertTrue(viewController.responds(to: #selector(viewController.tableView(_:cellForRowAt:))))
     }
     
     func testNumberOfSections() {
         setCharacterWithData()
-       XCTAssertEqual(characterDetailViewController.tableView.numberOfSections, 4)
+       XCTAssertEqual(viewController.tableView.numberOfSections, 4)
     }
     
     func testNumberOfRows() {
         setCharacterWithData()
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.banner.rawValue), 1)
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.description.rawValue), 1)
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
-        XCTAssertEqual(characterDetailViewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue), character.comics!.items!.count)
+        XCTAssertEqual(viewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.banner.rawValue), 1)
+        XCTAssertEqual(viewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.description.rawValue), 1)
+        XCTAssertEqual(viewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
+        XCTAssertEqual(viewController.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue),
+                       character.comics!.items!.count)
     }
     
     func testCellReuseIdentifier() {
         setCharacterWithData()
-        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
-            let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+            let cellDescription = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+            let cellTitleComics = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
+            let cellComicsItem = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }
@@ -93,10 +97,10 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     func testCellDataItensWithCharacterWithData() {
         setCharacterWithData()
-        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
-            let cellComicsItem = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+            let cellDescription = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+            let cellTitleComics = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
+            let cellComicsItem = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }
@@ -108,9 +112,9 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     func testCellDataItensWithCharacterWithoutData() {
         setCharacterWithoutData()
-        guard let cellBanner = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-            let cellDescription = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-            let cellTitleComics = characterDetailViewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+            let cellDescription = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+            let cellTitleComics = viewController.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }

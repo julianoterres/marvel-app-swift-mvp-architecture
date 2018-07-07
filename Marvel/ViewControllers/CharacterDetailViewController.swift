@@ -12,13 +12,13 @@ class CharacterDetailViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var characterDetailViewModel = CharacterDetailViewModel()
+    var viewModel = CharacterDetailViewModel()
     var character = Character()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = character.name ?? "Without name"
-        characterDetailViewModel.character = character
+        viewModel.character = character
     }
 
 }
@@ -32,15 +32,15 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterDetailViewModel.getTableViewNumberRows(section: section)
+        return viewModel.getTableViewNumberRows(section: section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return characterDetailViewModel.getTableViewHeightForRow(section: indexPath.section)
+        return viewModel.getTableViewHeightForRow(section: indexPath.section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = characterDetailViewModel.getTableViewIdentifier(section: indexPath.section)
+        let identifier = viewModel.getTableViewIdentifier(section: indexPath.section)
         guard let cell: CharacterDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterDetailCell else {
             return UITableViewCell()
         }

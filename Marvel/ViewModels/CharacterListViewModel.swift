@@ -11,7 +11,7 @@ import Foundation
 
 class CharacterListViewModel {
     
-    private let characterService = CharacterService()
+    private let service = CharacterService()
     private var offset = 0
     private var loadingActive = false
     var limit = 20
@@ -20,7 +20,9 @@ class CharacterListViewModel {
     
     func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void) {
         if !loadingActive && !checkAlreadyLoadedAll() {
-            characterService.getAllWithPagination(offset: String(offset), limit: String(limit), success: { [weak self] (characters, totalCharacters) in
+            service.getAllWithPagination(offset: String(offset),
+                                                  limit: String(limit),
+                                                  success: { [weak self] (characters, totalCharacters) in
                 self?.totalCharacters = totalCharacters
                 self?.characters.append(contentsOf: characters)
                 self?.loadingActive = false
