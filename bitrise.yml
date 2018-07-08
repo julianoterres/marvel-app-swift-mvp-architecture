@@ -1,0 +1,36 @@
+---
+format_version: '5'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: ios
+workflows:
+  run_tests:
+    steps:
+    - activate-ssh-key@4.0.2:
+        is_always_run: true
+    - git-clone@4.0.11: {}
+    - cocoapods-install@1.7.2: {}
+    - swiftlint@0.4.2:
+        inputs:
+        - linting_path: "$BITRISE_SOURCE_DIR"
+    - xcode-test@1.18.15: {}
+    - gitlab-status@0.9.5:
+        inputs:
+        - private_token: Mpd7C8Gw-4MtakHfQzJE
+        - description: 'Bitrise:'
+        - api_base_url: https://gitlab.example.com/api/v4
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: Marvel.xcworkspace
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: Marvel
+  - opts:
+      is_expand: false
+    BITRISE_EXPORT_METHOD: development
+trigger_map:
+- push_branch: teste
+  workflow: run_tests
+- push_branch: develop
+  workflow: run_tests
