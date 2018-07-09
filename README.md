@@ -32,6 +32,24 @@ After you execute the commands above in yout terminal app, the app project alrea
 And wait until all the dependencies are installed.
 
 After all the dependencies are installed, cocoa pods will create a file in the root of your project with the name of your project containing the extension "xcworkspace", from that moment on, you should always open your project for this file.
+
+## Fastlane
+
+This project contains a fastlane to run tests and make a screenshots.
+
+If you want run tests with fastlane, enough you enter in directory of project and run command below
+
+	fastlane tests
+
+And if you want generate a screenshots with fastlane enough enter in directory of project and run command below
+
+	fastlane screenshots
+	
+## Continuous Integration
+
+This projeto have how CI Bitrise, and if you see the config CI, we have a config file in project root folder called bitrise.yml, and you can follow the logs of bitrise in CI Pipelines of gitlab [clicando aqui].
+
+[clicando aqui]:https://gitlab.com/julianoterres/marvel/pipelines
 	
 ## Unit Tests
 
@@ -39,4 +57,4 @@ This app has unit tests, and to date the percentage coverage is 96%.
 
 ## Screenshots
 
-You can check some of the app images by accessing the Screenshots folder
+If you want see the screenshots of the aap, they was saved in the screenshots folder, in the respective language folder.
