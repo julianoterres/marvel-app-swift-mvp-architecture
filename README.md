@@ -47,9 +47,9 @@ And if you want generate a screenshots with fastlane enough enter in directory o
 	
 ## Continuous Integration
 
-This projeto have how CI Bitrise, and if you see the config CI, we have a config file in project root folder called bitrise.yml, and you can follow the logs of bitrise in CI Pipelines of gitlab [clicando aqui].
+This projeto have how CI the Bitrise. If you want see the CI config , we have a config file in project root folder called bitrise.yml. But if you want see the logs of bibtrise, you can see the CI logs, in the gitlab pipelines [clicking here].
 
-[clicando aqui]:https://gitlab.com/julianoterres/marvel/pipelines
+[clicking here]:https://gitlab.com/julianoterres/marvel/pipelines
 	
 ## Unit Tests
 
