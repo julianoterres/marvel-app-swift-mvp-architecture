@@ -13,6 +13,7 @@ workflows:
         inputs:
         - linting_path: "$BITRISE_SOURCE_DIR"
     - xcode-test@1.18.15: {}
+    - xcode-analyze@1.7.1: {}
     - gitlab-status@0.9.5:
         inputs:
         - private_token: Mpd7C8Gw-4MtakHfQzJE
@@ -30,7 +31,7 @@ app:
       is_expand: false
     BITRISE_EXPORT_METHOD: development
 trigger_map:
-- push_branch: teste
-  workflow: run_tests
 - push_branch: develop
+  workflow: run_tests
+- push_branch: master
   workflow: run_tests
