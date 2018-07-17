@@ -26,26 +26,26 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     func setup() {
-        switch indexPath.section {
+        switch self.indexPath.section {
         case EnumCharacterDetailCellSection.banner.rawValue:
-            setupBanner()
+            self.setupBanner()
         case EnumCharacterDetailCellSection.description.rawValue:
-            setupDescription()
+            self.setupDescription()
         case EnumCharacterDetailCellSection.title.rawValue:
-            setupTitle()
+            self.setupTitle()
         default:
-            setupComics()
+            self.setupComics()
         }
     }
     
     private func setupBanner() {
-        banner.kf.setImage(with: character.getImage(size: .landscapeIncredible), placeholder: UIImage.placeholderBanner())
+        self.banner.kf.setImage(with: character.getImage(size: .landscapeIncredible), placeholder: UIImage.placeholderBanner())
     }
     
     private func setupTitle() {
         if !descriptionExist() {
-            consTitleTop.constant = 0
-            consSeparatorTop.constant = 0
+            self.consTitleTop.constant = 0
+            self.consSeparatorTop.constant = 0
             self.separator.isHidden = true
         }
         self.title.text = "Comics"
@@ -56,13 +56,13 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     private func setupComics() {
-        guard let comics = character.comics, let itens = comics.items else { return }
-        let item = itens[indexPath.row]
+        guard let comics = self.character.comics, let itens = comics.items else { return }
+        let item = itens[self.indexPath.row]
         self.item.text = item.name ?? "Comic without name"
     }
     
     internal func descriptionExist() -> Bool {
-        if let desc = character.description, !desc.isEmpty {
+        if let desc = self.character.description, !desc.isEmpty {
             return true
         }
         return false

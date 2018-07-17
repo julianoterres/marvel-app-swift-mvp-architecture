@@ -6,13 +6,6 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-enum EnumNetworkMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
-}
-
 enum EnumImagesSizes: String {
     case landscapeXlarge = "landscape_xlarge"
     case landscapeIncredible = "landscape_incredible"
@@ -20,7 +13,7 @@ enum EnumImagesSizes: String {
 }
 
 enum EnumCharacterListCellSection: Int {
-    case character = 0
+    case character
 }
 
 enum EnumCharacterListCellReusubleIdentifier: String {
@@ -34,8 +27,8 @@ enum EnumCharacterDetailCellReusubleIdentifier: String {
 }
 
 enum EnumCharacterDetailCellSection: Int {
-    case banner = 0
-    case description = 1
-    case title = 2
-    case itens = 3
+    case banner
+    case description
+    case title
+    case itens
 }

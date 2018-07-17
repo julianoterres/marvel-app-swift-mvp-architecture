@@ -6,7 +6,7 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-class Thumbnail: Decodable {
+struct Thumbnail: Decodable {
     var path: String?
     var `extension`: String?
 }

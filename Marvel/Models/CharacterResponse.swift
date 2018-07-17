@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CharacterResponse: Decodable {
+struct CharacterResponse: Decodable {
     var offset: Int?
     var limit: Int?
     var total: Int?

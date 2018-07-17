@@ -49,7 +49,7 @@ class CharacterDetailViewModel {
     func getTableViewNumberRows(section: Int) -> Int {
         switch section {
         case EnumCharacterDetailCellSection.itens.rawValue:
-            guard let itens = character.comics?.items else {
+            guard let itens = self.character.comics?.items else {
                 return 0
             }
             return itens.count

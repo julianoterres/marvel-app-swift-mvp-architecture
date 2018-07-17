@@ -22,11 +22,11 @@ class CharacterListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        load()
+        self.load()
     }
     
     func load() {
-        viewModel.load(success: { [weak self] in
+        self.viewModel.load(success: { [weak self] in
             self?.reloadTable()
         }, failure: { [weak self] error in
             self?.loaderMain.isHidden = true
@@ -35,10 +35,10 @@ class CharacterListViewController: BaseViewController {
     }
     
     func reloadTable() {
-        tableViewFooter.frame.size.height = footerHeight()
-        tableView.reloadData()
-        tableView.isHidden = false
-        loaderMain.isHidden = true        
+        self.tableViewFooter.frame.size.height = footerHeight()
+        self.tableView.reloadData()
+        self.tableView.isHidden = false
+        self.loaderMain.isHidden = true
     }
     
     func footerHeight() -> CGFloat {
@@ -52,7 +52,7 @@ class CharacterListViewController: BaseViewController {
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.count()
+        return self.viewModel.count()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,20 +63,20 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
         guard let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: EnumCharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as? CharacterListCell else {
             return UITableViewCell()
         }
-        cell.character = viewModel.get(index: indexPath.row)
+        cell.character = self.viewModel.get(index: indexPath.row)
         cell.setup()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.goToCharacterDetailScreen(character: viewModel.get(index: indexPath.row))
+        self.navigationController?.goToCharacterDetailScreen(character: self.viewModel.get(index: indexPath.row))
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if contentOffset == maximumOffset {
-            load()
+            self.load()
         }
     }
     
