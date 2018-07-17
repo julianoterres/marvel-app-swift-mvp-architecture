@@ -6,6 +6,6 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-class Items: Decodable {
+struct Items: Decodable {
     var name: String?
 }

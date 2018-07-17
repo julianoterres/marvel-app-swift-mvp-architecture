@@ -8,6 +8,6 @@
 
 import Foundation
 
-class CharacterData: Decodable {
+struct CharacterData: Decodable {
     var data: CharacterResponse?
 }

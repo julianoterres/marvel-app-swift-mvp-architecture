@@ -14,12 +14,8 @@ extension UINavigationController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = storyboard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController {
             controller.character = character
-            self.openWithPush(controller: controller)
+            self.pushViewController(controller, animated: true)
         }
-    }
-    
-    func openWithPush(controller: UIViewController) {
-        self.pushViewController(controller, animated: true)
     }
     
     func changeBackButtonImage() {

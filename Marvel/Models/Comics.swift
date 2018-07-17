@@ -6,6 +6,6 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-class Comics: Decodable {
+struct Comics: Decodable {
     var items: [Items]?
 }

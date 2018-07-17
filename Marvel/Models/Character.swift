@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Character: Decodable, Equatable {
+struct Character: Decodable, Equatable {
     var id: Int?
     var name: String?
     var description: String?
@@ -16,7 +16,7 @@ class Character: Decodable, Equatable {
     var comics: Comics?
     
     func getImage(size: EnumImagesSizes) -> URL? {
-        guard let thumbnail = thumbnail, let path = thumbnail.path, let type = thumbnail.extension,
+        guard let thumbnail = self.thumbnail, let path = thumbnail.path, let type = thumbnail.extension,
             let url = URL(string: path+"/" + size.rawValue + "."+type) else {
                 return nil
         }
@@ -26,5 +26,4 @@ class Character: Decodable, Equatable {
     static func == (lhs: Character, rhs: Character) -> Bool {
         return true
     }
-    
 }

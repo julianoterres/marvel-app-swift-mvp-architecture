@@ -10,21 +10,19 @@ import Alamofire
 
 class Network {
     
-    static func request(url: URL, method: EnumNetworkMethod = .get, parameters: Parameters? = nil, headers: [String: String]? = nil, encoding: ParameterEncoding = JSONEncoding.default, log: Bool = true, completion: @escaping (Data) -> Void, failure: @escaping(_ error: String) -> Void) {
-        let alamofireMethod = HTTPMethod.init(rawValue: method.rawValue) ?? .get
-        Alamofire.SessionManager.default.request(url, method: alamofireMethod, parameters: parameters, encoding: encoding, headers: headers).responseJSON(completionHandler: { response in
-            if log {
+    static func request(url: URL, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: [String: String]? = nil, encoding: ParameterEncoding = JSONEncoding.default, completion: @escaping (Data) -> Void, failure: @escaping(_ error: String) -> Void) {
+        Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
+            .validate()
+            .responseJSON(completionHandler: { response in
                 logAlamofireRequest(response: response)
-            }
-            guard let statusCode = response.response?.statusCode, statusCode == 200, let data = response.data  else {
-                var errorMessage = "Error in loading data of API"
-                if let result = response.result.value! as? [String: Any], let message = result["message"] as? String {
-                    errorMessage = message
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        completion(data)
+                    }
+                case .failure(let error):
+                    failure(error.localizedDescription)
                 }
-                failure(errorMessage)
-                return
-            }
-            completion(data)
         })
     }
     

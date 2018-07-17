@@ -18,7 +18,7 @@ class CharacterDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = character.name ?? "Without name"
-        viewModel.character = character
+        self.viewModel.character = character
     }
 
 }
@@ -32,19 +32,19 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getTableViewNumberRows(section: section)
+        return self.viewModel.getTableViewNumberRows(section: section)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.getTableViewHeightForRow(section: indexPath.section)
+        return self.viewModel.getTableViewHeightForRow(section: indexPath.section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = viewModel.getTableViewIdentifier(section: indexPath.section)
+        let identifier = self.viewModel.getTableViewIdentifier(section: indexPath.section)
         guard let cell: CharacterDetailCell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? CharacterDetailCell else {
             return UITableViewCell()
         }
-        cell.character = character
+        cell.character = self.character
         cell.indexPath = indexPath
         cell.setup()
         return cell

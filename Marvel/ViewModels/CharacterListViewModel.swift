@@ -19,8 +19,8 @@ class CharacterListViewModel {
     var characters = [Character]()
     
     func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void) {
-        if !loadingActive && !checkAlreadyLoadedAll() {
-            service.getAllWithPagination(offset: String(offset),
+        if !self.loadingActive && !self.checkAlreadyLoadedAll() {
+            self.service.getAllWithPagination(offset: String(offset),
                                                   limit: String(limit),
                                                   success: { [weak self] (characters, totalCharacters) in
                 self?.totalCharacters = totalCharacters
@@ -37,15 +37,15 @@ class CharacterListViewModel {
     }
     
     func get(index: Int) -> Character {
-        return characters[index]
+        return self.characters[index]
     }
     
     func count() -> Int {
-        return characters.count
+        return self.characters.count
     }
     
     func checkAlreadyLoadedAll() -> Bool {
-        if totalCharacters > 0 && characters.count >= totalCharacters {
+        if self.totalCharacters > 0 && self.characters.count >= self.totalCharacters {
             return true
         }
         return false
