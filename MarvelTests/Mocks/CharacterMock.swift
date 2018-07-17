@@ -12,7 +12,7 @@ import XCTest
 class CharacterMock {
     
     func characterWithAllData() -> Marvel.Character {
-        let character = Marvel.Character()
+        var character = Marvel.Character()
         character.id = 1
         character.name = "Character Name"
         character.description = "Character description"
@@ -23,7 +23,7 @@ class CharacterMock {
     }
     
     func characterWithoutData() -> Marvel.Character {
-        let character = Marvel.Character()
+        var character = Marvel.Character()
         character.id = 1
         character.name = ""
         character.description = ""
@@ -50,20 +50,20 @@ class CharacterMock {
     }
     
     func getThumbnail() -> Thumbnail {
-        let thumbnail = Thumbnail()
+        var thumbnail = Thumbnail()
         thumbnail.path = "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784"
         thumbnail.extension = "jpg"
         return thumbnail
     }
     
     func getComics() -> Comics {
-        let item1 = Items()
+        var item1 = Items()
         item1.name = "Comics 1"
         
-        let item2 = Items()
+        var item2 = Items()
         item2.name = "Comics 2"
         
-        let comics = Comics()
+        var comics = Comics()
         comics.items = [item1, item2]
         
         return comics
