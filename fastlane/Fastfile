@@ -6,6 +6,7 @@ appleApplicationSpecificPassword = 'rdhy-qaju-wjtk-hyjz'
 identifier = 'br.com.softdesign.marveltests'
 workspace = 'Marvel.xcworkspace'
 xcodeproj = 'Marvel.xcodeproj'
+pbxproj = xcodeproj + '/project.pbxproj'
 ipaName = 'marvel.ipa'
 appIconName = 'AppIcon.png'
 ratingConfigFile = 'config.json'
@@ -91,6 +92,9 @@ platform :ios do
 
   desc 'Run config provisioning profile'
   lane :run_config_provisioning_profile do
+    backup_file(
+      path: pbxproj
+    )
     disable_automatic_code_signing(
       path: xcodeproj,
       use_automatic_signing: false
@@ -111,26 +115,22 @@ platform :ios do
 
   desc 'Run config provisioning profile automatic'
   lane :run_config_provisioning_profile_automatic do
-    automatic_code_signing(
-      path: xcodeproj,
-      team_id: teamId,
-      use_automatic_signing: true,
-      profile_name: 'iOS Team Provisioning Profile: *',
-      code_sign_identity: ''
+    restore_file(
+      path: pbxproj
     )
   end
 
   desc 'Run build and archive app'
   lane :run_build_app do
     run_config_provisioning_profile()
-    # build_app(
-    #   scheme: scheme,
-    #   workspace: workspace,
-    #   include_bitcode: true,
-    #   output_directory: pathBuilds,
-    #   clean: true,
-    #   export_method: 'app-store'
-    # )
+    build_app(
+      scheme: scheme,
+      workspace: workspace,
+      include_bitcode: true,
+      output_directory: pathBuilds,
+      clean: true,
+      export_method: 'app-store'
+    )
     run_config_provisioning_profile_automatic()
   end
 
@@ -194,10 +194,10 @@ platform :ios do
   desc 'Run all steps to upload app to itunes connect testfligth'
   lane :send_testfligth do
     # run_all_tests
-    # run_get_certificates_production
-    # run_provisioning_profile_production
+    run_get_certificates_production
+    run_provisioning_profile_production
     run_build_app
-    # run_send_testfligth
+    run_send_testfligth
   end
 
 end
