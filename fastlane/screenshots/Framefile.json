@@ -1,0 +1,37 @@
+{
+  "default": {
+    "keyword": {
+      "fonts": [
+        {
+          "font": "../../Marvel/Assets/Fonts/BarlowCondensed-Regular.ttf",
+          "supported": ["en-US"]
+        }
+      ]
+    },
+    "title": {
+      "fonts": [
+        {
+          "font": "../../Marvel/Assets/Fonts/BarlowCondensed-Regular.ttf",
+          "supported": ["en-US"]
+        }
+      ],
+      "color": "#545454"
+    },
+    "background": "./background.jpg",
+    "padding": 50
+  },
+  "data": [
+    {
+      "filter": "List",
+      "keyword": {
+        "color": "#B50F16"
+      }
+    },
+    {
+      "filter": "Details",
+      "keyword": {
+        "color": "#B50F16"
+      }
+    }
+  ]
+}

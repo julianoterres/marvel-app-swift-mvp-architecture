@@ -1,18 +1,203 @@
-fastlane_version "2.99.0"
+teamIdItc = '685846'
+teamId = 'DEDQBH6J8S'
+teamName = 'SoftDesign Consultoria e Sistemas LTDA'
+appleId = 'juliano@julianoterres.com.br'
+appleApplicationSpecificPassword = 'rdhy-qaju-wjtk-hyjz'
+identifier = 'br.com.softdesign.marveltests'
+workspace = 'Marvel.xcworkspace'
+xcodeproj = 'Marvel.xcodeproj'
+ipaName = 'marvel.ipa'
+appIconName = 'AppIcon.png'
+ratingConfigFile = 'config.json'
+scheme = 'Marvel'
+provisioningProfileName = 'marvel.mobileprovision'
+signingCertificateName = 'iPhone Distribution: '+teamName+' ('+teamId+')'
+
+pathCerts = './fastlane/certs/'
+pathScreenshots = './fastlane/screenshots/'
+pathMetadata = './fastlane/metadata/'
+pathBuilds = './fastlane/builds/'
+pathRating = './fastlane/rating/'
+pathProvisioningProfile = './fastlane/provisioning_profile/'
+
+ENV['FASTLANE_ITC_TEAM_ID'] = teamIdItc
+ENV['FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD'] = appleApplicationSpecificPassword
+
+fastlane_version '2.99.0'
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :tests do
+  
+  desc 'Run tests and swiftlint'
+  lane :run_all_tests do
     swiftlint
     run_tests(
-      workspace: "Marvel.xcworkspace",
-      devices: ["iPhone 6s"],
-      clean: true
+      workspace: workspace,
+      devices: ['iPhone 6s'],
+      clean: true,
+      scheme: scheme
     )
   end
-  lane :screenshots do
-    capture_screenshots
-    frame_screenshots(white: true)
+
+  desc 'Run make screenshots'
+  lane :run_screenshots do
+    capture_ios_screenshots(
+      scheme: 'MarvelUITests',
+      devices: (["iPad Pro (12.9-inch)", "iPhone X", "iPhone 8 Plus"]),
+      output_directory: pathScreenshots,
+      output_simulator_logs: true,
+      clear_previous_screenshots: true,
+      skip_open_summary: true
+    )
+    frame_screenshots(
+      white: true
+    )
   end
+
+  desc 'Run create a App ID in apple developer'
+  lane :run_create_app_itunes do
+    produce(
+      username: appleId,
+      itc_team_id: teamIdItc,
+      app_identifier: identifier,
+      app_name: 'SoftDesign Marvel',
+      language: 'English',
+      team_name: teamName
+    )
+  end
+
+  desc 'Run certificates production'
+  lane :run_get_certificates_production do
+    get_certificates(
+      development: false,
+      username: appleId,
+      output_path: pathCerts,
+      team_id: teamId
+    )
+  end
+  
+  desc 'Run provisioning profile production'
+  lane :run_provisioning_profile_production do
+    get_provisioning_profile(
+      adhoc: false,
+      force: true,
+      app_identifier: identifier,
+      username: appleId,
+      team_id: teamId,
+      filename: provisioningProfileName,
+      output_path: pathProvisioningProfile
+    )
+  end
+
+  desc 'Run config provisioning profile'
+  lane :run_config_provisioning_profile do
+    disable_automatic_code_signing(
+      path: xcodeproj,
+      use_automatic_signing: false
+    )
+    update_project_provisioning(
+      xcodeproj: xcodeproj,
+      profile: pathProvisioningProfile + provisioningProfileName,
+      build_configuration: "Release",
+      code_signing_identity: signingCertificateName
+    )
+    update_project_provisioning(
+      xcodeproj: xcodeproj,
+      profile: pathProvisioningProfile + provisioningProfileName,
+      build_configuration: "Debug",
+      code_signing_identity: signingCertificateName
+    )
+  end
+
+  desc 'Run config provisioning profile automatic'
+  lane :run_config_provisioning_profile_automatic do
+    automatic_code_signing(
+      path: xcodeproj,
+      team_id: teamId,
+      use_automatic_signing: true,
+      profile_name: 'iOS Team Provisioning Profile: *',
+      code_sign_identity: ''
+    )
+  end
+
+  desc 'Run build and archive app'
+  lane :run_build_app do
+    run_config_provisioning_profile()
+    # build_app(
+    #   scheme: scheme,
+    #   workspace: workspace,
+    #   include_bitcode: true,
+    #   output_directory: pathBuilds,
+    #   clean: true,
+    #   export_method: 'app-store'
+    # )
+    run_config_provisioning_profile_automatic()
+  end
+
+  desc 'Run upload app to itunes connect production'
+  lane :run_send_store do
+    upload_to_app_store(
+      force: true,
+      overwrite_screenshots: true,
+      username: appleId,
+      app_identifier: identifier,
+      metadata_path: pathMetadata,
+      app_icon: pathMetadata + appIconName,
+      ipa: pathBuilds + ipaName,
+      app_rating_config_path: pathRating + ratingConfigFile,
+      submit_for_review: true,
+      automatic_release: true,
+      skip_waiting_for_build_processing: true,
+      # skip_binary_upload: true,
+      submission_information: {
+        add_id_info_limits_tracking: true,
+        add_id_info_serves_ads: true,
+        add_id_info_tracks_action: true,
+        add_id_info_tracks_install: true,
+        add_id_info_uses_idfa: true,
+        content_rights_has_rights: true,
+        content_rights_contains_third_party_content: true,
+        export_compliance_platform: 'ios',
+        export_compliance_compliance_required: false,
+        export_compliance_encryption_updated: false,
+        export_compliance_app_type: nil,
+        export_compliance_uses_encryption: false,
+        export_compliance_is_exempt: false,
+        export_compliance_contains_third_party_cryptography: false,
+        export_compliance_contains_proprietary_cryptography: false,
+        export_compliance_available_on_french_store: false
+      }
+    )
+  end
+
+  desc 'Run upload app to itunes connect testfligth'
+  lane :run_send_testfligth do
+    upload_to_testflight(
+      username: appleId,
+      app_identifier: identifier,
+      ipa: pathBuilds + ipaName,
+      skip_waiting_for_build_processing: true,
+      distribute_external: true
+    )
+  end
+
+  desc 'Run all steps to upload app to itunes connect production'
+  lane :send_production do
+    run_all_tests
+    run_screenshots
+    run_get_certificates_production
+    run_provisioning_profile_production
+    run_build_app
+    run_send_store
+  end
+
+  desc 'Run all steps to upload app to itunes connect testfligth'
+  lane :send_testfligth do
+    # run_all_tests
+    # run_get_certificates_production
+    # run_provisioning_profile_production
+    run_build_app
+    # run_send_testfligth
+  end
+
 end

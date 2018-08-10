@@ -1,19 +1,20 @@
 //
-//  CharacterDetailViewModel.swift
-//  Marvel
+//  CharacterDetailViewModelMock.swift
+//  MarvelTests
 //
-//  Created by Juliano Terres on 27/06/18.
+//  Created by Juliano Terres on 08/08/18.
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
 import Foundation
 import UIKit
+@testable import Marvel
 
-class CharacterDetailViewModel: CharacterDetailViewModelProtocol {
+class CharacterDetailViewModelMock: CharacterDetailViewModelProtocol {
     
-    var character: Character
+    var character: Marvel.Character
     
-    init(character: Character) {
+    init(character: Marvel.Character) {
         self.character = character
     }
     
