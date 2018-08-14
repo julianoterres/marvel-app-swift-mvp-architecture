@@ -78,6 +78,7 @@ fastlane/certs
 fastlane/builds
 fastlane/provisioning_profile
 fastlane/screenshots/README.md
+fastlane/README.md
 Gemfile.lock
 
 ### Xcode ###
