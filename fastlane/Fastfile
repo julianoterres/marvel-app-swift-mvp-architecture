@@ -172,12 +172,14 @@ platform :ios do
 
   desc 'Run upload app to itunes connect testfligth'
   lane :run_send_testfligth do
+
     upload_to_testflight(
       username: appleId,
       app_identifier: identifier,
       ipa: pathBuilds + ipaName,
       skip_waiting_for_build_processing: true,
-      distribute_external: true
+      distribute_external: true,
+      changelog: read_changelog
     )
   end
 
