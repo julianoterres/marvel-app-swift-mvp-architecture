@@ -1,28 +1,50 @@
-teamIdItc = '685846'
-teamId = 'DEDQBH6J8S'
-teamName = 'SoftDesign Consultoria e Sistemas LTDA'
-appleId = 'juliano@julianoterres.com.br'
-appleApplicationSpecificPassword = 'rdhy-qaju-wjtk-hyjz'
-identifier = 'br.com.softdesign.marveltests'
-workspace = 'Marvel.xcworkspace'
-xcodeproj = 'Marvel.xcodeproj'
-pbxproj = xcodeproj + '/project.pbxproj'
-ipaName = 'marvel.ipa'
-appIconName = 'AppIcon.png'
-ratingConfigFile = 'config.json'
-scheme = 'Marvel'
-provisioningProfileName = 'marvel.mobileprovision'
-signingCertificateName = 'iPhone Distribution: '+teamName+' ('+teamId+')'
+# Variables Team
+TEAM_ID_ITC = '685846'
+TEAM_ID     = 'DEDQBH6J8S'
+TEAM_NAME   = 'SoftDesign Consultoria e Sistemas LTDA'
 
-pathCerts = './fastlane/certs/'
-pathScreenshots = './fastlane/screenshots/'
-pathMetadata = './fastlane/metadata/'
-pathBuilds = './fastlane/builds/'
-pathRating = './fastlane/rating/'
-pathProvisioningProfile = './fastlane/provisioning_profile/'
+# Variables Access
+APPLE_ID                   = 'juliano@julianoterres.com.br'
+APPLE_PASSWORD_PUBLISH_APP = 'rdhy-qaju-wjtk-hyjz'
 
-ENV['FASTLANE_ITC_TEAM_ID'] = teamIdItc
-ENV['FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD'] = appleApplicationSpecificPassword
+# Variables Project
+PROJECT_IDENTIFIER      = 'br.com.softdesign.marveltests'
+PROJECT_WORKSPACE       = 'Marvel.xcworkspace'
+PROJECT_XCODEPROJ       = 'Marvel.xcodeproj'
+PROJECT_PBXPROJ         = PROJECT_XCODEPROJ + '/project.pbxproj'
+PROJECT_IPA_NAME        = 'marvel.ipa'
+PROJECT_ICON_NAME       = 'AppIcon.png'
+PROJECT_SCHEME          = 'Marvel'
+PROJECT_SCHEME_UI_TESTS = 'MarvelUITests'
+PROJECT_NAME            = 'SoftDesign Marvel'
+PROJECT_LANGUAGES       = 'English'
+
+# Variables Tests
+TEST_DEVICES = ['iPhone 6s']
+
+# Variables Screenshots
+SCREENSHOTS_DEVICES = (["iPad Pro (12.9-inch)", "iPhone X", "iPhone 8 Plus"])
+
+# Variables Rating
+RATING_CONFIG_FILE_NAME = 'config.json'
+
+# Variables Certificates
+CERTIFICATE_PROVISION_PROFILE_NAME = 'marvel.mobileprovision'
+CERTIFICATE_SIGNING_NAME           = 'iPhone Distribution: '+TEAM_NAME+' ('+TEAM_ID+')'
+
+# Variables Paths
+PATH_CERTIFICATES_PROVISION_PROFILE = './fastlane/certs/provisioning_profile/'
+PATH_CERTIFICATES_SIGNING           = './fastlane/certs/signing/'
+PATH_SCREENSHOTS                    = './fastlane/screenshots/'
+PATH_METADATA                       = './fastlane/metadata/'
+PATH_BUILD                          = './fastlane/builds/'
+PATH_RATING                         = './fastlane/rating/'
+
+# Variables Global Fastlane
+ENV['FASTLANE_ITC_TEAM_ID']                         = TEAM_ID_ITC
+ENV['FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD'] = APPLE_PASSWORD_PUBLISH_APP
+
+# Start Fastlane
 
 fastlane_version '2.99.0'
 default_platform(:ios)
@@ -33,19 +55,19 @@ platform :ios do
   lane :run_all_tests do
     swiftlint
     run_tests(
-      workspace: workspace,
-      devices: ['iPhone 6s'],
+      workspace: PROJECT_WORKSPACE,
+      devices: TEST_DEVICES,
       clean: true,
-      scheme: scheme
+      scheme: PROJECT_SCHEME
     )
   end
 
   desc 'Run make screenshots'
   lane :run_screenshots do
     capture_ios_screenshots(
-      scheme: 'MarvelUITests',
-      devices: (["iPad Pro (12.9-inch)", "iPhone X", "iPhone 8 Plus"]),
-      output_directory: pathScreenshots,
+      scheme: PROJECT_SCHEME_UI_TESTS,
+      devices: SCREENSHOTS_DEVICES,
+      output_directory: PATH_SCREENSHOTS,
       output_simulator_logs: true,
       clear_previous_screenshots: true,
       skip_open_summary: true
@@ -58,12 +80,12 @@ platform :ios do
   desc 'Run create a App ID in apple developer'
   lane :run_create_app_itunes do
     produce(
-      username: appleId,
-      itc_team_id: teamIdItc,
-      app_identifier: identifier,
-      app_name: 'SoftDesign Marvel',
-      language: 'English',
-      team_name: teamName
+      username: APPLE_ID,
+      itc_team_id: TEAM_ID_ITC,
+      app_identifier: PROJECT_IDENTIFIER,
+      app_name: PROJECT_NAME,
+      language: PROJECT_LANGUAGES,
+      team_name: TEAM_NAME
     )
   end
 
@@ -71,9 +93,9 @@ platform :ios do
   lane :run_get_certificates_production do
     get_certificates(
       development: false,
-      username: appleId,
-      output_path: pathCerts,
-      team_id: teamId
+      username: APPLE_ID,
+      output_path: PATH_CERTIFICATES_SIGNING,
+      team_id: TEAM_ID
     )
   end
   
@@ -82,41 +104,41 @@ platform :ios do
     get_provisioning_profile(
       adhoc: false,
       force: true,
-      app_identifier: identifier,
-      username: appleId,
-      team_id: teamId,
-      filename: provisioningProfileName,
-      output_path: pathProvisioningProfile
+      app_identifier: PROJECT_IDENTIFIER,
+      username: APPLE_ID,
+      team_id: TEAM_ID,
+      filename: CERTIFICATE_PROVISION_PROFILE_NAME,
+      output_path: PATH_CERTIFICATES_PROVISION_PROFILE
     )
   end
 
   desc 'Run config provisioning profile'
   lane :run_config_provisioning_profile do
     backup_file(
-      path: pbxproj
+      path: PROJECT_PBXPROJ
     )
     disable_automatic_code_signing(
-      path: xcodeproj,
+      path: PROJECT_XCODEPROJ,
       use_automatic_signing: false
     )
     update_project_provisioning(
-      xcodeproj: xcodeproj,
-      profile: pathProvisioningProfile + provisioningProfileName,
+      xcodeproj: PROJECT_XCODEPROJ,
+      profile: PATH_CERTIFICATES_PROVISION_PROFILE + CERTIFICATE_PROVISION_PROFILE_NAME,
       build_configuration: "Release",
-      code_signing_identity: signingCertificateName
+      code_signing_identity: CERTIFICATE_SIGNING_NAME
     )
     update_project_provisioning(
-      xcodeproj: xcodeproj,
-      profile: pathProvisioningProfile + provisioningProfileName,
+      xcodeproj: PROJECT_XCODEPROJ,
+      profile: PATH_CERTIFICATES_PROVISION_PROFILE + CERTIFICATE_PROVISION_PROFILE_NAME,
       build_configuration: "Debug",
-      code_signing_identity: signingCertificateName
+      code_signing_identity: CERTIFICATE_SIGNING_NAME
     )
   end
 
   desc 'Run config provisioning profile automatic'
   lane :run_config_provisioning_profile_automatic do
     restore_file(
-      path: pbxproj
+      path: PROJECT_PBXPROJ
     )
   end
 
@@ -124,10 +146,10 @@ platform :ios do
   lane :run_build_app do
     run_config_provisioning_profile()
     build_app(
-      scheme: scheme,
-      workspace: workspace,
+      scheme: PROJECT_SCHEME,
+      workspace: PROJECT_WORKSPACE,
       include_bitcode: true,
-      output_directory: pathBuilds,
+      output_directory: PATH_BUILD,
       clean: true,
       export_method: 'app-store'
     )
@@ -139,12 +161,13 @@ platform :ios do
     upload_to_app_store(
       force: true,
       overwrite_screenshots: true,
-      username: appleId,
-      app_identifier: identifier,
-      metadata_path: pathMetadata,
-      app_icon: pathMetadata + appIconName,
-      ipa: pathBuilds + ipaName,
-      app_rating_config_path: pathRating + ratingConfigFile,
+      username: APPLE_ID,
+      app_identifier: PROJECT_IDENTIFIER,
+      metadata_path: PATH_METADATA,
+      app_icon: PATH_METADATA + PROJECT_ICON_NAME,
+
+  ipa: PATH_BUILD + PROJECT_IPA_NAME,
+      app_rating_config_path: PATH_RATING + RATING_CONFIG_FILE_NAME,
       submit_for_review: true,
       automatic_release: true,
       skip_waiting_for_build_processing: true,
@@ -172,11 +195,10 @@ platform :ios do
 
   desc 'Run upload app to itunes connect testfligth'
   lane :run_send_testfligth do
-
     upload_to_testflight(
-      username: appleId,
-      app_identifier: identifier,
-      ipa: pathBuilds + ipaName,
+      username: APPLE_ID,
+      app_identifier: PROJECT_IDENTIFIER,
+      ipa: PATH_BUILD + PROJECT_IPA_NAME,
       skip_waiting_for_build_processing: true,
       distribute_external: true,
       changelog: read_changelog
@@ -195,7 +217,7 @@ platform :ios do
 
   desc 'Run all steps to upload app to itunes connect testfligth'
   lane :send_testfligth do
-    # run_all_tests
+    run_all_tests
     run_get_certificates_production
     run_provisioning_profile_production
     run_build_app
