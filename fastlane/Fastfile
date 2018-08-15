@@ -284,7 +284,6 @@ platform :ios do
     app_build
     send_store
     notification_finished_apple_store
-    notification_finished_apple_store_in_slack
     slack_success
   end
 
@@ -298,7 +297,6 @@ platform :ios do
     app_build
     testfligth
     notification_finished_testfligth
-    notification_finished_testfligth_in_slack
     slack_success
   end
 
