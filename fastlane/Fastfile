@@ -1,3 +1,5 @@
+require "spaceship"
+
 # Variables Team
 TEAM_ID_ITC = '685846'
 TEAM_ID     = 'DEDQBH6J8S'
@@ -5,6 +7,7 @@ TEAM_NAME   = 'SoftDesign Consultoria e Sistemas LTDA'
 
 # Variables Access
 APPLE_ID                   = 'juliano@julianoterres.com.br'
+APPLE_ID_PASSWORD          = '83c93J89t@'
 APPLE_PASSWORD_PUBLISH_APP = 'rdhy-qaju-wjtk-hyjz'
 
 # Variables App
@@ -25,7 +28,7 @@ PROJECT_LANGUAGES       = 'English'
 
 # Variables Tests
 TEST_DEVICES        = ['iPhone 6s']
-TEST_EMAIL_FEEDBACK = 'juliano@julianoterres.com.br'
+TEST_EMAIL_FEEDBACK = 'contac@softdesign.com.br'
 TEST_GROUPS         = ['External Testers']
 
 # Variables Screenshots
@@ -49,6 +52,9 @@ PATH_TESTERS_USERS                  = './fastlane/testers/'
 
 # Variables Integration
 INTEGRATION_SLACK_UR = 'https://hooks.slack.com/services/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'
+
+# Variables Owner
+OWNER_CONTACT_EMAIL = 'contact@softdesign.com.br'
 
 # Variables Global Fastlane
 ENV['FASTLANE_ITC_TEAM_ID']                         = TEAM_ID_ITC
@@ -83,7 +89,7 @@ platform :ios do
   # Run tests and swiftlint
   lane :all_tests do
     swiftlint
-    tests(
+    run_tests(
       workspace: PROJECT_WORKSPACE,
       devices: TEST_DEVICES,
       clean: true,
@@ -129,7 +135,7 @@ platform :ios do
   end
   
   # Run provisioning profile production
-  lane :provisioning_profile_production do
+  lane :get_provisioning_profile_production do
     get_provisioning_profile(
       adhoc: false,
       force: true,
@@ -194,12 +200,10 @@ platform :ios do
       app_identifier: PROJECT_IDENTIFIER,
       metadata_path: PATH_METADATA,
       app_icon: PATH_METADATA + PROJECT_ICON_NAME,
-
-  ipa: PATH_BUILD + PROJECT_IPA_NAME,
+      ipa: PATH_BUILD + PROJECT_IPA_NAME,
       app_rating_config_path: PATH_RATING + RATING_CONFIG_FILE_NAME,
       submit_for_review: true,
       automatic_release: true,
-      skip_waiting_for_build_processing: true,
       skip_binary_upload: true,
       submission_information: {
         add_id_info_limits_tracking: true,
@@ -235,9 +239,10 @@ platform :ios do
       groups: TEST_GROUPS,
       notify_external_testers: true,
       changelog: read_changelog,
-      beta_app_description: 'App version beta to test',
-      beta_app_feedback_email: TEST_EMAIL_FEEDBACK
-    )
+      beta_app_description: 'Description de teste',
+      beta_app_feedback_email: OWNER_CONTACT_EMAIL,
+      email: OWNER_CONTACT_EMAIL,
+      wait_for_uploaded_build: true    )
   end
 
   # Run notification mac when finished the upload to testfligth
@@ -259,6 +264,10 @@ platform :ios do
   # Run add external users in testfligth
   lane :add_external_users do
     
+    Spaceship::Tunes.login(APPLE_ID, APPLE_ID_PASSWORD)
+    Spaceship::Tunes.select_team
+    Spaceship::TestFlight::Group.create!(app_id: APP_ID, group_name: 'External Testers')
+
     Dir.chdir ".." do
       sh 'bundle exec fastlane pilot import -c ./fastlane/testers/users.csv --username='+APPLE_ID+' --app_identifier='+PROJECT_IDENTIFIER+' --team_id='+TEAM_ID_ITC
     end
@@ -276,11 +285,11 @@ platform :ios do
 
   # Run all steps to upload app to itunes connect production
   lane :send_production do
+    get_certificates_production
+    get_provisioning_profile_production
     install_pods
     all_tests
     screenshots
-    get_certificates_production
-    provisioning_profile_production
     app_build
     send_store
     notification_finished_apple_store
@@ -289,11 +298,11 @@ platform :ios do
 
   # Run all steps to upload app to itunes connect testfligth
   lane :send_testfligth do
+    get_certificates_production
+    get_provisioning_profile_production
     add_external_users
     install_pods
-    # all_tests
-    get_certificates_production
-    provisioning_profile_production
+    all_tests
     app_build
     testfligth
     notification_finished_testfligth
