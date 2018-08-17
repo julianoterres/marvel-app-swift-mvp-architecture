@@ -8,21 +8,21 @@
 
 import Alamofire
 
-class Network {
+class Network: NetworkProtocol {
     
-    static func request(url: URL, method: HTTPMethod = .get, parameters: Parameters? = nil, headers: [String: String]? = nil, encoding: ParameterEncoding = JSONEncoding.default, completion: @escaping (Data) -> Void, failure: @escaping(_ error: String) -> Void) {
-        Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
-            .validate()
-            .responseJSON(completionHandler: { response in
-                logAlamofireRequest(response: response)
-                switch response.result {
-                case .success:
-                    if let data = response.data {
-                        completion(data)
-                    }
-                case .failure(let error):
-                    failure(error.localizedDescription)
+    static func request(url: URL, method: HTTPMethod, parameters: Parameters?, completion: @escaping (Data) -> Void, failure: @escaping (String) -> Void) {
+        Alamofire.request(url, method: method, parameters: parameters)
+        .validate()
+        .responseJSON(completionHandler: { response in
+            logAlamofireRequest(response: response)
+            switch response.result {
+            case .success:
+                if let data = response.data {
+                    completion(data)
                 }
+            case .failure(let error):
+                failure(error.localizedDescription)
+            }
         })
     }
     

@@ -71,8 +71,14 @@ Carthage/Build
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
+fastlane/screenshots/**/README.md
+fastlane/screenshots/screenshots.html
 fastlane/test_output
-Screenshots/screenshots.html
+fastlane/certs
+fastlane/builds
+fastlane/provisioning_profile
+fastlane/screenshots/README.md
+fastlane/README.md
 Gemfile.lock
 
 ### Xcode ###

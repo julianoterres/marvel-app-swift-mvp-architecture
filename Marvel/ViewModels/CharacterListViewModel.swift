@@ -9,14 +9,18 @@
 import UIKit
 import Foundation
 
-class CharacterListViewModel {
+class CharacterListViewModel: CharacterListViewModelProtocol {
     
-    private let service = CharacterService()
-    private var offset = 0
-    private var loadingActive = false
+    var service: CharacterServiceProtocol
+    var offset = 0
+    var loadingActive = false
     var limit = 20
     var totalCharacters = 0
     var characters = [Character]()
+    
+    init(service: CharacterServiceProtocol) {
+        self.service = service
+    }
     
     func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void) {
         if !self.loadingActive && !self.checkAlreadyLoadedAll() {
