@@ -1,18 +1,18 @@
-require "spaceship"
+fastlane_require 'spaceship'
 
 # Variables Team
-TEAM_ID_ITC = '685846'
-TEAM_ID     = 'DEDQBH6J8S'
-TEAM_NAME   = 'SoftDesign Consultoria e Sistemas LTDA'
+TEAM_ID_ITC = ''
+TEAM_ID     = ''
+TEAM_NAME   = ''
 
 # Variables Access
-APPLE_ID                   = 'juliano@julianoterres.com.br'
-APPLE_ID_PASSWORD          = '83c93J89t@'
-APPLE_PASSWORD_PUBLISH_APP = 'rdhy-qaju-wjtk-hyjz'
+APPLE_ID                   = ''
+APPLE_ID_PASSWORD          = ''
+APPLE_PASSWORD_PUBLISH_APP = ''
 
 # Variables App
-APP_SKU = '1533832490'
-APP_ID  = '1424416935'
+APP_SKU = ''
+APP_ID  = ''
 
 # Variables Project
 PROJECT_IDENTIFIER      = 'br.com.softdesign.marveltests'
@@ -23,16 +23,17 @@ PROJECT_IPA_NAME        = 'marvel.ipa'
 PROJECT_ICON_NAME       = 'AppIcon.png'
 PROJECT_SCHEME          = 'Marvel'
 PROJECT_SCHEME_UI_TESTS = 'MarvelUITests'
-PROJECT_NAME            = 'SoftDesign Marvel'
+PROJECT_NAME            = ''
 PROJECT_LANGUAGES       = 'English'
 
 # Variables Tests
 TEST_DEVICES        = ['iPhone 6s']
-TEST_EMAIL_FEEDBACK = 'contac@softdesign.com.br'
+TEST_EMAIL_FEEDBACK = ''
 TEST_GROUPS         = ['External Testers']
 
 # Variables Screenshots
 SCREENSHOTS_DEVICES = (["iPad Pro (12.9-inch)", "iPhone X", "iPhone 8 Plus"])
+SCREENSHOTS_LANGUAGES = (["en-US"])
 
 # Variables Rating
 RATING_CONFIG_FILE_NAME = 'config.json'
@@ -51,10 +52,10 @@ PATH_RATING                         = './fastlane/rating/'
 PATH_TESTERS_USERS                  = './fastlane/testers/'
 
 # Variables Integration
-INTEGRATION_SLACK_UR = 'https://hooks.slack.com/services/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'
+INTEGRATION_SLACK_UR = ''
 
 # Variables Owner
-OWNER_CONTACT_EMAIL = 'contact@softdesign.com.br'
+OWNER_CONTACT_EMAIL = ''
 
 # Variables Global Fastlane
 ENV['FASTLANE_ITC_TEAM_ID']                         = TEAM_ID_ITC
@@ -71,7 +72,7 @@ platform :ios do
   # Triger when have error
   error do |lane, exception, options|
     slack(
-      message: PROJECT_NAME + ' failed',
+      message: PROJECT_NAME + ' failed fastlane deploy - Version: ' + get_version_number,
       success: false,
       slack_url: INTEGRATION_SLACK_UR
     )
@@ -105,7 +106,8 @@ platform :ios do
       output_directory: PATH_SCREENSHOTS,
       output_simulator_logs: true,
       clear_previous_screenshots: true,
-      skip_open_summary: true
+      skip_open_summary: true,
+      languages: SCREENSHOTS_LANGUAGES
     )
     frame_screenshots(
       white: true
@@ -125,7 +127,7 @@ platform :ios do
   end
 
   # Run certificates production
-  lane :get_certificates_production do
+  lane :download_certificates do
     get_certificates(
       development: false,
       username: APPLE_ID,
@@ -135,7 +137,7 @@ platform :ios do
   end
   
   # Run provisioning profile production
-  lane :get_provisioning_profile_production do
+  lane :download_provisioning_profile do
     get_provisioning_profile(
       adhoc: false,
       force: true,
@@ -148,7 +150,7 @@ platform :ios do
   end
 
   # Run config provisioning profile
-  lane :config_provisioning_profile do
+  lane :config_provisioning_profile_xcode do
     backup_file(
       path: PROJECT_PBXPROJ
     )
@@ -171,7 +173,7 @@ platform :ios do
   end
 
   # Run config provisioning profile automatic
-  lane :config_provisioning_profile_automatic do
+  lane :config_provisioning_profile_xcode_automatic do
     restore_file(
       path: PROJECT_PBXPROJ
     )
@@ -179,7 +181,7 @@ platform :ios do
 
   # Run build and archive app
   lane :app_build do
-    config_provisioning_profile()
+    config_provisioning_profile_xcode()
     build_app(
       scheme: PROJECT_SCHEME,
       workspace: PROJECT_WORKSPACE,
@@ -188,7 +190,7 @@ platform :ios do
       clean: true,
       export_method: 'app-store'
     )
-    config_provisioning_profile_automatic()
+    config_provisioning_profile_xcode_automatic()
   end
 
   # Run upload app to itunes connect production
@@ -205,6 +207,7 @@ platform :ios do
       submit_for_review: true,
       automatic_release: true,
       skip_binary_upload: true,
+      screenshots_path: PATH_SCREENSHOTS,
       submission_information: {
         add_id_info_limits_tracking: true,
         add_id_info_serves_ads: true,
@@ -245,19 +248,21 @@ platform :ios do
       wait_for_uploaded_build: true    )
   end
 
+  
+
   # Run notification mac when finished the upload to testfligth
   lane :notification_finished_testfligth do
     notification(
-      subtitle: "Finished Upload",
-      message: "The upload of app to testfligth finished"
+      subtitle: PROJECT_NAME + ' finished upload - Version: ' + get_version_number,
+      message: 'The upload of app to testfligth finished'
     )
   end
   
   # Run notification mac when finished the upload to apple store
   lane :notification_finished_apple_store do
     notification(
-      subtitle: "Finished Upload",
-      message: "The upload of app to apple store finished"
+      subtitle: PROJECT_NAME + ' finished upload - Version: ' + get_version_number,
+      message: 'The upload of app store finished'
     )
   end
 
@@ -269,7 +274,7 @@ platform :ios do
     Spaceship::TestFlight::Group.create!(app_id: APP_ID, group_name: 'External Testers')
 
     Dir.chdir ".." do
-      sh 'bundle exec fastlane pilot import -c ./fastlane/testers/users.csv --username='+APPLE_ID+' --app_identifier='+PROJECT_IDENTIFIER+' --team_id='+TEAM_ID_ITC
+      sh 'fastlane pilot import -c ./fastlane/testers/users.csv --username='+APPLE_ID+' --app_identifier='+PROJECT_IDENTIFIER+' --team_id='+TEAM_ID_ITC
     end
 
   end
@@ -277,7 +282,7 @@ platform :ios do
   # Run slack when success
   lane :slack_success do
     slack(
-      message: PROJECT_NAME + ' success',
+      message: PROJECT_NAME + ' success upload to apple store - Version: ' + get_version_number,
       success: true,
       slack_url: INTEGRATION_SLACK_UR
     )
@@ -285,8 +290,8 @@ platform :ios do
 
   # Run all steps to upload app to itunes connect production
   lane :send_production do
-    get_certificates_production
-    get_provisioning_profile_production
+    download_certificates
+    download_provisioning_profile
     install_pods
     all_tests
     screenshots
@@ -298,8 +303,8 @@ platform :ios do
 
   # Run all steps to upload app to itunes connect testfligth
   lane :send_testfligth do
-    get_certificates_production
-    get_provisioning_profile_production
+    download_certificates
+    download_provisioning_profile
     add_external_users
     install_pods
     all_tests

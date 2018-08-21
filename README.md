@@ -15,46 +15,44 @@ When you be inside the app directory in terminal, execute the follow commands be
 
 
 	git init
-	git remote add origin git@gitlab.com:julianoterres/marvel.git
+	git remote add origin git@gitlab.com:julianoterres/ios-app-marvel.git
 	git fetch
 	git checkout master
 
-## Install CocoaPods
+## Setup project
 
-If you don't have cocoapods installed in your mac, you need install following the [documentation of cocoapods].
+To you to setup the project with all dependencies that is necessary to that the project working correct, just you execute the file setup.sh with command below.
 
-[documentation of cocoapods]:https://cocoapods.org/
+	sh setup.sh
 
-After you execute the commands above in yout terminal app, the app project already be in you mac. To install the third dependencies execute the follow commands below inside the app directory using your terminal app.
-
-	pod install
-	
-And wait until all the dependencies are installed.
-
-After all the dependencies are installed, cocoa pods will create a file in the root of your project with the name of your project containing the extension "xcworkspace", from that moment on, you should always open your project for this file.
+This file contains all commands to install all dependencies that you need install.
 
 ## Fastlane
 
-This project contains a fastlane to run tests and make a screenshots.
+This project contains how tool of the automator process, the fastlane.
 
-If you want run tests with fastlane, enough you enter in directory of project and run command below
+With the follow commands listing bellow:
 
-	fastlane tests
+	install_pods
+	all_tests
+	screenshots
+	create_app_itunes
+	download_certificates
+	download_provisioning_profile
+	app_build
+	send_production
+	send_testfligth
+	
+## Crashlytics
 
-And if you want generate a screenshots with fastlane enough enter in directory of project and run command below
-
-	fastlane screenshots
+This project contains the Fabric to monitor the crashes in app.	
 	
 ## Continuous Integration
 
-This projeto have how CI the Bitrise. If you want see the CI config , we have a config file in project root folder called bitrise.yml. But if you want see the logs of bibtrise, you can see the CI logs, in the gitlab pipelines [clicking here].
+This project have how CI the Bitrise. If you want see the CI config , we have a config file in project root folder called bitrise.yml. But if you want see the logs of bibtrise, you can see the CI logs, in the gitlab pipelines [clicking here].
 
 [clicking here]:https://gitlab.com/julianoterres/marvel/pipelines
 	
 ## Unit Tests
 
 This app has unit tests, and to date the percentage coverage is 96%.
-
-## Screenshots
-
-If you want see the screenshots of the aap, they was saved in the screenshots folder, in the respective language folder.

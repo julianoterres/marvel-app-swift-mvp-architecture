@@ -11,9 +11,7 @@ import Alamofire
 class Network: NetworkProtocol {
     
     static func request(url: URL, method: HTTPMethod, parameters: Parameters?, completion: @escaping (Data) -> Void, failure: @escaping (String) -> Void) {
-        Alamofire.request(url, method: method, parameters: parameters)
-        .validate()
-        .responseJSON(completionHandler: { response in
+        Alamofire.request(url, method: method, parameters: parameters).validate().responseJSON(completionHandler: { response in
             logAlamofireRequest(response: response)
             switch response.result {
             case .success:
