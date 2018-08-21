@@ -183,6 +183,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A616D87212B45D20014A706 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E36937BE20E18567009B9EFC /* AppDelegate.swift */,
+				3A710928211B6B0C00F27724 /* main.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		3A71092A211B707100F27724 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,8 +318,7 @@
 		E36937BD20E18567009B9EFC /* Marvel */ = {
 			isa = PBXGroup;
 			children = (
-				E36937BE20E18567009B9EFC /* AppDelegate.swift */,
-				3A710928211B6B0C00F27724 /* main.swift */,
+				3A616D87212B45D20014A706 /* App */,
 				E3F2B17A20E28628004A3E59 /* Assets */,
 				E36937C520E18568009B9EFC /* Assets.xcassets */,
 				E3F2B1C720E3CB56004A3E59 /* Definitions */,

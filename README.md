@@ -15,13 +15,13 @@ When you be inside the app directory in terminal, execute the follow commands be
 
 
 	git init
-	git remote add origin git@gitlab.com:julianoterres/marvel.git
+	git remote add origin git@gitlab.com:julianoterres/ios-app-marvel.git
 	git fetch
 	git checkout master
 
 ## Setup project
 
-To you to setup the project with all dependencies that is necessary to that the project working correct, just you execute the file setup.sh with command below
+To you to setup the project with all dependencies that is necessary to that the project working correct, just you execute the file setup.sh with command below.
 
 	sh setup.sh
 
@@ -43,10 +43,13 @@ With the follow commands listing bellow:
 	send_production
 	send_testfligth
 	
+## Crashlytics
+
+This project contains the Fabric to monitor the crashes in app.	
 	
 ## Continuous Integration
 
-This projeto have how CI the Bitrise. If you want see the CI config , we have a config file in project root folder called bitrise.yml. But if you want see the logs of bibtrise, you can see the CI logs, in the gitlab pipelines [clicking here].
+This project have how CI the Bitrise. If you want see the CI config , we have a config file in project root folder called bitrise.yml. But if you want see the logs of bibtrise, you can see the CI logs, in the gitlab pipelines [clicking here].
 
 [clicking here]:https://gitlab.com/julianoterres/marvel/pipelines
 	

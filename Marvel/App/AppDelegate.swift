@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.sharedSDK().debug = true
         Fabric.with([Crashlytics.self()])
-        self.initMainScreen()
+        self.homeScreen()
         return true
     }
     
-    private func initMainScreen() {
+    private func homeScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let navigationController = storyboard.instantiateViewController(withIdentifier: "CharacterListNavigationController") as? UINavigationController,
               let mainController = storyboard.instantiateViewController(withIdentifier: "CharacterListViewController") as? CharacterListViewController else { return }

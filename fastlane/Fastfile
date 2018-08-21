@@ -1,18 +1,18 @@
 fastlane_require 'spaceship'
 
 # Variables Team
-TEAM_ID_ITC = '685846'
-TEAM_ID     = 'DEDQBH6J8S'
-TEAM_NAME   = 'SoftDesign Consultoria e Sistemas LTDA'
+TEAM_ID_ITC = ''
+TEAM_ID     = ''
+TEAM_NAME   = ''
 
 # Variables Access
-APPLE_ID                   = 'juliano@julianoterres.com.br'
-APPLE_ID_PASSWORD          = '83c93J89t@'
-APPLE_PASSWORD_PUBLISH_APP = 'rdhy-qaju-wjtk-hyjz'
+APPLE_ID                   = ''
+APPLE_ID_PASSWORD          = ''
+APPLE_PASSWORD_PUBLISH_APP = ''
 
 # Variables App
-APP_SKU = '1533832490'
-APP_ID  = '1424416935'
+APP_SKU = ''
+APP_ID  = ''
 
 # Variables Project
 PROJECT_IDENTIFIER      = 'br.com.softdesign.marveltests'
@@ -23,12 +23,12 @@ PROJECT_IPA_NAME        = 'marvel.ipa'
 PROJECT_ICON_NAME       = 'AppIcon.png'
 PROJECT_SCHEME          = 'Marvel'
 PROJECT_SCHEME_UI_TESTS = 'MarvelUITests'
-PROJECT_NAME            = 'SoftDesign Marvel'
+PROJECT_NAME            = ''
 PROJECT_LANGUAGES       = 'English'
 
 # Variables Tests
 TEST_DEVICES        = ['iPhone 6s']
-TEST_EMAIL_FEEDBACK = 'contac@softdesign.com.br'
+TEST_EMAIL_FEEDBACK = ''
 TEST_GROUPS         = ['External Testers']
 
 # Variables Screenshots
@@ -52,10 +52,10 @@ PATH_RATING                         = './fastlane/rating/'
 PATH_TESTERS_USERS                  = './fastlane/testers/'
 
 # Variables Integration
-INTEGRATION_SLACK_UR = 'https://hooks.slack.com/services/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'
+INTEGRATION_SLACK_UR = ''
 
 # Variables Owner
-OWNER_CONTACT_EMAIL = 'contact@softdesign.com.br'
+OWNER_CONTACT_EMAIL = ''
 
 # Variables Global Fastlane
 ENV['FASTLANE_ITC_TEAM_ID']                         = TEAM_ID_ITC
