@@ -229,8 +229,8 @@ platform :ios do
     )
   end
 
-  # Run upload app to itunes connect testfligth
-  lane :testfligth do
+  # Run upload app to itunes connect testflight
+  lane :testflight do
     upload_to_testflight(
       apple_id: APP_ID,
       username: APPLE_ID,
@@ -250,11 +250,11 @@ platform :ios do
 
   
 
-  # Run notification mac when finished the upload to testfligth
-  lane :notification_finished_testfligth do
+  # Run notification mac when finished the upload to testflight
+  lane :notification_finished_testflight do
     notification(
       subtitle: PROJECT_NAME + ' finished upload - Version: ' + get_version_number,
-      message: 'The upload of app to testfligth finished'
+      message: 'The upload of app to testflight finished'
     )
   end
   
@@ -266,7 +266,7 @@ platform :ios do
     )
   end
 
-  # Run add external users in testfligth
+  # Run add external users in testflight
   lane :add_external_users do
     
     Spaceship::Tunes.login(APPLE_ID, APPLE_ID_PASSWORD)
@@ -301,16 +301,16 @@ platform :ios do
     slack_success
   end
 
-  # Run all steps to upload app to itunes connect testfligth
-  lane :send_testfligth do
+  # Run all steps to upload app to itunes connect testflight
+  lane :send_testflight do
     download_certificates
     download_provisioning_profile
     add_external_users
     install_pods
     all_tests
     app_build
-    testfligth
-    notification_finished_testfligth
+    testflight
+    notification_finished_testflight
     slack_success
   end
 

@@ -42,3 +42,9 @@ echo "⬇️  Installing Cocoapods";
 echo "----------------------------------------";
 
 sudo gem install cocoapods -n /usr/local/bin
+
+echo "----------------------------------------";
+echo "⬇️  Installing Pods";
+echo "----------------------------------------";
+
+pod install
