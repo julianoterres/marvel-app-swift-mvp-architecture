@@ -5,7 +5,7 @@ lane :execute_tests do
   
   run_tests(
     workspace: ENV['PROJECT_WORKSPACE'],
-    devices: ENV['TEST_DEVICES'],
+    devices: ENV['TEST_DEVICES'].split(','),
     clean: true,
     scheme: ENV['PROJECT_SCHEME']
   )

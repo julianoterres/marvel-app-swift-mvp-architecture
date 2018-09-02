@@ -9,7 +9,7 @@ lane :send_app_testflight do
     skip_waiting_for_build_processing: false,
     distribute_external: true,
     testers_file_path: ENV['PATH_TESTERS_USERS'] + 'users.csv',
-    groups: ENV['TEST_GROUPS'],
+    groups: ENV['TEST_GROUPS'].split(','),
     notify_external_testers: true,
     changelog: read_changelog,
     beta_app_description: 'Description de teste',

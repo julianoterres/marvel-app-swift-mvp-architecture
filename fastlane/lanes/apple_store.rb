@@ -57,7 +57,7 @@ lane :send_store do
   get_certificates_provisioning_profile
   install_pods
   execute_tests
-  screenshots
+  generate_screenshots
   make_build
   send_apple_store
   slack_success
