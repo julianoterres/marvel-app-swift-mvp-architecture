@@ -34,12 +34,12 @@ This project contains how tool of the automator process, the fastlane.
 With the follow commands listing bellow:
 
 	install_pods
-	all_tests
+	execute_tests
 	screenshots
 	create_app_itunes
-	download_certificates
-	download_provisioning_profile
-	app_build
+	get_certificates_signing
+	get_certificates_provisioning_profile
+	make_build
 	send_production
 	send_testfligth
 	
