@@ -100,7 +100,7 @@ lane :get_certificates_and_provisioning_profile do
   # Install P12 certificate
   import_certificate(
     keychain_name: 'login',
-    certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'],
+    certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12',
     certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
   )
 
