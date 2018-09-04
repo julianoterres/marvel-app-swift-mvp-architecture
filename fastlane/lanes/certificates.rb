@@ -1,8 +1,6 @@
 # Run certificates production
 lane :get_certificates_and_provisioning_profile do
   
-  currentBranch = git_branch()
-  
   # Revoke the certificates before create a new
   Spaceship::Portal.login(ENV['APPLE_ID'], ENV['FASTLANE_PASSWORD'])
   Spaceship::Portal.client.team_id = ENV['TEAM_ID']
@@ -21,6 +19,9 @@ lane :get_certificates_and_provisioning_profile do
   end
 
   if generateNewCertificate
+
+    # Get current branch to when finished process git, make checkout in current branch
+    currentBranch = git_branch()
 
     # Make checkout develop to commit new certificates
     Dir.chdir ".." do
@@ -96,6 +97,13 @@ lane :get_certificates_and_provisioning_profile do
     end
 
   end
+
+  # Install cer certificate
+  import_certificate(
+    keychain_name: 'login',
+    certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.cer',
+    certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
+  )
 
   # Install P12 certificate
   import_certificate(
