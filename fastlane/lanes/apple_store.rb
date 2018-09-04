@@ -53,8 +53,7 @@ end
 # Run all steps to upload app to itunes connect production
 lane :send_store do
   
-  get_certificates_signing
-  get_certificates_provisioning_profile
+  get_certificates_and_provisioning_profile
   install_pods
   execute_tests
   generate_screenshots

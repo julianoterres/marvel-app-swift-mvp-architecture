@@ -1,49 +1,107 @@
 # Run certificates production
-lane :get_certificates_signing do
+lane :get_certificates_and_provisioning_profile do
+  
+  currentBranch = git_branch()
   
   # Revoke the certificates before create a new
   Spaceship::Portal.login(ENV['APPLE_ID'], ENV['FASTLANE_PASSWORD'])
   Spaceship::Portal.client.team_id = ENV['TEAM_ID']
   
   certificates = Spaceship::Certificate.all()
+  generateNewCertificate = true
   
   certificates.each do |certificate|
-    if certificate.owner_id == ENV['TEAM_ID']
-      certificate.revoke!
+    if certificate.name == 'iOS Distribution' && certificate.owner_id == ENV['TEAM_ID']
+      if certificate.expires < Time.now.utc
+        certificate.revoke!
+      else
+        generateNewCertificate = false
+      end
     end
   end
 
-  # Create a new certificate and download him
-  get_certificates(
-    development: ENV['CERTIFICATE_SIGNING_IS_DEVELOPMENT'],
-    username: ENV['APPLE_ID'],
-    output_path: ENV['PATH_CERTIFICATES_SIGNING'],
-    team_id: ENV['TEAM_ID']
-  )
+  if generateNewCertificate
 
-end
+    # Make checkout develop to commit new certificates
+    Dir.chdir ".." do
+      sh 'git checkout .'
+      sh 'git checkout develop'
+    end
+    
+    # Create a new certificate and download him
+    certificateId = get_certificates(
+      development: ENV['CERTIFICATE_SIGNING_IS_DEVELOPMENT'],
+      username: ENV['APPLE_ID'],
+      output_path: ENV['PATH_CERTIFICATES_SIGNING'],
+      team_id: ENV['TEAM_ID'],
+      keychain_password: ENV['CERTIFICATE_SIGNING_P12_PASSWORD']
+    )
 
-# Run provisioning profile production
-lane :get_certificates_provisioning_profile do
+    p12OldFile = ENV['PATH_CERTIFICATES_SIGNING'] + certificateId + '.p12'
+    p12NewFile = ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12'
 
-  # Delete the provisionig profiles before create a new
-  Spaceship::Portal.login(ENV['APPLE_ID'], ENV['FASTLANE_PASSWORD'])
-  Spaceship::Portal.client.team_id = ENV['TEAM_ID']
-  
-  provisioningsPprofiles = Spaceship::ProvisioningProfile.find_by_bundle_id(bundle_id: ENV['PROJECT_IDENTIFIER'])
+    cerOldFile = ENV['PATH_CERTIFICATES_SIGNING'] + certificateId + '.cer'
+    cerNewFile = ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.cer'
 
-  provisioningsPprofiles.each do |provisioningProfile|
-    provisioningProfile.delete!
+    certSigningRequestOldFile = ENV['PATH_CERTIFICATES_SIGNING'] + certificateId + '.certSigningRequest'
+    certSigningRequestNewFile = ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.certSigningRequest'
+
+    # Delete the provisionig profiles before create a new
+    Spaceship::Portal.login(ENV['APPLE_ID'], ENV['FASTLANE_PASSWORD'])
+    Spaceship::Portal.client.team_id = ENV['TEAM_ID']
+    
+    provisioningsPprofiles = Spaceship::ProvisioningProfile.find_by_bundle_id(bundle_id: ENV['PROJECT_IDENTIFIER'])
+
+    provisioningsPprofiles.each do |provisioningProfile|
+      provisioningProfile.delete!
+    end
+
+    # Create a new provisionig profile and download him
+    get_provisioning_profile(
+      development: ENV['CERTIFICATE_PROVISIONING_PROFILE_IS_DEVELOPMENT'],
+      app_identifier: ENV['PROJECT_IDENTIFIER'],
+      username: ENV['APPLE_ID'],
+      team_id: ENV['TEAM_ID'],
+      filename: ENV['CERTIFICATE_PROVISION_PROFILE_NAME'],
+      output_path: ENV['PATH_CERTIFICATES_PROVISION_PROFILE'],
+      cert_id: certificateId
+    )
+
+    # Change name of certificates to default
+    Dir.chdir ".." do
+      sh 'mv ' + p12OldFile + ' ' + p12NewFile
+      sh 'mv ' + cerOldFile + ' ' + cerNewFile
+      sh 'mv ' + certSigningRequestOldFile + ' ' + certSigningRequestNewFile
+    end
+
+    # Commit new certificates to develop
+    Dir.chdir ".." do
+      sh 'git add .'
+      sh 'git commit -m "New certificates generated"'
+      sh 'git push origin develop'
+    end
+
+    # Merge new certificates in master
+    Dir.chdir ".." do
+      sh 'git checkout master'
+      sh 'git merge --no-ff develop'
+      sh 'git push origin master'
+    end
+
+    # Merge new certificates in current branch
+    Dir.chdir ".." do
+      sh 'git checkout ' + currentBranch
+      sh 'git merge --no-ff master'
+      sh 'git push origin ' + currentBranch
+    end
+
   end
 
-  # Create a new provisionig profile and download him
-  get_provisioning_profile(
-    development: ENV['CERTIFICATE_PROVISIONING_PROFILE_IS_DEVELOPMENT'],
-    app_identifier: ENV['PROJECT_IDENTIFIER'],
-    username: ENV['APPLE_ID'],
-    team_id: ENV['TEAM_ID'],
-    filename: ENV['CERTIFICATE_PROVISION_PROFILE_NAME'],
-    output_path: ENV['PATH_CERTIFICATES_PROVISION_PROFILE']
+  # Install P12 certificate
+  import_certificate(
+    keychain_name: 'login',
+    certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'],
+    certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
   )
 
 end

@@ -74,7 +74,6 @@ fastlane/screenshots/**/*.png
 fastlane/screenshots/**/README.md
 fastlane/screenshots/screenshots.html
 fastlane/test_output
-fastlane/certs
 fastlane/builds
 fastlane/provisioning_profile
 fastlane/screenshots/README.md
