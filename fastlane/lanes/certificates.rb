@@ -6,20 +6,52 @@ lane :get_certificates_signing do
   Spaceship::Portal.client.team_id = ENV['TEAM_ID']
   
   certificates = Spaceship::Certificate.all()
+  generateNewCertificate = true
   
   certificates.each do |certificate|
-    if certificate.owner_id == ENV['TEAM_ID']
-      certificate.revoke!
+    if certificate.name == 'iOS Distribution' && certificate.owner_id == ENV['TEAM_ID']
+      if certificate.expires < Time.now.utc
+        certificate.revoke!
+      else
+        generateNewCertificate = false
+      end
     end
   end
 
-  # Create a new certificate and download him
-  get_certificates(
-    development: ENV['CERTIFICATE_SIGNING_IS_DEVELOPMENT'],
-    username: ENV['APPLE_ID'],
-    output_path: ENV['PATH_CERTIFICATES_SIGNING'],
-    team_id: ENV['TEAM_ID']
-  )
+  if generateNewCertificate
+    
+    # Create a new certificate and download him
+    certificateId = get_certificates(
+      development: ENV['CERTIFICATE_SIGNING_IS_DEVELOPMENT'],
+      username: ENV['APPLE_ID'],
+      output_path: ENV['PATH_CERTIFICATES_SIGNING'],
+      team_id: ENV['TEAM_ID'],
+      keychain_password: ENV['CERTIFICATE_SIGNING_P12_PASSWORD']
+    )
+
+    p12OldFile = ENV['PATH_CERTIFICATES_SIGNING'] + certificateId + '.p12'
+    p12NewFile = ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12'
+
+    cerOldFile = ENV['PATH_CERTIFICATES_SIGNING'] + certificateId + '.cer'
+    cerNewFile = ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.cer'
+
+    certSigningRequestOldFile = ENV['PATH_CERTIFICATES_SIGNING'] + certificateId + '.certSigningRequest'
+    certSigningRequestNewFile = ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.certSigningRequest'
+
+    Dir.chdir ".." do
+      sh 'mv ' + p12OldFile + ' ' + p12NewFile
+      sh 'mv ' + cerOldFile + ' ' + cerNewFile
+      sh 'mv ' + certSigningRequestOldFile + ' ' + certSigningRequestNewFile
+    end
+
+  end
+
+  # # Install P12 certificate
+  # import_certificate(
+  #   keychain_name: 'login',
+  #   certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'],
+  #   certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
+  # )
 
 end
 
