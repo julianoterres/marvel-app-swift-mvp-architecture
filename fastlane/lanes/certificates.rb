@@ -108,13 +108,13 @@ lane :get_certificates_and_provisioning_profile do
   )
 
   # Install the provisionig profile
-  if !generateNewCertificate {
+  if !generateNewCertificate
 
     install_provisioning_profile(
       certificateId: certificateId
     )
 
-  }
+  end
 
 end
 
