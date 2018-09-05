@@ -91,12 +91,6 @@ lane :get_certificates_and_provisioning_profile do
       sh 'git push origin ' + currentBranch
     end
 
-  else
-
-    install_provisioning_profile(
-      certificateId: certificateId
-    )
-
   end
 
   # Install cer certificate
@@ -112,6 +106,15 @@ lane :get_certificates_and_provisioning_profile do
     certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12',
     certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
   )
+
+  # Install the provisionig profile
+  if !generateNewCertificate {
+
+    install_provisioning_profile(
+      certificateId: certificateId
+    )
+
+  }
 
 end
 
