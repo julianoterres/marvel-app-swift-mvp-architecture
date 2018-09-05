@@ -40,6 +40,7 @@ lane :send_testflight do
   add_external_users
   install_pods
   execute_tests
+  jenkins_setup
   make_build
   send_app_testflight
   slack_success
