@@ -548,8 +548,6 @@
 				TargetAttributes = {
 					E36937BA20E18567009B9EFC = {
 						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = DEDQBH6J8S;
-						ProvisioningStyle = Manual;
 					};
 					E36937CE20E18568009B9EFC = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -944,11 +942,11 @@
 			baseConfigurationReference = 1302656D2EF7B88C0B0FE6CF /* Pods-Marvel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: {$TEAM_NAME} ({$TEAM_ID})";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = DEDQBH6J8S;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Marvel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -957,8 +955,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.softdesign.marveltests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c731c0b2-f5de-4bad-a26a-c9ae5a49d98f";
-				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -970,10 +968,10 @@
 			baseConfigurationReference = C55B07CB8F504207615EE235 /* Pods-Marvel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: {$TEAM_NAME} ({$TEAM_ID})";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "";
-				DEVELOPMENT_TEAM = DEDQBH6J8S;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Marvel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -982,8 +980,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.softdesign.marveltests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c731c0b2-f5de-4bad-a26a-c9ae5a49d98f";
-				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -996,7 +994,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: {$TEAM_NAME} ({$TEAM_ID})";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
 				INFOPLIST_FILE = MarvelTests/Info.plist;
@@ -1007,7 +1005,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c731c0b2-f5de-4bad-a26a-c9ae5a49d98f";
+				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1021,7 +1019,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: {$TEAM_NAME} ({$TEAM_ID})";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
 				INFOPLIST_FILE = MarvelTests/Info.plist;
@@ -1032,7 +1030,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c731c0b2-f5de-4bad-a26a-c9ae5a49d98f";
+				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1045,7 +1043,7 @@
 			baseConfigurationReference = 4D95E01129404D479079C0A6 /* Pods-MarvelUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: {$TEAM_NAME} ({$TEAM_ID})";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
 				INFOPLIST_FILE = MarvelUITests/Info.plist;
@@ -1056,7 +1054,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c731c0b2-f5de-4bad-a26a-c9ae5a49d98f";
+				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1069,7 +1067,7 @@
 			baseConfigurationReference = 10E185B87EB639D560253466 /* Pods-MarvelUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: {$TEAM_NAME} ({$TEAM_ID})";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
 				INFOPLIST_FILE = MarvelUITests/Info.plist;
@@ -1080,7 +1078,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c731c0b2-f5de-4bad-a26a-c9ae5a49d98f";
+				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

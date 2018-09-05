@@ -117,10 +117,6 @@ end
 # Run config provisioning profile
 lane :config_provisioning_profile_xcode do
 
-  backup_file(
-    path: ENV['PROJECT_PBXPROJ']
-  )
-
   disable_automatic_code_signing(
     path: ENV['PROJECT_XCODEPROJ'],
     use_automatic_signing: false
@@ -142,8 +138,17 @@ lane :config_provisioning_profile_xcode do
 
 end
 
-# Run config provisioning profile automatic
-lane :config_provisioning_profile_xcode_automatic do
+# Run config provisioning profile backup
+lane :config_provisioning_profile_backup do
+
+  backup_file(
+    path: ENV['PROJECT_PBXPROJ']
+  )
+  
+end
+
+# Run config provisioning profile restore backup
+lane :config_provisioning_profile_restore_backup do
 
   restore_file(
     path: ENV['PROJECT_PBXPROJ']

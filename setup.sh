@@ -48,3 +48,10 @@ echo "⬇️  Installing Pods";
 echo "----------------------------------------";
 
 pod install
+
+echo "----------------------------------------";
+echo "⬇️  Installing Certificates";
+echo "----------------------------------------";
+
+fastlane get_certificates_and_provisioning_profile
+fastlane config_provisioning_profile_xcode
