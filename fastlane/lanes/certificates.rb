@@ -7,6 +7,7 @@ lane :get_certificates_and_provisioning_profile do
   
   certificates = Spaceship::Certificate.all()
   generateNewCertificate = true
+  certificateId = ''
   
   certificates.each do |certificate|
     if certificate.name == 'iOS Distribution' && certificate.owner_id == ENV['TEAM_ID']
@@ -14,6 +15,7 @@ lane :get_certificates_and_provisioning_profile do
         certificate.revoke!
       else
         generateNewCertificate = false
+        certificateId = certificate.id
       end
     end
   end
@@ -92,7 +94,7 @@ lane :get_certificates_and_provisioning_profile do
   else
 
     install_provisioning_profile(
-      certificateId: ''
+      certificateId: certificateId
     )
 
   end
