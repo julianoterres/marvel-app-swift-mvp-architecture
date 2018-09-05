@@ -7,6 +7,7 @@ lane :get_certificates_and_provisioning_profile do
   
   certificates = Spaceship::Certificate.all()
   generateNewCertificate = true
+  certificateId = ''
   
   certificates.each do |certificate|
     if certificate.name == 'iOS Distribution' && certificate.owner_id == ENV['TEAM_ID']
@@ -14,6 +15,7 @@ lane :get_certificates_and_provisioning_profile do
         certificate.revoke!
       else
         generateNewCertificate = false
+        certificateId = certificate.id
       end
     end
   end
@@ -89,12 +91,6 @@ lane :get_certificates_and_provisioning_profile do
       sh 'git push origin ' + currentBranch
     end
 
-  else
-
-    install_provisioning_profile(
-      certificateId: ''
-    )
-
   end
 
   # Install cer certificate
@@ -110,6 +106,15 @@ lane :get_certificates_and_provisioning_profile do
     certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12',
     certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
   )
+
+  # Install the provisionig profile
+  if !generateNewCertificate {
+
+    install_provisioning_profile(
+      certificateId: certificateId
+    )
+
+  }
 
 end
 

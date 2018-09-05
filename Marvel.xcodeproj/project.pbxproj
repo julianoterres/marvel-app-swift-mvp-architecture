@@ -548,6 +548,8 @@
 				TargetAttributes = {
 					E36937BA20E18567009B9EFC = {
 						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = DEDQBH6J8S;
+						ProvisioningStyle = Manual;
 					};
 					E36937CE20E18568009B9EFC = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -942,11 +944,11 @@
 			baseConfigurationReference = 1302656D2EF7B88C0B0FE6CF /* Pods-Marvel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DEDQBH6J8S;
 				INFOPLIST_FILE = Marvel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -955,8 +957,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.softdesign.marveltests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -968,10 +970,10 @@
 			baseConfigurationReference = C55B07CB8F504207615EE235 /* Pods-Marvel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DEDQBH6J8S;
 				INFOPLIST_FILE = Marvel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -980,8 +982,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.softdesign.marveltests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1005,7 +1007,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
+				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1030,7 +1032,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
+				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1054,7 +1056,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
+				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1078,7 +1080,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e89c5062-4879-465c-b1df-f4eb794a2129";
+				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
