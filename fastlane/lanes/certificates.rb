@@ -57,15 +57,8 @@ lane :get_certificates_and_provisioning_profile do
       provisioningProfile.delete!
     end
 
-    # Create a new provisionig profile and download him
-    get_provisioning_profile(
-      development: ENV['CERTIFICATE_PROVISIONING_PROFILE_IS_DEVELOPMENT'],
-      app_identifier: ENV['PROJECT_IDENTIFIER'],
-      username: ENV['APPLE_ID'],
-      team_id: ENV['TEAM_ID'],
-      filename: ENV['CERTIFICATE_PROVISION_PROFILE_NAME'],
-      output_path: ENV['PATH_CERTIFICATES_PROVISION_PROFILE'],
-      cert_id: certificateId
+    install_provisioning_profile(
+      certificateId: certificateId
     )
 
     # Change name of certificates to default
@@ -96,6 +89,12 @@ lane :get_certificates_and_provisioning_profile do
       sh 'git push origin ' + currentBranch
     end
 
+  else
+
+    install_provisioning_profile(
+      certificateId: ''
+    )
+
   end
 
   # Install cer certificate
@@ -110,6 +109,22 @@ lane :get_certificates_and_provisioning_profile do
     keychain_name: 'login',
     certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12',
     certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
+  )
+
+end
+
+# Install the provisionig profile
+lane :install_provisioning_profile do |values|
+
+  # Create a new provisionig profile and download him
+  get_provisioning_profile(
+    development: ENV['CERTIFICATE_PROVISIONING_PROFILE_IS_DEVELOPMENT'],
+    app_identifier: ENV['PROJECT_IDENTIFIER'],
+    username: ENV['APPLE_ID'],
+    team_id: ENV['TEAM_ID'],
+    filename: ENV['CERTIFICATE_PROVISION_PROFILE_NAME'],
+    output_path: ENV['PATH_CERTIFICATES_PROVISION_PROFILE'],
+    cert_id: values[:certificateId]
   )
 
 end
