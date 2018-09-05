@@ -1,6 +1,7 @@
 # Run build and archive app
 lane :make_build do
 
+  config_provisioning_profile_backup()
   config_provisioning_profile_xcode()
 
   build_app(
@@ -12,6 +13,6 @@ lane :make_build do
     export_method: 'app-store'
   )
 
-  config_provisioning_profile_xcode_automatic()
+  config_provisioning_profile_restore_backup()
   
 end
