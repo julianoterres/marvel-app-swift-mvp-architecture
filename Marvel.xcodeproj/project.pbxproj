@@ -957,7 +957,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.softdesign.marveltests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE = "573a6a3f-1fae-4f7f-86cc-aae1e992685d";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -982,7 +982,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.softdesign.marveltests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE = "573a6a3f-1fae-4f7f-86cc-aae1e992685d";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1007,7 +1007,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE = "573a6a3f-1fae-4f7f-86cc-aae1e992685d";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1032,7 +1032,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE = "573a6a3f-1fae-4f7f-86cc-aae1e992685d";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1056,7 +1056,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE = "573a6a3f-1fae-4f7f-86cc-aae1e992685d";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1080,7 +1080,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cf9362e8-cc09-43cb-bf15-68dd840ac24a";
+				PROVISIONING_PROFILE = "573a6a3f-1fae-4f7f-86cc-aae1e992685d";
 				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
