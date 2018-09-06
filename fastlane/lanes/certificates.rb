@@ -1,6 +1,20 @@
 # Run certificates production
 lane :get_certificates_and_provisioning_profile do
   
+  # Check if keychain already exist
+  
+  if !File.exist?(File.expand_path(ENV['PATH_KEYCHAIN']+ENV['KEYCHAIN_FILE_NAME']+'-db'))
+  
+    # Keychain create
+    create_keychain(
+      name: ENV['KEYCHAIN_FILE_NAME'],
+      unlock: true,
+      timeout: false,
+      password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
+    )
+
+  end
+
   # Revoke the certificates before create a new
   Spaceship::Portal.login(ENV['APPLE_ID'], ENV['FASTLANE_PASSWORD'])
   Spaceship::Portal.client.team_id = ENV['TEAM_ID']
@@ -95,14 +109,14 @@ lane :get_certificates_and_provisioning_profile do
 
   # Install cer certificate
   import_certificate(
-    keychain_name: 'login',
+    keychain_name: ENV['KEYCHAIN_FILE_NAME'],
     certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.cer',
     certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
   )
 
   # Install P12 certificate
   import_certificate(
-    keychain_name: 'login',
+    keychain_name: ENV['KEYCHAIN_FILE_NAME'],
     certificate_path: ENV['PATH_CERTIFICATES_SIGNING'] + ENV['CERTIFICATE_SIGNING_FILE_DISTRIBUTION'] + '.p12',
     certificate_password: ENV["CERTIFICATE_SIGNING_FILE_PASSWORD"]
   )
