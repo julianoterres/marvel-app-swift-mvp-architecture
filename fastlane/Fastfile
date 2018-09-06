@@ -15,7 +15,7 @@ platform :ios do
   import './lanes/notifications.rb'
   import './lanes/build.rb'
   import './lanes/keychain.rb'
-  import './lanes/jenkins.rb'
+  import './lanes/keychain.rb'
   import './lanes/apple_store.rb'
   import './lanes/testflight.rb'
 

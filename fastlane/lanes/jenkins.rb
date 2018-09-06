@@ -1,9 +1,9 @@
-# Configuration jenkins
-lane :jenkins_setup do
+# Unlock keychain
+lane :keychain_unlock do
 
-  setup_jenkins(
-    keychain_path: '/Users/soft.jenkins/Library/Keychains/login.keychain',
-    keychain_password: '1q2w3e4r'
+  unlock_keychain(
+    path: File.expand_path(ENV['PATH_KEYCHAIN']+ENV['KEYCHAIN_FILE_NAME']),
+    password: ENV['CERTIFICATE_SIGNING_FILE_PASSWORD']
   )
   
 end
