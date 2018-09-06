@@ -1,9 +1,12 @@
 # Unlock keychain
 lane :keychain_unlock do
 
-  unlock_keychain(
-    path: File.expand_path(ENV['PATH_KEYCHAIN']+ENV['KEYCHAIN_FILE_NAME']),
-    password: ENV['CERTIFICATE_SIGNING_FILE_PASSWORD']
-  )
-  
+  if ENV['IS_JENKINS'] == 'yes'
+    
+    Dir.chdir ".." do
+      sh('security set-key-partition-list -S apple-tool:,apple: -s -k 1q2w3e4r '+ File.expand_path(ENV['PATH_KEYCHAIN'] + 'login.keychain-db'))
+    end
+
+  end
+
 end
