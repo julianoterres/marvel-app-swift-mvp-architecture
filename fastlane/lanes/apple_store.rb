@@ -57,6 +57,7 @@ lane :send_store do
   install_pods
   execute_tests
   generate_screenshots
+  keychain_unlock
   make_build
   send_apple_store
   slack_success
