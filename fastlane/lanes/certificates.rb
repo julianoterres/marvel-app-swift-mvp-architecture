@@ -2,7 +2,6 @@
 lane :get_certificates_and_provisioning_profile do
   
   # Check if keychain already exist
-  
   if !File.exist?(File.expand_path(ENV['PATH_KEYCHAIN']+ENV['KEYCHAIN_FILE_NAME']+'-db'))
   
     # Keychain create
