@@ -53,11 +53,11 @@ end
 # Run all steps to upload app to itunes connect production
 lane :send_store do
   
+  keychain_unlock
   get_certificates_and_provisioning_profile
   install_pods
   execute_tests
   generate_screenshots
-  keychain_unlock
   make_build
   send_apple_store
   slack_success
