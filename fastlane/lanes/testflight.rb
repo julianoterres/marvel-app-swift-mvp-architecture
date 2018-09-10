@@ -36,11 +36,11 @@ end
 # Run all steps to upload app to itunes connect testflight
 lane :send_testflight do
   
+  keychain_unlock
   get_certificates_and_provisioning_profile
   add_external_users
   install_pods
   execute_tests
-  keychain_unlock
   make_build
   send_app_testflight
   slack_success

@@ -43,7 +43,7 @@ lane :get_certificates_and_provisioning_profile do
       sh 'git checkout .'
       sh 'git checkout develop'
     end
-    
+
     # Create a new certificate and download him
     certificateId = get_certificates(
       development: ENV['CERTIFICATE_SIGNING_IS_DEVELOPMENT'],
