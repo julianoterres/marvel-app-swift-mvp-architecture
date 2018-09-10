@@ -17,6 +17,7 @@ lane :send_apple_store do
 
   upload_to_app_store(
     force: true,
+    reject_if_possible: true,
     overwrite_screenshots: true,
     username: ENV['APPLE_ID'],
     app_identifier: ENV['PROJECT_IDENTIFIER'],
