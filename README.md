@@ -31,21 +31,58 @@ This file contains all commands to install all dependencies that you need instal
 
 This project contains how tool of the automator process, the fastlane.
 
-With the follow commands listing bellow:
+### Individual Commands
 
+Bellow have the commands that you can run individuality.
+
+	create_app_store
+	get_certificates_and_provisioning_profile
+	keychain_unlock
 	install_pods
+	generate_screenshots
+	add_external_users
 	execute_tests
-	screenshots
-	create_app_itunes
-	get_certificates_signing
-	get_certificates_provisioning_profile
 	make_build
-	send_production
-	send_testfligth
+	
+### Send to testflight
+
+Below have the command that send app to testflight
+
+	send_testflight
+
+that execute in order the commands bellow:
+
+1. keychain_unlock
+2. get_certificates_and_provisioning_profile
+3. add_external_users
+4. install_pods
+5. execute_tests
+6. make_build
+7. send_app_testflight
+8. slack_success
+
+### Send to apple store
+
+Below have the command that send app to apple store (production)
+
+	send_store
+
+that execute in order the commands bellow:
+
+1. keychain_unlock
+2. get_certificates_and_provisioning_profile
+3. install_pods
+4. execute_tests
+5. generate_screenshots
+6. make_build
+7. send_apple_store
+8. slack_success
+
+
 	
 ## Crashlytics
 
-This project contains the Fabric to monitor the crashes in app.	
+This project contains the Fabric to monitor the crashes in app.
 	
 ## Continuous Integration
 
