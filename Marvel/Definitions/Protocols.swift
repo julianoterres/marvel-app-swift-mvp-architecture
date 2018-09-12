@@ -19,10 +19,6 @@ protocol CharacterDetailViewModelProtocol {
 
 protocol CharacterListViewModelProtocol {
     
-    //var service = CharacterService()
-    var offset: Int { get set }
-    var loadingActive: Bool { get set }
-    var limit: Int { get set }
     var totalCharacters: Int { get set }
     var characters: [Character] { get set }
     

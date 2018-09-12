@@ -22,6 +22,7 @@ class CharacterListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Characters"
         self.load()
     }
     
@@ -72,7 +73,7 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
         self.navigationController?.goToCharacterDetailScreen(character: self.viewModel.get(index: indexPath.row))
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if contentOffset == maximumOffset {

@@ -68,6 +68,14 @@ class CharacterDetailCellTests: XCTestCaseBase {
         XCTAssertEqual(cell?.title.text, "Comics")
     }
     
+    func testSetupTitleWithoutText() {
+        self.prepareViewController(character: CharacterMock.characterWithoutData())
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as? CharacterDetailCell
+        XCTAssertEqual(cell?.consTitleTop.constant, 0)
+        XCTAssertEqual(cell?.consSeparatorTop.constant, 0)
+        XCTAssertEqual(cell?.separator.isHidden, true)
+    }
+    
     func testSetupComics() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
         let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 3)) as? CharacterDetailCell
