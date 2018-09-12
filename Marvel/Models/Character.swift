@@ -24,6 +24,12 @@ struct Character: Decodable, Equatable {
     }
     
     static func == (lhs: Character, rhs: Character) -> Bool {
-        return true
+        return (
+            lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.description == rhs.description &&
+            lhs.thumbnail == rhs.thumbnail &&
+            lhs.comics == rhs.comics
+        )
     }
 }

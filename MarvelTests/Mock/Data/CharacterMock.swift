@@ -34,7 +34,7 @@ class CharacterMock {
         return character
     }
     
-    static func charactersWithData() -> [Marvel.Character] {
+    static func charactersWithAllData() -> [Marvel.Character] {
         var characters = [Marvel.Character]()
         for _ in 0 ..< 20 {
             characters.append(characterWithAllData())

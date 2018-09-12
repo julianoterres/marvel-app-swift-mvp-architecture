@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UrlDefinition {
+struct UrlDefinition {
     
     private static let apiBaseURl: String = PlistUtil.valueInfoToString(attribute: "API URL Base") ?? ""
     private static let apiKey: String = PlistUtil.valueInfoToString(attribute: "API Key") ?? ""
@@ -25,7 +25,7 @@ class UrlDefinition {
     }
     
     private static func url(method: String, parameters: String = "") -> String {
-        return apiBaseURl + method + "?apikey=" + apiKey + "&hash=" + apiHash + "&ts=" + apiTs + parameters
+        return self.apiBaseURl + method + "?apikey=" + self.apiKey + "&hash=" + self.apiHash + "&ts=" + self.apiTs + parameters
     }
     
 }

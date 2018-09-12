@@ -16,7 +16,7 @@ class CharacterService: CharacterServiceProtocol {
         Network.request(url: url, method: .get, parameters: nil, completion: { (response) in
             do {
                 let characterData: CharacterData = try JSONDecoder().decode(CharacterData.self, from: response)
-                guard let characters = characterData.data?.results, let totalCharacters = characterData.data?.total else {
+                guard let characters = characterData.data?.results, characters.count >= 1, let totalCharacters = characterData.data?.total else {
                     failure("No result of characters in the search")
                     return
                 }

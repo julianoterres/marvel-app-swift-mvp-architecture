@@ -92,4 +92,4 @@ This project have how CI the Bitrise. If you want see the CI config , we have a 
 	
 ## Unit Tests
 
-This app has unit tests, and to date the percentage coverage is 96%.
+This app has unit tests, and to date the percentage coverage is 93%.

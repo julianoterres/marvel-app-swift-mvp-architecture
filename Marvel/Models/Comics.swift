@@ -6,6 +6,12 @@
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
-struct Comics: Decodable {
+struct Comics: Decodable, Equatable {
+    
     var items: [Items]?
+    
+    static func == (lhs: Comics, rhs: Comics) -> Bool {
+        return lhs.items == rhs.items
+    }
+    
 }

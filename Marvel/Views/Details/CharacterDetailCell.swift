@@ -43,12 +43,13 @@ class CharacterDetailCell: UITableViewCell {
     }
     
     private func setupTitle() {
-        if !descriptionExist() {
+        if !self.descriptionExist() {
             self.consTitleTop.constant = 0
             self.consSeparatorTop.constant = 0
             self.separator.isHidden = true
+        } else {
+            self.title.text = "Comics"
         }
-        self.title.text = "Comics"
     }
     
     private func setupDescription() {
