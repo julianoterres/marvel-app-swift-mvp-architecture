@@ -305,6 +305,14 @@
 			path = Definitions;
 			sourceTree = "<group>";
 		};
+		3AFA05DF215AD5FD00C22ABB /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E36937CA20E18568009B9EFC /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
 		3AFBE003214956BA009ACA31 /* Definitions */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,18 +435,17 @@
 			children = (
 				3A616D87212B45D20014A706 /* App */,
 				E3F2B17A20E28628004A3E59 /* Assets */,
-				E36937C520E18568009B9EFC /* Assets.xcassets */,
 				E3F2B1C720E3CB56004A3E59 /* Definitions */,
 				E3F2B17720E28186004A3E59 /* Extensions */,
-				E36937CA20E18568009B9EFC /* Info.plist */,
 				E3F2B1CC20E3CBF8004A3E59 /* Libraries */,
 				E3F2B1D520E3F7E1004A3E59 /* Models */,
 				E3F2B1C420E3BF6A004A3E59 /* Services */,
 				E340B91620E1954B0061AFD6 /* Storyboards */,
+				3AFA05DF215AD5FD00C22ABB /* SupportFiles */,
 				E3F2B19020E2896B004A3E59 /* UIElements */,
 				E3F2B1CF20E3CC90004A3E59 /* Utils */,
-				E340B91320E195080061AFD6 /* Views */,
 				E3F2B1D220E3D03D004A3E59 /* ViewModels */,
+				E340B91320E195080061AFD6 /* Views */,
 			);
 			path = Marvel;
 			sourceTree = "<group>";
@@ -483,6 +490,7 @@
 		E3F2B17A20E28628004A3E59 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E36937C520E18568009B9EFC /* Assets.xcassets */,
 				E3F2B17B20E28634004A3E59 /* Fonts */,
 			);
 			path = Assets;
@@ -1077,7 +1085,7 @@
 				CURRENT_PROJECT_VERSION = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
-				INFOPLIST_FILE = Marvel/Info.plist;
+				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1102,7 +1110,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "";
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
-				INFOPLIST_FILE = Marvel/Info.plist;
+				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1127,7 +1135,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
-				INFOPLIST_FILE = MarvelTests/Info.plist;
+				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1152,7 +1160,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
-				INFOPLIST_FILE = MarvelTests/Info.plist;
+				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1176,7 +1184,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
-				INFOPLIST_FILE = MarvelUITests/Info.plist;
+				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1200,7 +1208,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = DEDQBH6J8S;
-				INFOPLIST_FILE = MarvelUITests/Info.plist;
+				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
