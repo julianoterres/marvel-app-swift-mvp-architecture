@@ -10,22 +10,16 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol CharacterDetailViewModelProtocol {
-    var character: Character { get set }
-    func getTableViewIdentifier(section: Int) -> String
-    func getTableViewHeightForRow(section: Int) -> CGFloat
-    func getTableViewNumberRows(section: Int) -> Int
+protocol CharacterListViewControllerProtocol {
+    func reloadCharacters()
+    func showError(message: String)
 }
 
-protocol CharacterListViewModelProtocol {
-    
-    var totalCharacters: Int { get set }
-    var characters: [Character] { get set }
-    
-    func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void)
-    func get(index: Int) -> Character
-    func count() -> Int
+protocol CharacterListPresenterProtocol {
+    func load()
     func checkAlreadyLoadedAll() -> Bool
+    func getCharacters(index: Int) -> Character
+    func countCharacters() -> Int
 }
 
 protocol CharacterServiceProtocol {

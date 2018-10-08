@@ -20,28 +20,28 @@ class CharacterDetailViewModelMock: CharacterDetailViewModelProtocol {
     
     func getTableViewIdentifier(section: Int) -> String {
         switch section {
-        case EnumCharacterDetailCellSection.banner.rawValue:
-            return EnumCharacterDetailCellReusubleIdentifier.image.rawValue
-        case EnumCharacterDetailCellSection.title.rawValue:
-            return EnumCharacterDetailCellReusubleIdentifier.title.rawValue
+        case CharacterDetailCellSection.banner.rawValue:
+            return CharacterDetailCellReusubleIdentifier.image.rawValue
+        case CharacterDetailCellSection.title.rawValue:
+            return CharacterDetailCellReusubleIdentifier.title.rawValue
         default:
-            return EnumCharacterDetailCellReusubleIdentifier.text.rawValue
+            return CharacterDetailCellReusubleIdentifier.text.rawValue
         }
     }
     
     func getTableViewHeightForRow(section: Int) -> CGFloat {
         switch section {
-        case EnumCharacterDetailCellSection.banner.rawValue:
+        case CharacterDetailCellSection.banner.rawValue:
             return UIScreen.main.bounds.width * 0.6
-        case EnumCharacterDetailCellSection.description.rawValue:
+        case CharacterDetailCellSection.description.rawValue:
             guard let desc = character.description, !desc.isEmpty else {
                 return 0
             }
-        case EnumCharacterDetailCellSection.title.rawValue:
+        case CharacterDetailCellSection.title.rawValue:
             guard let comics = character.comics, let itens = comics.items, !itens.isEmpty else {
                 return 0
             }
-        case EnumCharacterDetailCellSection.itens.rawValue:
+        case CharacterDetailCellSection.itens.rawValue:
             guard let comics = character.comics, let itens = comics.items, !itens.isEmpty else {
                 return 0
             }
@@ -53,7 +53,7 @@ class CharacterDetailViewModelMock: CharacterDetailViewModelProtocol {
     
     func getTableViewNumberRows(section: Int) -> Int {
         switch section {
-        case EnumCharacterDetailCellSection.itens.rawValue:
+        case CharacterDetailCellSection.itens.rawValue:
             guard let itens = self.character.comics?.items else {
                 return 0
             }

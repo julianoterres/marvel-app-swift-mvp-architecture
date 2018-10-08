@@ -11,7 +11,7 @@ import XCTest
 
 class CharacterDetailViewModelTests: XCTestCaseBase {
     
-    private var viewModel: CharacterDetailViewModel!
+    private var viewModel: CharacterDetailPresenter!
     
     override func tearDown() {
         super.tearDown()
@@ -20,18 +20,18 @@ class CharacterDetailViewModelTests: XCTestCaseBase {
     
     func prepareViewController(returnType: EnumReturnType) {
         if returnType == .success {
-            self.viewModel = CharacterDetailViewModel(character: CharacterMock.characterWithAllData())
+            self.viewModel = CharacterDetailPresenter(character: CharacterMock.characterWithAllData())
         } else {
-            self.viewModel = CharacterDetailViewModel(character: CharacterMock.characterWithoutData())
+            self.viewModel = CharacterDetailPresenter(character: CharacterMock.characterWithoutData())
         }
     }
     
     func testGetTableViewIdentifier() {
         self.prepareViewController(returnType: .success)
-        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 0), EnumCharacterDetailCellReusubleIdentifier.image.rawValue)
-        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 1), EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
-        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 2), EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
-        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 3), EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 0), CharacterDetailCellReusubleIdentifier.image.rawValue)
+        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 1), CharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 2), CharacterDetailCellReusubleIdentifier.title.rawValue)
+        XCTAssertEqual(self.viewModel.getTableViewIdentifier(section: 3), CharacterDetailCellReusubleIdentifier.text.rawValue)
     }
     
     func testGetTableViewHeightForRowUserWhitData() {

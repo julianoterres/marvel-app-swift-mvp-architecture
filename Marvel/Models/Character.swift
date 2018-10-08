@@ -15,7 +15,7 @@ struct Character: Decodable, Equatable {
     var thumbnail: Thumbnail?
     var comics: Comics?
     
-    func getImage(size: EnumImagesSizes) -> URL? {
+    func getImage(size: ImagesSizes) -> URL? {
         guard let thumbnail = self.thumbnail, let path = thumbnail.path, let type = thumbnail.extension,
             let url = URL(string: path+"/" + size.rawValue + "."+type) else {
                 return nil

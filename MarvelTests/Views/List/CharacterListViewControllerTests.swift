@@ -68,12 +68,12 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testNumberOfRows() {
         self.prepareViewController(returnType: .success)
-        XCTAssertEqual(self.tableView.numberOfRows(inSection: EnumCharacterListCellSection.character.rawValue), self.viewController.viewModel.characters.count)
+        XCTAssertEqual(self.tableView.numberOfRows(inSection: CharacterListCellSection.character.rawValue), self.viewController.viewModel.characters.count)
     }
     
     func testHeightCell() {
         self.prepareViewController(returnType: .success)
-        guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterListCellSection.character.rawValue)) as? CharacterListCell else {
+        guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: CharacterListCellSection.character.rawValue)) as? CharacterListCell else {
             XCTAssert(false, "Failed to load of cell")
             return
         }
@@ -82,16 +82,16 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func testCellReuseIdentifier() {
         self.prepareViewController(returnType: .success)
-        guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterListCellSection.character.rawValue)) as? CharacterListCell else {
+        guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: CharacterListCellSection.character.rawValue)) as? CharacterListCell else {
                 XCTAssert(false, "Failed to load of cell")
                 return
         }
-        XCTAssertEqual(cell.reuseIdentifier, EnumCharacterListCellReusubleIdentifier.character.rawValue)
+        XCTAssertEqual(cell.reuseIdentifier, CharacterListCellReusubleIdentifier.character.rawValue)
     }
     
     func testDidSelectRowAt() {
         self.prepareViewController(returnType: .success)
-        self.viewController.tableView.delegate?.tableView!(self.viewController.tableView, didSelectRowAt: IndexPath(row: 0, section: EnumCharacterListCellSection.character.rawValue))
+        self.viewController.tableView.delegate?.tableView!(self.viewController.tableView, didSelectRowAt: IndexPath(row: 0, section: CharacterListCellSection.character.rawValue))
         self.wait(seconds: 7) { [weak self] in
             XCTAssertTrue(self?.viewController.navigationController?.topViewController is CharacterDetailViewController)
         }
