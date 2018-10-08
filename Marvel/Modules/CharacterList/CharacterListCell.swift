@@ -17,8 +17,8 @@ class CharacterListCell: UITableViewCell {
     static let height = CGFloat(57)
     
     func setup(character: Character) {
-        guard let url = character.getImage(size: .portraitMedium) else { return }
         self.name.text = character.name
+        guard let url = character.getImage(size: .portraitMedium) else { return }
         self.avatar.kf.setImage(with: url, placeholder: UIImage.placeholderAvatar())
     }
 

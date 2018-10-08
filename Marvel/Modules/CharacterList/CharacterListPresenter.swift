@@ -34,20 +34,13 @@ class CharacterListPresenter: CharacterListPresenterProtocol {
                 self?.characters.append(contentsOf: characters)
                 self?.loadingActive = false
                 self?.offset += self?.limit ?? 0
-                self?.view.reloadCharacters()
+                self?.view.reloadCharacters(characters: self?.characters ?? [],
+                                            hideLoader: self?.checkAlreadyLoadedAll() ?? false)
             }, failure: { [weak self] error in
                 self?.loadingActive = false
                 self?.view.showError(message: error)
             })
         }
-    }
-    
-    func getCharacters(index: Int) -> Character {
-        return self.characters[index]
-    }
-    
-    func countCharacters() -> Int {
-        return self.characters.count
     }
     
     func checkAlreadyLoadedAll() -> Bool {

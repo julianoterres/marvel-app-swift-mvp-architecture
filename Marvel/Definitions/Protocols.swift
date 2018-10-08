@@ -11,15 +11,13 @@ import UIKit
 import Alamofire
 
 protocol CharacterListViewControllerProtocol {
-    func reloadCharacters()
+    func reloadCharacters(characters: [Character], hideLoader: Bool)
     func showError(message: String)
 }
 
 protocol CharacterListPresenterProtocol {
     func load()
     func checkAlreadyLoadedAll() -> Bool
-    func getCharacters(index: Int) -> Character
-    func countCharacters() -> Int
 }
 
 protocol CharacterServiceProtocol {

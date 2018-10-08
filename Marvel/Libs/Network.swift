@@ -1,8 +1,8 @@
 //
-//  Network.swift
+//  MainService.swift
 //  Marvel
 //
-//  Created by Juliano Terres on 27/06/18.
+//  Created by Juliano Terres on 08/10/18.
 //  Copyright © 2018 Juliano Terres. All rights reserved.
 //
 
@@ -28,7 +28,7 @@ class Network: NetworkProtocol {
         guard let request = response.request else { return }
         guard let url = request.url else { return }
         guard let httpMethod = request.httpMethod else { return }
-
+        
         print("->REQUEST(\(httpMethod))\n\(url)\n")
         
         if let requestHeaders = request.allHTTPHeaderFields, !requestHeaders.isEmpty {
@@ -53,7 +53,6 @@ class Network: NetworkProtocol {
         if let values = response.result.value {
             print(values)
         }
-        
     }
     
 }

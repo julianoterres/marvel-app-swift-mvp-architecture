@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		300957075E565CD3AA19C97B /* Pods_MarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EACFD1AFA8E09E4BF2D1C69 /* Pods_MarvelUITests.framework */; };
+		3A2DB871216BB8E200D5A17E /* UrlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB870216BB8E200D5A17E /* UrlExtension.swift */; };
+		3A2DB873216BD4F400D5A17E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB872216BD4F400D5A17E /* Network.swift */; };
 		3A710927211B28DA00F27724 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A710926211B28DA00F27724 /* Protocols.swift */; };
 		3A710929211B6B0C00F27724 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A710928211B6B0C00F27724 /* main.swift */; };
 		3A71092D211B709000F27724 /* CharacterDetailViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71092C211B709000F27724 /* CharacterDetailViewModelMock.swift */; };
@@ -35,12 +37,10 @@
 		E333DDE020E6A9B70031E6AA /* CharacterDetailComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19C20E2A25B004A3E59 /* CharacterDetailComicCell.swift */; };
 		E333DDE120E6A9BA0031E6AA /* CharacterListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19420E28AB8004A3E59 /* CharacterListCell.swift */; };
 		E333DDE220E6A9BF0031E6AA /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C820E3CB73004A3E59 /* EnumDefinition.swift */; };
-		E333DDE320E6A9C20031E6AA /* UrlDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1CD20E3CC57004A3E59 /* UrlDefinition.swift */; };
 		E333DDE420E6A9C80031E6AA /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B17820E281A5004A3E59 /* UIColorExtension.swift */; };
 		E333DDE520E6A9CB0031E6AA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E316738B20E523F100442A55 /* UIImageExtension.swift */; };
 		E333DDE620E6A9CE0031E6AA /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B19820E2987E004A3E59 /* UINavigationControllerExtension.swift */; };
 		E333DDE720E6A9D00031E6AA /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D807D920E422D100CC9040 /* UIViewControllerExtension.swift */; };
-		E333DDE820E6A9E50031E6AA /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1C520E3CB2B004A3E59 /* Network.swift */; };
 		E333DDE920E6A9EE0031E6AA /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D620E3F813004A3E59 /* Character.swift */; };
 		E333DDEA20E6A9F60031E6AA /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1D820E3F87D004A3E59 /* Comics.swift */; };
 		E333DDEC20E6AA030031E6AA /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F2B1DC20E3F8E3004A3E59 /* Items.swift */; };
@@ -103,6 +103,8 @@
 		04127CA8AC64FCFDE4375E36 /* Pods_MarvelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E185B87EB639D560253466 /* Pods-MarvelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelUITests/Pods-MarvelUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1302656D2EF7B88C0B0FE6CF /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
+		3A2DB870216BB8E200D5A17E /* UrlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlExtension.swift; sourceTree = "<group>"; };
+		3A2DB872216BD4F400D5A17E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3A710926211B28DA00F27724 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		3A710928211B6B0C00F27724 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3A71092C211B709000F27724 /* CharacterDetailViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelMock.swift; sourceTree = "<group>"; };
@@ -175,10 +177,8 @@
 		E3F2B1AE20E2B4F2004A3E59 /* BarlowCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowCondensed-Light.ttf"; sourceTree = "<group>"; };
 		E3F2B1AF20E2B4F3004A3E59 /* BarlowCondensed-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowCondensed-ThinItalic.ttf"; sourceTree = "<group>"; };
 		E3F2B1C220E2BD3B004A3E59 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		E3F2B1C520E3CB2B004A3E59 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E3F2B1C820E3CB73004A3E59 /* EnumDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefinition.swift; sourceTree = "<group>"; };
 		E3F2B1CA20E3CBD4004A3E59 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
-		E3F2B1CD20E3CC57004A3E59 /* UrlDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlDefinition.swift; sourceTree = "<group>"; };
 		E3F2B1D020E3CC9B004A3E59 /* PlistUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistUtil.swift; sourceTree = "<group>"; };
 		E3F2B1D320E3D0B6004A3E59 /* CharacterListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenter.swift; sourceTree = "<group>"; };
 		E3F2B1D620E3F813004A3E59 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -267,6 +267,14 @@
 				3A710934211BA0D500F27724 /* CharacterDetailCellTests.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		3A87343F216BDE4200F75930 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				3A2DB872216BD4F400D5A17E /* Network.swift */,
+			);
+			path = Libs;
 			sourceTree = "<group>";
 		};
 		3AC3A1CE2169393C00D2120A /* Modules */ = {
@@ -448,7 +456,7 @@
 				E3F2B19020E2896B004A3E59 /* Components */,
 				E3F2B1C720E3CB56004A3E59 /* Definitions */,
 				E3F2B17720E28186004A3E59 /* Extensions */,
-				E3F2B1CC20E3CBF8004A3E59 /* Libraries */,
+				3A87343F216BDE4200F75930 /* Libs */,
 				E3F2B1D520E3F7E1004A3E59 /* Models */,
 				3AC3A1CE2169393C00D2120A /* Modules */,
 				E3F2B17A20E28628004A3E59 /* Resources */,
@@ -493,6 +501,7 @@
 				E316738B20E523F100442A55 /* UIImageExtension.swift */,
 				E3F2B19820E2987E004A3E59 /* UINavigationControllerExtension.swift */,
 				E3D807D920E422D100CC9040 /* UIViewControllerExtension.swift */,
+				3A2DB870216BB8E200D5A17E /* UrlExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,18 +560,9 @@
 			isa = PBXGroup;
 			children = (
 				E3F2B1C820E3CB73004A3E59 /* EnumDefinition.swift */,
-				E3F2B1CD20E3CC57004A3E59 /* UrlDefinition.swift */,
 				3A710926211B28DA00F27724 /* Protocols.swift */,
 			);
 			path = Definitions;
-			sourceTree = "<group>";
-		};
-		E3F2B1CC20E3CBF8004A3E59 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				E3F2B1C520E3CB2B004A3E59 /* Network.swift */,
-			);
-			path = Libraries;
 			sourceTree = "<group>";
 		};
 		E3F2B1CF20E3CC90004A3E59 /* Utils */ = {
@@ -854,9 +854,9 @@
 			files = (
 				E333DDF820E6AA350031E6AA /* CharacterListPresenter.swift in Sources */,
 				E333DDEF20E6AA0C0031E6AA /* Thumbnail.swift in Sources */,
-				E333DDE820E6A9E50031E6AA /* Network.swift in Sources */,
+				3A2DB871216BB8E200D5A17E /* UrlExtension.swift in Sources */,
 				E333DDF620E6AA2E0031E6AA /* CharacterListViewController.swift in Sources */,
-				E333DDE320E6A9C20031E6AA /* UrlDefinition.swift in Sources */,
+				3A2DB873216BD4F400D5A17E /* Network.swift in Sources */,
 				3A710927211B28DA00F27724 /* Protocols.swift in Sources */,
 				E333DDE920E6A9EE0031E6AA /* Character.swift in Sources */,
 				E333DDF720E6AA330031E6AA /* CharacterDetailPresenter.swift in Sources */,
