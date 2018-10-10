@@ -14,7 +14,7 @@ class CharacterDetailCellTests: XCTestCaseBase {
     
     private var window: UIWindow!
     private var viewController: CharacterDetailViewController!
-    private var viewModel: CharacterDetailViewModelProtocol!
+    private var viewModel: CharacterDetailPresenterProtocol!
     private var tableView: UITableView!
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     

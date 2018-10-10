@@ -38,7 +38,7 @@ class CharacterListViewControllerTests: XCTestCaseBase {
     
     func prepareViewController(returnType: EnumReturnType) {
         self.viewModel = CharacterListViewModelMock(returnType: returnType)
-        self.viewController.viewModel = self.viewModel
+        self.viewController.presenter = self.viewModel
         self.viewController.loadView()
         self.viewController.viewDidLoad()
         self.viewController.tableView.reloadData()

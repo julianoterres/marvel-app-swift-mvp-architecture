@@ -17,14 +17,14 @@ class CharacterListViewController: BaseViewController {
     @IBOutlet weak var tableViewFooter: UIView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
-    var viewModel: CharacterListPresenterProtocol!
+    var presenter: CharacterListPresenterProtocol!
     private var characters = [Character]()
     private let footerHeigth = CGFloat(44)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Characters"
-        self.viewModel.load()
+        self.presenter.load()
     }
     
 }
@@ -73,7 +73,7 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y == (scrollView.contentSize.height - scrollView.frame.size.height) {
-            self.viewModel.load()
+            self.presenter.load()
         }
     }
     

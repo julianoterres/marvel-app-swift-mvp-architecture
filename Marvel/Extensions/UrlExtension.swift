@@ -15,6 +15,10 @@ extension URL {
         return URL.init(string: self.url(method: "characters", parameters: parameters))!
     }
     
+    static func comics(characterId: String) -> URL {
+        return URL.init(string: self.url(method: "characters/" + characterId + "/comics"))!
+    }
+    
     static func testError() -> URL {
         return URL.init(string: self.url(method: "testeError"))!
     }

@@ -20,6 +20,15 @@ protocol CharacterListPresenterProtocol {
     func checkAlreadyLoadedAll() -> Bool
 }
 
+protocol CharacterDetailPresenterProtocol {
+    func loadComics()
+}
+
+protocol CharacterDetailViewControllerProtocol {
+    func showDetails(character: Character?)
+    func showError(message: String)
+}
+
 protocol CharacterServiceProtocol {
     func getAllWithPagination(
         offset: String,
@@ -27,8 +36,19 @@ protocol CharacterServiceProtocol {
         success: @escaping(_ characters: [Character], _ totalCharacters: Int) -> Void,
         failure: @escaping(_ message: String) -> Void
     )
+    func getComics(
+        characterId: String,
+        success: @escaping(_ characters: [Comic]) -> Void,
+        failure: @escaping(_ message: String) -> Void
+    )
 }
 
 protocol NetworkProtocol {
-    static func request(url: URL, method: HTTPMethod, parameters: Parameters?, completion: @escaping (Data) -> Void, failure: @escaping(_ error: String) -> Void)
+    static func request(
+        url: URL,
+        method: HTTPMethod,
+        parameters: Parameters?,
+        completion: @escaping (Data) -> Void,
+        failure: @escaping(_ error: String) -> Void
+    )
 }

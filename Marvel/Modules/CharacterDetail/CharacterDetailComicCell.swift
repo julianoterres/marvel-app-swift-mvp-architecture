@@ -16,8 +16,8 @@ class CharacterDetailComicCell: UITableViewCell {
     static let heigthHeader = CGFloat(30)
     static let height = CGFloat(30)
     
-    func setup(comic: Items?) {
-        self.label.text = comic?.name
+    func setup(comic: Comic?) {
+        self.label.text = comic?.title
     }
     
 }

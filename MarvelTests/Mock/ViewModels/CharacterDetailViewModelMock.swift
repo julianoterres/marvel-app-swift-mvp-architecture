@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 @testable import Marvel
 
-class CharacterDetailViewModelMock: CharacterDetailViewModelProtocol {
+class CharacterDetailViewModelMock: CharacterDetailPresenterProtocol {
     
     var character: Marvel.Character
     

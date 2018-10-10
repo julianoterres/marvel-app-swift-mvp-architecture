@@ -28,4 +28,23 @@ class CharacterService: CharacterServiceProtocol {
         })
     }
     
+    func getComics(characterId: String, success: @escaping(_ characters: [Comic]) -> Void, failure: @escaping(_ message: String) -> Void) {
+        
+        Network.request(url: URL.comics(characterId: characterId), method: .get, parameters: nil, completion: { (response) in
+            do {
+                let comicsData: ComicData = try JSONDecoder().decode(ComicData.self, from: response)
+                guard let comics = comicsData.data?.results, comics.count >= 1 else {
+                    failure("No result of characters in the search")
+                    return
+                }
+                success(comics)
+            } catch {
+                failure("Failed to get API characters")
+            }
+        }, failure: { error in
+            failure(error)
+        })
+        
+    }
+    
 }
