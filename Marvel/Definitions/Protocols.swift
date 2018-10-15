@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol CharacterListViewControllerProtocol {
+protocol CharacterListViewControllerProtocol: NSObjectProtocol {
     func reloadCharacters(characters: [Character], hideLoader: Bool)
     func showError(message: String)
 }
@@ -24,7 +24,7 @@ protocol CharacterDetailPresenterProtocol {
     func loadComics()
 }
 
-protocol CharacterDetailViewControllerProtocol {
+protocol CharacterDetailViewControllerProtocol: NSObjectProtocol {
     func showDetails(character: Character?)
     func showError(message: String)
 }

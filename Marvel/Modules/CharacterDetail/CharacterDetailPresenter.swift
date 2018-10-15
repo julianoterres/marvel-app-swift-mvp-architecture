@@ -11,8 +11,8 @@ import UIKit
 
 class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     
+    weak private var view: CharacterDetailViewControllerProtocol?
     private var character: Character
-    private let view: CharacterDetailViewControllerProtocol
     private let service: CharacterServiceProtocol
     
     init(view: CharacterDetailViewControllerProtocol, service: CharacterServiceProtocol, character: Character) {
@@ -24,9 +24,9 @@ class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     func loadComics() {
         self.service.getComics(characterId: String(self.character.id!), success: { [weak self] comics in
             self?.character.listComics = comics
-            self?.view.showDetails(character: self?.character)
+            self?.view?.showDetails(character: self?.character)
         }, failure: { [weak self] error in
-            self?.view.showError(message: error)
+            self?.view?.showError(message: error)
         })
     }
     

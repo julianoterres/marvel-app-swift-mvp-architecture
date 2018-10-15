@@ -11,7 +11,7 @@ import Foundation
 
 class CharacterListPresenter: CharacterListPresenterProtocol {
     
-    private let view: CharacterListViewControllerProtocol
+    weak private var view: CharacterListViewControllerProtocol?
     private let service: CharacterServiceProtocol
     private var offset = 0
     private var loadingActive = false
@@ -34,11 +34,11 @@ class CharacterListPresenter: CharacterListPresenterProtocol {
                 self?.characters.append(contentsOf: characters)
                 self?.loadingActive = false
                 self?.offset += self?.limit ?? 0
-                self?.view.reloadCharacters(characters: self?.characters ?? [],
+                self?.view?.reloadCharacters(characters: self?.characters ?? [],
                                             hideLoader: self?.checkAlreadyLoadedAll() ?? false)
             }, failure: { [weak self] error in
                 self?.loadingActive = false
-                self?.view.showError(message: error)
+                self?.view?.showError(message: error)
             })
         }
     }
