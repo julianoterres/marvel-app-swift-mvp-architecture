@@ -29,7 +29,6 @@ class CharacterService: CharacterServiceProtocol {
     }
     
     func getComics(characterId: String, success: @escaping(_ characters: [Comic]) -> Void, failure: @escaping(_ message: String) -> Void) {
-        
         Network.request(url: URL.comics(characterId: characterId), method: .get, parameters: nil, completion: { (response) in
             do {
                 let comicsData: ComicData = try JSONDecoder().decode(ComicData.self, from: response)
@@ -44,7 +43,6 @@ class CharacterService: CharacterServiceProtocol {
         }, failure: { error in
             failure(error)
         })
-        
     }
     
 }

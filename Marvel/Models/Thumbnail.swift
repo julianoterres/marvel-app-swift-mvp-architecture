@@ -7,7 +7,6 @@
 //
 
 struct Thumbnail: Decodable, Equatable {
-    
     var path: String?
     var `extension`: String?
     
@@ -17,5 +16,4 @@ struct Thumbnail: Decodable, Equatable {
             lhs.extension == rhs.extension
         )
     }
-    
 }

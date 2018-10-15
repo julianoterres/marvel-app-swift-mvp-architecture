@@ -22,14 +22,12 @@ class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     }
     
     func loadComics() {
-       
         self.service.getComics(characterId: String(self.character.id!), success: { [weak self] comics in
             self?.character.listComics = comics
             self?.view.showDetails(character: self?.character)
         }, failure: { [weak self] error in
             self?.view.showError(message: error)
         })
-        
     }
     
 }

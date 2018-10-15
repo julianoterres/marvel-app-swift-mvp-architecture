@@ -12,12 +12,15 @@ import Kingfisher
 class CharacterDetailComicCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var banner: UIImageView!
     
     static let heigthHeader = CGFloat(30)
-    static let height = CGFloat(30)
+    static let height = CGFloat(90)
     
     func setup(comic: Comic?) {
         self.label.text = comic?.title
+        guard let url = comic?.getImage(size: .portraitMedium) else { return }
+        self.banner.kf.setImage(with: url, placeholder: UIImage.placeholderBanner())
     }
     
 }

@@ -15,6 +15,7 @@ class CharacterDetailViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var notFoundData: UILabel!
     
     @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     @IBOutlet weak var textBottom: NSLayoutConstraint!
@@ -38,7 +39,7 @@ extension CharacterDetailViewController: CharacterDetailViewControllerProtocol {
     
     func showDetails(character: Character?) {
         self.character = character
-        
+
         self.banner.kf.setImage(with: self.character.getImage(size: .landscapeIncredible), placeholder: UIImage.placeholderBanner())
         self.bannerHeight.constant = UIScreen.main.bounds.width * 0.5
         
@@ -48,14 +49,17 @@ extension CharacterDetailViewController: CharacterDetailViewControllerProtocol {
         
         let tableHeight = (totalComics >= 1) ? ((CGFloat(totalComics) * CharacterDetailComicCell.height) + CharacterDetailComicCell.heigthHeader) : 0
         self.tableHeight.constant = tableHeight
-        
+
         self.tableView.reloadData()
         self.loader.stopAnimating()
         self.scrollView.isHidden = false
     }
     
     func showError(message: String) {
-        self.showAlert(title: "Sorry", message: message, buttonText: "Try again")
+        self.loader.stopAnimating()
+        self.notFoundData.text = message
+        self.notFoundData.isHidden = false
+        self.scrollView.isHidden = true
     }
     
 }
