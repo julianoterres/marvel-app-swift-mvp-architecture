@@ -8,14 +8,26 @@
 
 import Foundation
 
+struct CharacterResponse: Decodable {
+    var offset: Int?
+    var limit: Int?
+    var total: Int?
+    var count: Int?
+    var results: [Character]?
+}
+
+struct CharacterData: Decodable {
+    var data: CharacterResponse?
+}
+
 struct Character: Decodable, Equatable {
     var id: Int?
     var name: String?
     var description: String?
     var thumbnail: Thumbnail?
-    var comics: Comics?
+    var listComics: [Comic]?
     
-    func getImage(size: EnumImagesSizes) -> URL? {
+    func getImage(size: ImagesSizes) -> URL? {
         guard let thumbnail = self.thumbnail, let path = thumbnail.path, let type = thumbnail.extension,
             let url = URL(string: path+"/" + size.rawValue + "."+type) else {
                 return nil
@@ -29,7 +41,7 @@ struct Character: Decodable, Equatable {
             lhs.name == rhs.name &&
             lhs.description == rhs.description &&
             lhs.thumbnail == rhs.thumbnail &&
-            lhs.comics == rhs.comics
+            lhs.listComics == rhs.listComics
         )
     }
 }

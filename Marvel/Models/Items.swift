@@ -7,11 +7,9 @@
 //
 
 struct Items: Decodable, Equatable {
-    
     var name: String?
     
     static func == (lhs: Items, rhs: Items) -> Bool {
         return lhs.name == rhs.name
     }
-    
 }

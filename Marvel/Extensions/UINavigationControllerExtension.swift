@@ -13,7 +13,8 @@ extension UINavigationController {
     func goToCharacterDetailScreen(character: Character) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = storyboard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController {
-            controller.viewModel = CharacterDetailViewModel(character: character)
+            controller.presenter = CharacterDetailPresenter(view: controller, service: CharacterService(), character: character)
+            controller.character = character
             self.pushViewController(controller, animated: true)
         }
     }

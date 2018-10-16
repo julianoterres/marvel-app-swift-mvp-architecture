@@ -17,33 +17,33 @@ class CharacterListViewController: BaseViewController {
     @IBOutlet weak var tableViewFooter: UIView!
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
-    var viewModel: CharacterListViewModelProtocol!
+    var presenter: CharacterListPresenterProtocol!
+    private var characters = [Character]()
     private let footerHeigth = CGFloat(44)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Characters"
-        self.load()
+        self.presenter.load()
     }
     
-    func load() {
-        self.viewModel.load(success: { [weak self] in
-            self?.reloadTable()
-        }, failure: { [weak self] error in
-            self?.loaderMain.isHidden = true
-            self?.showAlert(title: "Sorry", message: error, buttonText: "Try again")
-        })
-    }
+}
+
+// MARK: Methods of CharacterListViewControllerProtocol
+
+extension CharacterListViewController: CharacterListViewControllerProtocol {
     
-    func reloadTable() {
-        self.tableViewFooter.frame.size.height = footerHeight()
+    func reloadCharacters(characters: [Character], hideLoader: Bool) {
+        self.characters = characters
+        self.tableViewFooter.frame.size.height = (hideLoader) ? 0 : self.footerHeigth
         self.tableView.reloadData()
         self.tableView.isHidden = false
         self.loaderMain.isHidden = true
     }
     
-    func footerHeight() -> CGFloat {
-        return (viewModel.checkAlreadyLoadedAll()) ? 0 : footerHeigth
+    func showError(message: String) {
+        self.loaderMain.isHidden = true
+        self.showAlert(title: "Sorry", message: message, buttonText: "Try again")
     }
     
 }
@@ -53,7 +53,7 @@ class CharacterListViewController: BaseViewController {
 extension CharacterListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.count()
+        return self.characters.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -61,23 +61,19 @@ extension CharacterListViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: EnumCharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as? CharacterListCell else {
-            return UITableViewCell()
-        }
-        cell.character = self.viewModel.get(index: indexPath.row)
-        cell.setup()
+        // swiftlint:disable force_cast
+        let cell: CharacterListCell = tableView.dequeueReusableCell(withIdentifier: CharacterListCellReusubleIdentifier.character.rawValue, for: indexPath) as! CharacterListCell
+        cell.setup(character: self.characters[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.goToCharacterDetailScreen(character: self.viewModel.get(index: indexPath.row))
+        self.navigationController?.goToCharacterDetailScreen(character: self.characters[indexPath.row])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let contentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        if contentOffset == maximumOffset {
-            self.load()
+        if scrollView.contentOffset.y == (scrollView.contentSize.height - scrollView.frame.size.height) {
+            self.presenter.load()
         }
     }
     

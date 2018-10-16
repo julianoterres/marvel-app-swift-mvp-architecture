@@ -14,7 +14,7 @@ class CharacterDetailCellTests: XCTestCaseBase {
     
     private var window: UIWindow!
     private var viewController: CharacterDetailViewController!
-    private var viewModel: CharacterDetailViewModelProtocol!
+    private var viewModel: CharacterDetailPresenterProtocol!
     private var tableView: UITableView!
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
@@ -46,31 +46,31 @@ class CharacterDetailCellTests: XCTestCaseBase {
     
     func testSetupBanner() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
-        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? CharacterDetailCell
-        XCTAssertEqual(cell?.banner.kf.webURL, self.viewModel.character.getImage(size: EnumImagesSizes.landscapeIncredible))
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as? CharacterDetailComicCell
+        XCTAssertEqual(cell?.banner.kf.webURL, self.viewModel.character.getImage(size: ImagesSizes.landscapeIncredible))
     }
     
     func testSetupDescription() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
-        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as? CharacterDetailCell
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as? CharacterDetailComicCell
         XCTAssertEqual(cell?.item.text, self.viewModel.character.description)
     }
     
     func testSetupWithoutDescription() {
         self.prepareViewController(character: CharacterMock.characterWithoutData())
-        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as? CharacterDetailCell
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as? CharacterDetailComicCell
         XCTAssertEqual(cell?.item.text, self.viewModel.character.description)
     }
     
     func testSetupTitle() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
-        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as? CharacterDetailCell
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as? CharacterDetailComicCell
         XCTAssertEqual(cell?.title.text, "Comics")
     }
     
     func testSetupTitleWithoutText() {
         self.prepareViewController(character: CharacterMock.characterWithoutData())
-        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as? CharacterDetailCell
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as? CharacterDetailComicCell
         XCTAssertEqual(cell?.consTitleTop.constant, 0)
         XCTAssertEqual(cell?.consSeparatorTop.constant, 0)
         XCTAssertEqual(cell?.separator.isHidden, true)
@@ -78,7 +78,7 @@ class CharacterDetailCellTests: XCTestCaseBase {
     
     func testSetupComics() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
-        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 3)) as? CharacterDetailCell
+        let cell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 3)) as? CharacterDetailComicCell
         XCTAssertEqual(cell?.item.text, self.viewModel.character.comics!.items![0].name)
     }
 

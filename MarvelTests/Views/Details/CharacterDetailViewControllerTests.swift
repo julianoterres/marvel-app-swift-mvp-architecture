@@ -14,7 +14,7 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     private var window: UIWindow!
     private var viewController: CharacterDetailViewController!
-    private var viewModel: CharacterDetailViewModelProtocol!
+    private var viewModel: CharacterDetailPresenterProtocol!
     private var tableView: UITableView!
     private let storyboard = UIStoryboard(name: "Main", bundle: nil)
     
@@ -62,25 +62,25 @@ class CharacterDetailViewControllerTests: XCTestCaseBase {
     
     func testNumberOfRows() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
-        XCTAssertEqual(self.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.banner.rawValue), 1)
-        XCTAssertEqual(self.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.description.rawValue), 1)
-        XCTAssertEqual(self.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.title.rawValue), 1)
-        XCTAssertEqual(self.tableView.numberOfRows(inSection: EnumCharacterDetailCellSection.itens.rawValue), self.viewModel.character.comics!.items!.count)
+        XCTAssertEqual(self.tableView.numberOfRows(inSection: CharacterDetailCellSection.banner.rawValue), 1)
+        XCTAssertEqual(self.tableView.numberOfRows(inSection: CharacterDetailCellSection.description.rawValue), 1)
+        XCTAssertEqual(self.tableView.numberOfRows(inSection: CharacterDetailCellSection.title.rawValue), 1)
+        XCTAssertEqual(self.tableView.numberOfRows(inSection: CharacterDetailCellSection.itens.rawValue), self.viewModel.character.comics!.items!.count)
     }
     
     func testCellReuseIdentifier() {
         self.prepareViewController(character: CharacterMock.characterWithAllData())
-        guard let cellBanner = self.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
-              let cellDescription = self.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
-              let cellTitleComics = self.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
-              let cellComicsItem = self.tableView.cellForRow(at: IndexPath(row: 0, section: EnumCharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
+        guard let cellBanner = self.tableView.cellForRow(at: IndexPath(row: 0, section: CharacterDetailCellSection.banner.rawValue)) as? CharacterDetailCell,
+              let cellDescription = self.tableView.cellForRow(at: IndexPath(row: 0, section: CharacterDetailCellSection.description.rawValue)) as? CharacterDetailCell,
+              let cellTitleComics = self.tableView.cellForRow(at: IndexPath(row: 0, section: CharacterDetailCellSection.title.rawValue)) as? CharacterDetailCell,
+              let cellComicsItem = self.tableView.cellForRow(at: IndexPath(row: 0, section: CharacterDetailCellSection.itens.rawValue)) as? CharacterDetailCell else {
                   XCTAssert(false, "Failed to load of cell")
                   return
         }
-        XCTAssertEqual(cellBanner.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.image.rawValue)
-        XCTAssertEqual(cellDescription.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
-        XCTAssertEqual(cellTitleComics.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.title.rawValue)
-        XCTAssertEqual(cellComicsItem.reuseIdentifier, EnumCharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(cellBanner.reuseIdentifier, CharacterDetailCellReusubleIdentifier.image.rawValue)
+        XCTAssertEqual(cellDescription.reuseIdentifier, CharacterDetailCellReusubleIdentifier.text.rawValue)
+        XCTAssertEqual(cellTitleComics.reuseIdentifier, CharacterDetailCellReusubleIdentifier.title.rawValue)
+        XCTAssertEqual(cellComicsItem.reuseIdentifier, CharacterDetailCellReusubleIdentifier.text.rawValue)
     }
     
 }

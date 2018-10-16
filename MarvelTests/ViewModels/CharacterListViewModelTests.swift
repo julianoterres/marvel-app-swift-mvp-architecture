@@ -11,7 +11,7 @@ import XCTest
 
 class CharacterListViewModelTests: XCTestCaseBase {
     
-    private var viewModel: CharacterListViewModel!
+    private var viewModel: CharacterListPresenter!
     private var service: CharacterServiceProtocol!
     
     override func tearDown() {
@@ -21,11 +21,11 @@ class CharacterListViewModelTests: XCTestCaseBase {
     func prepareViewController(returnType: EnumReturnType) {
         switch returnType {
         case .success:
-            self.viewModel = CharacterListViewModel(service: CharacterServiceMock())
+            self.viewModel = CharacterListPresenter(service: CharacterServiceMock())
         case .error:
-            self.viewModel = CharacterListViewModel(service: CharacterServiceErrorMock())
+            self.viewModel = CharacterListPresenter(service: CharacterServiceErrorMock())
         default:
-            self.viewModel = CharacterListViewModel(service: CharacterServiceCheckAllLoadingMock())
+            self.viewModel = CharacterListPresenter(service: CharacterServiceCheckAllLoadingMock())
         }
     }
     
