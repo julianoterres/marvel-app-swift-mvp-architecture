@@ -10,22 +10,23 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol CharacterDetailViewModelProtocol {
-    var character: Character { get set }
-    func getTableViewIdentifier(section: Int) -> String
-    func getTableViewHeightForRow(section: Int) -> CGFloat
-    func getTableViewNumberRows(section: Int) -> Int
+protocol CharacterListViewControllerProtocol: NSObjectProtocol {
+    func reloadCharacters(characters: [Character], hideLoader: Bool)
+    func showError(message: String)
 }
 
-protocol CharacterListViewModelProtocol {
-    
-    var totalCharacters: Int { get set }
-    var characters: [Character] { get set }
-    
-    func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void)
-    func get(index: Int) -> Character
-    func count() -> Int
+protocol CharacterListPresenterProtocol {
+    func load()
     func checkAlreadyLoadedAll() -> Bool
+}
+
+protocol CharacterDetailPresenterProtocol {
+    func loadComics()
+}
+
+protocol CharacterDetailViewControllerProtocol: NSObjectProtocol {
+    func showDetails(character: Character?)
+    func showError(message: String)
 }
 
 protocol CharacterServiceProtocol {
@@ -35,8 +36,19 @@ protocol CharacterServiceProtocol {
         success: @escaping(_ characters: [Character], _ totalCharacters: Int) -> Void,
         failure: @escaping(_ message: String) -> Void
     )
+    func getComics(
+        characterId: String,
+        success: @escaping(_ characters: [Comic]) -> Void,
+        failure: @escaping(_ message: String) -> Void
+    )
 }
 
 protocol NetworkProtocol {
-    static func request(url: URL, method: HTTPMethod, parameters: Parameters?, completion: @escaping (Data) -> Void, failure: @escaping(_ error: String) -> Void)
+    static func request(
+        url: URL,
+        method: HTTPMethod,
+        parameters: Parameters?,
+        completion: @escaping (Data) -> Void,
+        failure: @escaping(_ error: String) -> Void
+    )
 }

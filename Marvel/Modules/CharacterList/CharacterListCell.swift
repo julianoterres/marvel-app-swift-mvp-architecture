@@ -15,15 +15,10 @@ class CharacterListCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     
     static let height = CGFloat(57)
-    var character: Character?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    func setup() {
-        guard let character = self.character, let url = character.getImage(size: .portraitMedium) else { return }
+    func setup(character: Character) {
         self.name.text = character.name
+        guard let url = character.getImage(size: .portraitMedium) else { return }
         self.avatar.kf.setImage(with: url, placeholder: UIImage.placeholderAvatar())
     }
 

@@ -9,43 +9,38 @@
 import UIKit
 import Foundation
 
-class CharacterListViewModel: CharacterListViewModelProtocol {
+class CharacterListPresenter: CharacterListPresenterProtocol {
     
-    var service: CharacterServiceProtocol
-    var offset = 0
-    var loadingActive = false
-    var limit = 20
-    var totalCharacters = 0
-    var characters = [Character]()
+    weak private var view: CharacterListViewControllerProtocol?
+    private let service: CharacterServiceProtocol
+    private var offset = 0
+    private var loadingActive = false
+    private var limit = 20
+    private var totalCharacters = 0
+    private var characters = [Character]()
     
-    init(service: CharacterServiceProtocol) {
+    init(view: CharacterListViewControllerProtocol, service: CharacterServiceProtocol) {
         self.service = service
+        self.view = view
     }
     
-    func load(success: @escaping() -> Void, failure: @escaping(_ error: String) -> Void) {
+    func load() {
         if !self.loadingActive && !self.checkAlreadyLoadedAll() {
+            self.loadingActive = true
             self.service.getAllWithPagination(offset: String(offset),
                                                   limit: String(limit),
-                                                  success: { [weak self] (characters, totalCharacters) in
+                                                  success: { [weak self] characters, totalCharacters in
                 self?.totalCharacters = totalCharacters
                 self?.characters.append(contentsOf: characters)
                 self?.loadingActive = false
                 self?.offset += self?.limit ?? 0
-                success()
+                self?.view?.reloadCharacters(characters: self?.characters ?? [],
+                                            hideLoader: self?.checkAlreadyLoadedAll() ?? false)
             }, failure: { [weak self] error in
                 self?.loadingActive = false
-                failure(error)
+                self?.view?.showError(message: error)
             })
-            loadingActive = true
         }
-    }
-    
-    func get(index: Int) -> Character {
-        return self.characters[index]
-    }
-    
-    func count() -> Int {
-        return self.characters.count
     }
     
     func checkAlreadyLoadedAll() -> Bool {

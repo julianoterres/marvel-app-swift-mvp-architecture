@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 @testable import Marvel
 
-class CharacterListViewModelMock: CharacterListViewModelProtocol {
+class CharacterListViewModelMock: CharacterListPresenterProtocol {
     
     var totalCharacters = 0
     var characters = [Marvel.Character]()

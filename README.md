@@ -2,6 +2,9 @@
 
 Hello! This is steps to run the Marvel App in your Xcode
 
+## Architecture
+
+This project was building using the MVP pattern
 
 ## Clone repository
 
