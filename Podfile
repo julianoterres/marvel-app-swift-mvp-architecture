@@ -9,8 +9,9 @@ target 'Marvel' do
   # Pods for Marvel
   pod 'Alamofire', '~> 4.7'
   pod 'Kingfisher', '~> 4.8'
-  pod 'Fabric', '~> 1.7'
-  pod 'Crashlytics', '~> 3.10'
+  pod 'Fabric', '~> 1.7.13'
+  pod 'Crashlytics', '~> 3.10.9'
+  pod 'Firebase/Core'
 
   target 'MarvelTests' do
     inherit! :search_paths
