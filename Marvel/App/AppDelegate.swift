@@ -9,14 +9,14 @@
 import UIKit
 import Fabric
 import Crashlytics
+import Firebase
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Fabric.sharedSDK().debug = true
-        Fabric.with([Crashlytics.self()])
+        FirebaseApp.configure()
         self.homeScreen()
         return true
     }
