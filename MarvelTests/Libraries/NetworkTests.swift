@@ -20,8 +20,8 @@ class NetworkTests: XCTestCaseBase {
     override func setUp() {
         super.setUp()
         promise = expectation(description: "waiting")
-        urlSuccess = UrlDefinition.characters(offset: "0", limit: "1")
-        urlError = UrlDefinition.testError()
+        urlSuccess = URL.characters(offset: "0", limit: "1")
+        urlError = URL.testError()
         parameters = ["teste": 1]
     }
     

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		300957075E565CD3AA19C97B /* Pods_MarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EACFD1AFA8E09E4BF2D1C69 /* Pods_MarvelUITests.framework */; };
+		3A10DA66217688EB00D37655 /* UIImageViewCustomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10DA65217688EB00D37655 /* UIImageViewCustomTests.swift */; };
+		3A10DA682176971100D37655 /* UrlExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A10DA672176971100D37655 /* UrlExtensionTests.swift */; };
 		3A2DB871216BB8E200D5A17E /* UrlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB870216BB8E200D5A17E /* UrlExtension.swift */; };
 		3A2DB873216BD4F400D5A17E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2DB872216BD4F400D5A17E /* Network.swift */; };
 		3A4031C5217671B400383372 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4031C4217671B400383372 /* GoogleService-Info.plist */; };
@@ -21,14 +23,13 @@
 		3AE5C784214846B4001979F1 /* CharacterServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C783214846B4001979F1 /* CharacterServiceMock.swift */; };
 		3AE5C78621486571001979F1 /* CharacterServiceErrorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C78521486571001979F1 /* CharacterServiceErrorMock.swift */; };
 		3AE5C78921486688001979F1 /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C78821486688001979F1 /* EnumDefinition.swift */; };
-		3AFBE005214956D6009ACA31 /* UrlDefinitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE004214956D6009ACA31 /* UrlDefinitionTests.swift */; };
 		3AFBE0082149725A009ACA31 /* UIColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE0072149725A009ACA31 /* UIColorExtensionTests.swift */; };
 		3AFBE00A214978BE009ACA31 /* UIImageExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE009214978BE009ACA31 /* UIImageExtensionTests.swift */; };
 		3AFBE00C214982D0009ACA31 /* UINavigationControllerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE00B214982D0009ACA31 /* UINavigationControllerExtensionTests.swift */; };
 		3AFBE00F2149932E009ACA31 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE00E2149932E009ACA31 /* NetworkTests.swift */; };
 		3AFBE01221499DBA009ACA31 /* CharacterServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE01121499DBA009ACA31 /* CharacterServiceTests.swift */; };
-		3AFBE0152149AAD1009ACA31 /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE0142149AAD1009ACA31 /* CharacterDetailViewModelTests.swift */; };
-		3AFBE0172149AB31009ACA31 /* CharacterListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE0162149AB31009ACA31 /* CharacterListViewModelTests.swift */; };
+		3AFBE0152149AAD1009ACA31 /* CharacterDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE0142149AAD1009ACA31 /* CharacterDetailPresenterTests.swift */; };
+		3AFBE0172149AB31009ACA31 /* CharacterListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE0162149AB31009ACA31 /* CharacterListPresenterTests.swift */; };
 		3AFBE0192149AB9D009ACA31 /* CharacterListCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE0182149AB9D009ACA31 /* CharacterListCellTests.swift */; };
 		3AFBE01B2149B211009ACA31 /* CharacterServiceCheckAllLoadingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE01A2149B211009ACA31 /* CharacterServiceCheckAllLoadingMock.swift */; };
 		3AFBE01D2149BE8B009ACA31 /* UIViewControllerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFBE01C2149BE8B009ACA31 /* UIViewControllerExtensionTests.swift */; };
@@ -102,6 +103,8 @@
 		04127CA8AC64FCFDE4375E36 /* Pods_MarvelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E185B87EB639D560253466 /* Pods-MarvelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelUITests/Pods-MarvelUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1302656D2EF7B88C0B0FE6CF /* Pods-Marvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marvel/Pods-Marvel.debug.xcconfig"; sourceTree = "<group>"; };
+		3A10DA65217688EB00D37655 /* UIImageViewCustomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewCustomTests.swift; sourceTree = "<group>"; };
+		3A10DA672176971100D37655 /* UrlExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlExtensionTests.swift; sourceTree = "<group>"; };
 		3A2DB870216BB8E200D5A17E /* UrlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlExtension.swift; sourceTree = "<group>"; };
 		3A2DB872216BD4F400D5A17E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3A4031C4217671B400383372 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -115,14 +118,13 @@
 		3AE5C783214846B4001979F1 /* CharacterServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceMock.swift; sourceTree = "<group>"; };
 		3AE5C78521486571001979F1 /* CharacterServiceErrorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceErrorMock.swift; sourceTree = "<group>"; };
 		3AE5C78821486688001979F1 /* EnumDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefinition.swift; sourceTree = "<group>"; };
-		3AFBE004214956D6009ACA31 /* UrlDefinitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlDefinitionTests.swift; sourceTree = "<group>"; };
 		3AFBE0072149725A009ACA31 /* UIColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionTests.swift; sourceTree = "<group>"; };
 		3AFBE009214978BE009ACA31 /* UIImageExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensionTests.swift; sourceTree = "<group>"; };
 		3AFBE00B214982D0009ACA31 /* UINavigationControllerExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensionTests.swift; sourceTree = "<group>"; };
 		3AFBE00E2149932E009ACA31 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		3AFBE01121499DBA009ACA31 /* CharacterServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceTests.swift; sourceTree = "<group>"; };
-		3AFBE0142149AAD1009ACA31 /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
-		3AFBE0162149AB31009ACA31 /* CharacterListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelTests.swift; sourceTree = "<group>"; };
+		3AFBE0142149AAD1009ACA31 /* CharacterDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenterTests.swift; sourceTree = "<group>"; };
+		3AFBE0162149AB31009ACA31 /* CharacterListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenterTests.swift; sourceTree = "<group>"; };
 		3AFBE0182149AB9D009ACA31 /* CharacterListCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListCellTests.swift; sourceTree = "<group>"; };
 		3AFBE01A2149B211009ACA31 /* CharacterServiceCheckAllLoadingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceCheckAllLoadingMock.swift; sourceTree = "<group>"; };
 		3AFBE01C2149BE8B009ACA31 /* UIViewControllerExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensionTests.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A10DA64217688D900D37655 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3A10DA65217688EB00D37655 /* UIImageViewCustomTests.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		3A616D87212B45D20014A706 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,21 +268,22 @@
 			path = Generic;
 			sourceTree = "<group>";
 		};
-		3A710933211BA0AB00F27724 /* Details */ = {
+		3A710933211BA0AB00F27724 /* CharacterDetail */ = {
 			isa = PBXGroup;
 			children = (
-				E333DE0120E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift */,
 				3A710934211BA0D500F27724 /* CharacterDetailCellTests.swift */,
+				E333DE0120E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift */,
+				3AFBE0142149AAD1009ACA31 /* CharacterDetailPresenterTests.swift */,
 			);
-			path = Details;
+			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
-		3A87343F216BDE4200F75930 /* Libs */ = {
+		3A87343F216BDE4200F75930 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				3A2DB872216BD4F400D5A17E /* Network.swift */,
 			);
-			path = Libs;
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		3AC3A1CE2169393C00D2120A /* Modules */ = {
@@ -305,13 +316,14 @@
 			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
-		3AE5C77D21471F72001979F1 /* List */ = {
+		3AE5C77D21471F72001979F1 /* CharacterList */ = {
 			isa = PBXGroup;
 			children = (
-				3AE5C77E21471F8D001979F1 /* CharacterListViewControllerTests.swift */,
 				3AFBE0182149AB9D009ACA31 /* CharacterListCellTests.swift */,
+				3AE5C77E21471F8D001979F1 /* CharacterListViewControllerTests.swift */,
+				3AFBE0162149AB31009ACA31 /* CharacterListPresenterTests.swift */,
 			);
-			path = List;
+			path = CharacterList;
 			sourceTree = "<group>";
 		};
 		3AE5C7822148466E001979F1 /* Services */ = {
@@ -341,14 +353,6 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
-		3AFBE003214956BA009ACA31 /* Definitions */ = {
-			isa = PBXGroup;
-			children = (
-				3AFBE004214956D6009ACA31 /* UrlDefinitionTests.swift */,
-			);
-			path = Definitions;
-			sourceTree = "<group>";
-		};
 		3AFBE00621497242009ACA31 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +360,7 @@
 				3AFBE009214978BE009ACA31 /* UIImageExtensionTests.swift */,
 				3AFBE00B214982D0009ACA31 /* UINavigationControllerExtensionTests.swift */,
 				3AFBE01C2149BE8B009ACA31 /* UIViewControllerExtensionTests.swift */,
+				3A10DA672176971100D37655 /* UrlExtensionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,15 +379,6 @@
 				3AFBE01121499DBA009ACA31 /* CharacterServiceTests.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		3AFBE0132149AAB4009ACA31 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				3AFBE0142149AAD1009ACA31 /* CharacterDetailViewModelTests.swift */,
-				3AFBE0162149AB31009ACA31 /* CharacterListViewModelTests.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		57D50615DCDF7C71496FF028 /* Frameworks */ = {
@@ -408,13 +404,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E333DDFE20E6BC770031E6AA /* Views */ = {
+		E333DDFE20E6BC770031E6AA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				3A710933211BA0AB00F27724 /* Details */,
-				3AE5C77D21471F72001979F1 /* List */,
+				3A710933211BA0AB00F27724 /* CharacterDetail */,
+				3AE5C77D21471F72001979F1 /* CharacterList */,
 			);
-			path = Views;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		E340B91620E1954B0061AFD6 /* Storyboards */ = {
@@ -455,7 +451,7 @@
 				E3F2B19020E2896B004A3E59 /* Components */,
 				E3F2B1C720E3CB56004A3E59 /* Definitions */,
 				E3F2B17720E28186004A3E59 /* Extensions */,
-				3A87343F216BDE4200F75930 /* Libs */,
+				3A87343F216BDE4200F75930 /* Libraries */,
 				E3F2B1D520E3F7E1004A3E59 /* Models */,
 				3AC3A1CE2169393C00D2120A /* Modules */,
 				E3F2B17A20E28628004A3E59 /* Resources */,
@@ -470,14 +466,13 @@
 		E36937D220E18568009B9EFC /* MarvelTests */ = {
 			isa = PBXGroup;
 			children = (
-				3AFBE003214956BA009ACA31 /* Definitions */,
+				3A10DA64217688D900D37655 /* Components */,
 				3AFBE00621497242009ACA31 /* Extensions */,
 				E36937D520E18568009B9EFC /* Info.plist */,
 				3AFBE00D2149931C009ACA31 /* Libraries */,
 				3A71092A211B707100F27724 /* Mock */,
 				3AFBE01021499DA0009ACA31 /* Services */,
-				3AFBE0132149AAB4009ACA31 /* ViewModels */,
-				E333DDFE20E6BC770031E6AA /* Views */,
+				E333DDFE20E6BC770031E6AA /* Modules */,
 				E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */,
 			);
 			path = MarvelTests;
@@ -660,14 +655,10 @@
 					};
 					E36937CE20E18568009B9EFC = {
 						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = DEDQBH6J8S;
-						ProvisioningStyle = Manual;
 						TestTargetID = E36937BA20E18567009B9EFC;
 					};
 					E36937D920E18568009B9EFC = {
 						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = DEDQBH6J8S;
-						ProvisioningStyle = Manual;
 						TestTargetID = E36937BA20E18567009B9EFC;
 					};
 				};
@@ -888,16 +879,17 @@
 				3AFBE01D2149BE8B009ACA31 /* UIViewControllerExtensionTests.swift in Sources */,
 				3AE5C781214726C4001979F1 /* CharacterListViewModelMock.swift in Sources */,
 				3A710930211B743300F27724 /* CharacterMock.swift in Sources */,
-				3AFBE0172149AB31009ACA31 /* CharacterListViewModelTests.swift in Sources */,
+				3AFBE0172149AB31009ACA31 /* CharacterListPresenterTests.swift in Sources */,
+				3A10DA66217688EB00D37655 /* UIImageViewCustomTests.swift in Sources */,
 				3AFBE01B2149B211009ACA31 /* CharacterServiceCheckAllLoadingMock.swift in Sources */,
 				3AFBE00A214978BE009ACA31 /* UIImageExtensionTests.swift in Sources */,
-				3AFBE005214956D6009ACA31 /* UrlDefinitionTests.swift in Sources */,
 				3AFBE0192149AB9D009ACA31 /* CharacterListCellTests.swift in Sources */,
 				E333DE0220E6E1C80031E6AA /* CharacterDetailViewControllerTests.swift in Sources */,
 				3AFBE01221499DBA009ACA31 /* CharacterServiceTests.swift in Sources */,
 				3AFBE00C214982D0009ACA31 /* UINavigationControllerExtensionTests.swift in Sources */,
+				3A10DA682176971100D37655 /* UrlExtensionTests.swift in Sources */,
 				3AE5C78921486688001979F1 /* EnumDefinition.swift in Sources */,
-				3AFBE0152149AAD1009ACA31 /* CharacterDetailViewModelTests.swift in Sources */,
+				3AFBE0152149AAD1009ACA31 /* CharacterDetailPresenterTests.swift in Sources */,
 				3AFBE0082149725A009ACA31 /* UIColorExtensionTests.swift in Sources */,
 				E333DE0020E6BCAF0031E6AA /* XCTestCaseBase.swift in Sources */,
 				3AE5C784214846B4001979F1 /* CharacterServiceMock.swift in Sources */,
@@ -1122,9 +1114,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = DEDQBH6J8S;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1134,7 +1126,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8c7f90e7-1afe-4dd7-ae0f-18a81295f9c4";
-				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel.app/Marvel";
@@ -1147,9 +1139,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = DEDQBH6J8S;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1159,7 +1151,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8c7f90e7-1afe-4dd7-ae0f-18a81295f9c4";
-				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel.app/Marvel";
@@ -1171,9 +1163,9 @@
 			baseConfigurationReference = 4D95E01129404D479079C0A6 /* Pods-MarvelUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = DEDQBH6J8S;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1183,7 +1175,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8c7f90e7-1afe-4dd7-ae0f-18a81295f9c4";
-				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Marvel;
@@ -1195,9 +1187,9 @@
 			baseConfigurationReference = 10E185B87EB639D560253466 /* Pods-MarvelUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SoftDesign Consultoria e Sistemas LTDA (DEDQBH6J8S)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = DEDQBH6J8S;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = Marvel/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1207,7 +1199,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.MarvelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8c7f90e7-1afe-4dd7-ae0f-18a81295f9c4";
-				PROVISIONING_PROFILE_SPECIFIER = "br.com.softdesign.marveltests AppStore";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Marvel;

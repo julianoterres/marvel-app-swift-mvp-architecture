@@ -18,7 +18,7 @@ class CharacterMock {
         character.name = "Character Name"
         character.description = "Character description"
         character.thumbnail = getThumbnail()
-        character.comics = getComics()
+        character.listComics = getComics()
         
         return character
     }
@@ -29,7 +29,7 @@ class CharacterMock {
         character.name = ""
         character.description = ""
         character.thumbnail = nil
-        character.comics = nil
+        character.listComics = nil
         
         return character
     }
@@ -57,17 +57,16 @@ class CharacterMock {
         return thumbnail
     }
     
-    static func getComics() -> Comics {
-        var item1 = Items()
-        item1.name = "Comics 1"
+    static func getComics() -> [Comic] {
+        var comicOne = Comic()
+        comicOne.title = "Comic 1"
+        comicOne.thumbnail = getThumbnail()
         
-        var item2 = Items()
-        item2.name = "Comics 2"
+        var comicTwo = Comic()
+        comicTwo.title = "Comic 1"
+        comicTwo.thumbnail = getThumbnail()
         
-        var comics = Comics()
-        comics.items = [item1, item2]
-        
-        return comics
+        return [comicOne, comicTwo]
     }
     
 }
