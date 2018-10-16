@@ -83,9 +83,9 @@ that execute in order the commands bellow:
 
 
 	
-## Crashlytics
+## Crashes Tracking
 
-This project contains the Fabric to monitor the crashes in app.
+This project use the Firebase to monitor the crashes in app.
 	
 ## Continuous Integration
 
