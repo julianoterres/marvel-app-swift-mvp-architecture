@@ -25,7 +25,7 @@ class CharacterServiceTests: XCTestCaseBase {
     
     func testGetAllWithPaginationWithReturnError() {
         self.wait(seconds: 20) {
-            self.service.getAllWithPagination(offset: "-99", limit: "1", success: { (characters, totalCharacters) in
+            self.service.getAllWithPagination(offset: "-99", limit: "1", success: { characters, totalCharacters in
                 XCTAssertNotNil(characters)
                 XCTAssertNotNil(totalCharacters)
             }, failure: { error in
@@ -36,7 +36,7 @@ class CharacterServiceTests: XCTestCaseBase {
     
     func testGetAllWithPaginationWithReturnCharacters() {
         self.wait(seconds: 20) {
-            self.service.getAllWithPagination(offset: "1", limit: "1", success: { (characters, totalCharacters) in
+            self.service.getAllWithPagination(offset: "1", limit: "1", success: { characters, totalCharacters in
                 XCTAssertNotNil(characters)
                 XCTAssertNotNil(totalCharacters)
             }, failure: { error in
@@ -47,9 +47,39 @@ class CharacterServiceTests: XCTestCaseBase {
     
     func testGetAllWithPaginationWithReturnNoCharacters() {
         self.wait(seconds: 20) {
-            self.service.getAllWithPagination(offset: "9999", limit: "1", success: { (characters, totalCharacters) in
+            self.service.getAllWithPagination(offset: "9999", limit: "1", success: { characters, totalCharacters in
                 XCTAssertNotNil(characters)
                 XCTAssertNotNil(totalCharacters)
+            }, failure: { error in
+                XCTAssertNotNil(error)
+            })
+        }
+    }
+    
+    func testGetComics() {
+        self.wait(seconds: 20) {
+            self.service.getComics(characterId: "1009146", success: { comics in
+                XCTAssertNotNil(comics)
+            }, failure: { error in
+                XCTAssertNotNil(error)
+            })
+        }
+    }
+    
+    func testGetComicsWithoutResults() {
+        self.wait(seconds: 20) {
+            self.service.getComics(characterId: "-222", success: { comics in
+                XCTAssertNotNil(comics)
+            }, failure: { error in
+                XCTAssertNotNil(error)
+            })
+        }
+    }
+    
+    func testGetComicsWithoutResultsError() {
+        self.wait(seconds: 20) {
+            self.service.getComics(characterId: "xxx", success: { comics in
+                XCTAssertNotNil(comics)
             }, failure: { error in
                 XCTAssertNotNil(error)
             })

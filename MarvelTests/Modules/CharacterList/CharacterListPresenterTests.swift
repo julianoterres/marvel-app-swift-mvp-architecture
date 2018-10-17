@@ -9,29 +9,29 @@
 import XCTest
 @testable import Marvel
 
-class CharacterListPresenterTests: XCTestCaseBase {
-    
-    private var viewModel: CharacterListPresenter!
-    private var service: CharacterServiceProtocol!
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
+//class CharacterListPresenterTests: XCTestCaseBase {
+//    
+//    private var presenter: CharacterListPresenter!
+//    private var service: CharacterServiceProtocol!
+//    
+//    override func tearDown() {
+//        super.tearDown()
+//    }
+//    
 //    func prepareViewController(returnType: EnumReturnType) {
 //        switch returnType {
 //        case .success:
-//            self.viewModel = CharacterListPresenter(service: CharacterServiceMock())
+//            self.presenter = CharacterListPresenter(service: CharacterServiceMock())
 //        case .error:
-//            self.viewModel = CharacterListPresenter(service: CharacterServiceErrorMock())
+//            self.presenter = CharacterListPresenter(service: CharacterServiceErrorMock())
 //        default:
-//            self.viewModel = CharacterListPresenter(service: CharacterServiceCheckAllLoadingMock())
+//            self.presenter = CharacterListPresenter(service: CharacterServiceCheckAllLoadingMock())
 //        }
 //    }
 //    
 //    func testLoadSuccess() {
 //        self.prepareViewController(returnType: .success)
-//        self.viewModel.load(success: {
+//        self.presenter.load(success: {
 //            XCTAssertEqual(self.viewModel.characters.count, 20)
 //        }, failure: { error in
 //            XCTAssertNotNil(error)
@@ -40,7 +40,7 @@ class CharacterListPresenterTests: XCTestCaseBase {
 //    
 //    func testLoadError() {
 //        self.prepareViewController(returnType: .error)
-//        self.viewModel.load(success: {
+//        self.presenter.load(success: {
 //            XCTAssertEqual(self.viewModel.characters.count, 0)
 //        }, failure: { error in
 //            XCTAssertNotNil(error)
@@ -49,7 +49,7 @@ class CharacterListPresenterTests: XCTestCaseBase {
 //    
 //    func testCount() {
 //        self.prepareViewController(returnType: .success)
-//        self.viewModel.load(success: {
+//        self.presenter.load(success: {
 //            XCTAssertEqual(self.viewModel.count(), 20)
 //        }, failure: { error in
 //            XCTAssertNotNil(error)
@@ -58,7 +58,7 @@ class CharacterListPresenterTests: XCTestCaseBase {
 //    
 //    func testCheckAlreadyLoadedAllTrue() {
 //        self.prepareViewController(returnType: .success)
-//        self.viewModel.load(success: {
+//        self.presenter.load(success: {
 //            XCTAssertEqual(self.viewModel.totalCharacters, 20)
 //            XCTAssertEqual(self.viewModel.checkAlreadyLoadedAll(), true)
 //        }, failure: { error in
@@ -68,12 +68,12 @@ class CharacterListPresenterTests: XCTestCaseBase {
 //    
 //    func testCheckAlreadyLoadedAllFalse() {
 //        self.prepareViewController(returnType: .checkLoadAllCharacters)
-//        self.viewModel.load(success: {
+//        self.presenter.load(success: {
 //            XCTAssertEqual(self.viewModel.totalCharacters, 100)
 //            XCTAssertEqual(self.viewModel.checkAlreadyLoadedAll(), false)
 //        }, failure: { error in
 //            XCTAssertNotNil(error)
 //        })
 //    }
-    
-}
+//    
+//}
