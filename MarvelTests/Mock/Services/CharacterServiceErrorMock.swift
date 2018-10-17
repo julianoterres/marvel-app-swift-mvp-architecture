@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 @testable import Marvel
 
-class CharacterServiceErrorMock: CharacterServiceProtocol {
-    
-    func getAllWithPagination(offset: String, limit: String, success: @escaping(_ characters: [Marvel.Character], _ totalCharacters: Int) -> Void, failure: @escaping(_ message: String) -> Void) {
-        failure("Error")
-    }
-    
-}
+//class CharacterServiceErrorMock: CharacterServiceProtocol {
+//    
+//    func getAllWithPagination(offset: String, limit: String, success: @escaping(_ characters: [Marvel.Character], _ totalCharacters: Int) -> Void, failure: @escaping(_ message: String) -> Void) {
+//        failure("Error")
+//    }
+//    
+//}
