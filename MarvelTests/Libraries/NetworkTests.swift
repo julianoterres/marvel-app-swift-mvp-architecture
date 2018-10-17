@@ -20,8 +20,8 @@ class NetworkTests: XCTestCaseBase {
     override func setUp() {
         super.setUp()
         promise = expectation(description: "waiting")
-        urlSuccess = UrlDefinition.characters(offset: "0", limit: "1")
-        urlError = UrlDefinition.testError()
+        urlSuccess = URL.characters(offset: "0", limit: "1")
+        urlError = URL.testError()
         parameters = ["teste": 1]
     }
     
@@ -34,34 +34,34 @@ class NetworkTests: XCTestCaseBase {
     }
     
     func testNetworkSuccess() {
-        Network.request(url: urlSuccess, method: .get, parameters: nil, completion: { [weak self] (response) in
+        Network.request(url: urlSuccess, method: .get, parameters: nil, completion: { [weak self] response in
             XCTAssertNotNil(response)
             self?.promise.fulfill()
-            }, failure: { [weak self] error in
-                XCTAssertNotNil(error)
-                self?.promise.fulfill()
+        }, failure: { [weak self] error in
+            XCTAssertNotNil(error)
+            self?.promise.fulfill()
         })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     
     func testNetworkError() {
-        Network.request(url: urlError, method: .get, parameters: nil, completion: { [weak self] (response) in
+        Network.request(url: urlError, method: .get, parameters: nil, completion: { [weak self] response in
             XCTAssertNotNil(response)
             self?.promise.fulfill()
-            }, failure: { [weak self] error in
-                XCTAssertNotNil(error)
-                self?.promise.fulfill()
+        }, failure: { [weak self] error in
+            XCTAssertNotNil(error)
+            self?.promise.fulfill()
         })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     
     func testNetworkWithParameters() {
-        Network.request(url: urlSuccess, method: .post, parameters: parameters, completion: { [weak self] (response) in
+        Network.request(url: urlSuccess, method: .post, parameters: parameters, completion: { [weak self] response in
             XCTAssertNotNil(response)
             self?.promise.fulfill()
-            }, failure: { [weak self] error in
-                XCTAssertNotNil(error)
-                self?.promise.fulfill()
+        }, failure: { [weak self] error in
+            XCTAssertNotNil(error)
+            self?.promise.fulfill()
         })
         waitForExpectations(timeout: 20.0, handler: nil)
     }
