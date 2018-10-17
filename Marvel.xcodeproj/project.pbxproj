@@ -18,6 +18,7 @@
 		3A71092D211B709000F27724 /* CharacterDetailViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71092C211B709000F27724 /* CharacterDetailViewModelMock.swift */; };
 		3A710930211B743300F27724 /* CharacterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71092F211B743300F27724 /* CharacterMock.swift */; };
 		3A710935211BA0D500F27724 /* CharacterDetailCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A710934211BA0D500F27724 /* CharacterDetailCellTests.swift */; };
+		3AB85D472177754500C7C944 /* PlistUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB85D462177754500C7C944 /* PlistUtilTests.swift */; };
 		3AE5C77F21471F8D001979F1 /* CharacterListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C77E21471F8D001979F1 /* CharacterListViewControllerTests.swift */; };
 		3AE5C781214726C4001979F1 /* CharacterListViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C780214726C4001979F1 /* CharacterListViewModelMock.swift */; };
 		3AE5C784214846B4001979F1 /* CharacterServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C783214846B4001979F1 /* CharacterServiceMock.swift */; };
@@ -108,6 +109,7 @@
 		3A962FA02176D16D00385727 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A962FA62176D18F00385727 /* ScreenshotsTestsUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotsTestsUI.swift; sourceTree = "<group>"; };
 		3A962FA72176D18F00385727 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		3AB85D462177754500C7C944 /* PlistUtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistUtilTests.swift; sourceTree = "<group>"; };
 		3AE5C77E21471F8D001979F1 /* CharacterListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewControllerTests.swift; sourceTree = "<group>"; };
 		3AE5C780214726C4001979F1 /* CharacterListViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModelMock.swift; sourceTree = "<group>"; };
 		3AE5C783214846B4001979F1 /* CharacterServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterServiceMock.swift; sourceTree = "<group>"; };
@@ -285,6 +287,30 @@
 				3A962FA02176D16D00385727 /* Info.plist */,
 			);
 			path = MarvelUITests;
+			sourceTree = "<group>";
+		};
+		3AB85D452177753000C7C944 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3AB85D462177754500C7C944 /* PlistUtilTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3AB85D48217778FC00C7C944 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E36937D520E18568009B9EFC /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		3AB85D492177791E00C7C944 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		3AC3A1CE2169393C00D2120A /* Modules */ = {
@@ -467,14 +493,15 @@
 		E36937D220E18568009B9EFC /* MarvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				3AB85D492177791E00C7C944 /* Commons */,
 				3A10DA64217688D900D37655 /* Components */,
 				3AFBE00621497242009ACA31 /* Extensions */,
-				E36937D520E18568009B9EFC /* Info.plist */,
 				3AFBE00D2149931C009ACA31 /* Libraries */,
 				3A71092A211B707100F27724 /* Mock */,
-				3AFBE01021499DA0009ACA31 /* Services */,
 				E333DDFE20E6BC770031E6AA /* Modules */,
-				E333DDFF20E6BCAF0031E6AA /* XCTestCaseBase.swift */,
+				3AFBE01021499DA0009ACA31 /* Services */,
+				3AB85D48217778FC00C7C944 /* SupportFiles */,
+				3AB85D452177753000C7C944 /* Utils */,
 			);
 			path = MarvelTests;
 			sourceTree = "<group>";
@@ -836,6 +863,7 @@
 				3AFBE0082149725A009ACA31 /* UIColorExtensionTests.swift in Sources */,
 				E333DE0020E6BCAF0031E6AA /* XCTestCaseBase.swift in Sources */,
 				3AE5C784214846B4001979F1 /* CharacterServiceMock.swift in Sources */,
+				3AB85D472177754500C7C944 /* PlistUtilTests.swift in Sources */,
 				3AFBE00F2149932E009ACA31 /* NetworkTests.swift in Sources */,
 				3AE5C77F21471F8D001979F1 /* CharacterListViewControllerTests.swift in Sources */,
 				3A710935211BA0D500F27724 /* CharacterDetailCellTests.swift in Sources */,
