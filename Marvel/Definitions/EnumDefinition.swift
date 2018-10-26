@@ -16,6 +16,10 @@ enum CharacterListCellSection: Int {
     case character
 }
 
+enum CharacterDetailComicCellSection: Int {
+    case comic
+}
+
 enum CharacterListCellReusubleIdentifier: String {
     case character
 }

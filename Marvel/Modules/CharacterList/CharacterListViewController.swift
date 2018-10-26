@@ -18,7 +18,7 @@ class CharacterListViewController: BaseViewController {
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     
     var presenter: CharacterListPresenterProtocol!
-    private var characters = [Character]()
+    var characters = [Character]()
     private let footerHeigth = CGFloat(44)
     
     override func viewDidLoad() {
